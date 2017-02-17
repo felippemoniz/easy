@@ -1,0 +1,55 @@
+<ion-navbar *navbar>
+  <ion-title>Detalhes do Filme</ion-title>
+</ion-navbar>
+
+<ion-content>
+
+<ion-row style="height: 10%">
+		<ion-col class="headerDetalhesFilme">
+		          <ion-row>
+		              <ion-col>
+		                  <ion-row>
+		                      <ion-col class="fonteTituloFilmeDetalhe">
+		                       		{{filmeSelecionado.nomeFilme}}
+		                      </ion-col>
+		                  </ion-row>
+		                  <ion-row>
+		                      <ion-col width-75 class="labelGeneroFilme">
+                            		{{filmeSelecionado.genero}} - {{filmeSelecionado.duracao}} minutos
+		                      </ion-col>
+		                       <ion-col width-25 class="celulaRating">
+		                             <img class='imagemTamanhoFixo' src="./images/1estrelas.png" *ngIf="filmeSelecionado.rating === 1"/>
+			                         <img class='imagemTamanhoFixo'  src="./images/2estrelas.png" *ngIf="filmeSelecionado.rating === 2"/>
+		                             <img class='imagemTamanhoFixo'  src="./images/3estrelas.png" *ngIf="filmeSelecionado.rating === 3"/>
+		                             <img class='imagemTamanhoFixo'  src="./images/4estrelas.png" *ngIf="filmeSelecionado.rating === 4"/>
+		                             <img class='imagemTamanhoFixo'  src="./images/5estrelas.png" *ngIf="filmeSelecionado.rating === 5"/>
+		                      </ion-col>
+		                  </ion-row>
+		              </ion-col>
+		         </ion-row>
+		</ion-col>
+</ion-row>
+<ion-row style="height: 40%">
+		<ion-col class="imagemDetalhe">
+			<img  src="./images/angrybirdsDetalhe.png"  />
+			<button ion-button  #botaoAdiciona class="botaoPlayTrailer"  (click)="selecionaFilme(filme, filmeCard);" round small ><ion-icon name="play"></ion-icon></button >
+		</ion-col>
+</ion-row>
+<ion-row >
+		<ion-col>{{filmeSelecionado.sinopse}}</ion-col>
+</ion-row>
+<ion-row>
+		<ion-col>Direção: {{filmeSelecionado.direcao}}</ion-col>
+</ion-row>
+<ion-row>
+		<ion-col>Atores principais:{{filmeSelecionado.atores}}</ion-col>
+</ion-row>
+<ion-row>
+		<ion-col>Distribuidora:{{filmeSelecionado.distribuidora}}</ion-col>
+</ion-row>
+<ion-row>
+		<ion-col><img  src="{{filmeSelecionado.cartaz}}" /></ion-col>
+</ion-row>
+
+
+</ion-content>

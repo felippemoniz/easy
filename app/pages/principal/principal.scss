@@ -1,0 +1,116 @@
+.card-filtros {
+
+  font-family: "Open Sans", "Helvetica";
+
+  ion-card {
+    position: relative;
+    text-align: center;
+    height: 50%;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+
+
+  }
+
+  .card-textoGrande {
+    position: absolute;
+    top: 30%;
+    font-size: 2.2em;
+    line-height: 40px;
+    width: 100%;
+    color: #fff;
+
+  }
+
+  .card-textoPequeno {
+    font-size: 1em;
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    color: #fff;
+  }
+
+}
+
+ion-scroll {
+    white-space: nowrap;
+}
+
+ion-badge{
+    height: 20px;
+}
+
+.botaoTag {
+  height: 20px;
+}
+
+.botaoTagAtivado {
+  height: 20px;
+  background-color: blue;
+  color: white;
+}
+
+
+.scrollHorizontal {
+  top: 0 !important;
+  bottom: 0;
+  right: 0 !important;
+  width: 100%;
+  height: 30px;
+}
+
+
+.tag{
+  color:white;
+  font-family: "Open Sans", "Helvetica";
+  font-weight: lighter;
+}
+
+
+ion-chip.ativo {
+     margin: 3px 3px;
+    padding: 0 23px;
+    height: 22px;
+    border-radius: 11px;
+    font-size: 12px;
+    color: white;
+    font-weight: normal;
+    line-height: 24px;
+    background: #a3cade;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+
+ion-chip.inativo {
+     margin: 3px 3px;
+    padding: 0 23px;
+    height: 22px;
+    border-radius: 11px;
+    font-size: 12px;
+    color: white;
+    font-weight: normal;
+    line-height: 24px;
+    background: #d6d9da;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+
+
+.botaoPrimario{
+  color: #ffffff;
+  background-color: #e1b612;
+  width:100%;
+  font-family: "Open Sans", "Helvetica";
+  font-size: inherit;
+}
+
+.botaoSecundario{
+  color: #ffffff;
+  width:100%;
+  background-color: #8d97a6;
+  font-family: "Open Sans", "Helvetica";
+  font-size: inherit;
+}

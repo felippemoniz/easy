@@ -1,0 +1,89 @@
+<ion-navbar *navbar>
+  <ion-title>Principal</ion-title>
+</ion-navbar>
+
+
+
+
+  <ion-content class="card-filtros">
+
+    <ion-card  #filtroQueroEscolher (click)="mostraFiltro()">
+      <img src="./images/filtro_queroEscolher.png"/>
+      <div class="card-textoGrande">Eu quero consultar<br><b>filmes</b> e <b>cinemas</b></div>
+      <div class="card-textoPequeno">Compare os horários dos filmes da sua cidade</div>
+    </ion-card>
+
+    <ion-card #filtroEscolhaPraMim [hidden]="!isVisible()">
+      <img src="./images/filtro_escolhaPraMim.png"/>
+      <div class="card-textoGrande">Eu quero ir ao<br>cinema <b>agora!</b></div>
+      <div class="card-textoPequeno">64 Listings</div>
+    </ion-card>
+
+
+    <ion-grid #filtros [hidden]="isVisible()" class="fontePadrao">
+      <ion-row>
+          <ion-col class="titulosFiltro">Quero ir</ion-col>
+      </ion-row>
+      <ion-row >
+          <ion-col style="border-bottom: 1px black">
+            <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
+              <!--button  #botaoQueroIr outline  *ngFor=" let lista of listaQueroIr" class="botaoTag" [ngClass]="{'botaoTagAtivado':clicker}" (click)="selecionaOpcaoQuando(lista)">
+                  {{lista}}
+              </button-->
+
+              <ion-chip *ngFor=" let lista of listaQueroIr" class="inativo">
+                <ion-label class="tag"> {{lista}} &nbsp;</ion-label>
+              </ion-chip>
+
+            </ion-scroll>
+          </ion-col>
+      </ion-row >
+      <ion-row>
+          <ion-col class="titulosFiltro">Procurar por</ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+            <!--button  #botaoQueroIr outline  *ngFor=" let listaProcurar of listaProcuraPor" class="botaoTag" [ngClass]="{'botaoTagAtivado':clicker}" (click)="selecionaOpcaoQue(listaProcurar)">
+                {{listaProcurar}}
+            </button-->
+
+              <ion-chip *ngFor=" let listaProcurar of listaProcuraPor" class="ativo">
+                  <ion-label class="tag"> {{listaProcurar}}</ion-label>
+              </ion-chip>
+
+
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col class="titulosFiltro">Preferências</ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+            <ion-col>
+              <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
+                <!--button  #botaoQueroIr outline  *ngFor=" let listaPref of listaPreferencias" class="botaoTag" [ngClass]="{'botaoTagAtivado':clicker}" (click)="selecionaOpcaoPrefs(listaPref)">
+                    {{listaPref}}
+                </button  [ngClass]="{'flipped': card.isflipped }" (click)="card.isflipped = !card.isflipped;"     -->
+
+                <!--
+                                <ion-chip *ngFor=" let listaPref of listaPreferencias" [ngClass]="isChecked ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(listaPref)">
+                  <ion-label class="tag"> {{listaPref.nome}}</ion-label>
+                </ion-chip>
+                -->
+
+
+                <ion-chip *ngFor=" let listaPref of listaPreferencias" [ngClass]="listaPref.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(listaPref)">
+                  <ion-label class="tag"> {{listaPref.nome}}</ion-label>
+                </ion-chip>
+
+              </ion-scroll>
+            </ion-col>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col width-67><button class="botaoPrimario" (click)="verFilmesCinemas()">CONTINUAR</button></ion-col>
+          <ion-col width-33><button class="botaoSecundario" (click)="fecharFiltro()">VOLTAR</button></ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-content>

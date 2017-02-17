@@ -1,0 +1,102 @@
+
+
+<ion-navbar *navbar>
+  <ion-title>Filmes em Cartaz</ion-title>
+</ion-navbar>
+
+<ion-content class="card-background-page">
+<br>
+<div class="labelTituloTela">
+Escolha os filmes
+</div>
+
+<!--{{filtro.preferencias | json}}-->
+
+<br>
+
+
+<ion-chip  *ngFor=" let listaPref of filtro.preferencias" [ngClass]="listaPref.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(listaPref)">
+  <ion-label class="tag"> {{listaPref.nome}}</ion-label>
+</ion-chip>
+
+
+<br><br>
+
+
+<!-- ################################ CARDS #####################################-->
+
+
+   <ion-card  #filmeCard *ngFor=" let filme of filmes">
+      
+
+        <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="filme.selecionado === 'hidden'" (click)="selecionaFilme(filme, filmeCard);" round small >
+        <ion-icon name="add" *ngIf="filme.selecionado === 'hidden'"></ion-icon>
+       </button >
+        <button ion-button  #botaoAdiciona class="botaoCardSelecionado" *ngIf="filme.selecionado === 'visible'" (click)="selecionaFilme(filme, filmeCard);" round small >
+        <ion-icon name="checkmark" *ngIf="filme.selecionado === 'visible'"></ion-icon>
+       </button >
+
+
+      <div  class="marcacaoSelecionado" #layerMarcada [ngStyle]="{'visibility': filme.selecionado}" (click)="verDetalhes(filme)" >
+          <!--img style="width: 100px; position: relative; left: 151px; top:20px" src="./images/imgSelecionado.png"/-->
+      </div>
+
+
+      <div >
+        <ion-chip class="ratingIMDB">
+          <div class="estrelaRating"><img src="./images/starRating.png" class="estrelaRatingTamanho"></div>
+          <ion-label style="color:white"><b>{{filme.rating}}</b>/<span style="font-size: 10px;">10</span></ion-label>
+        </ion-chip>
+      </div>
+
+      <img  src="./images/testeFull.jpg" (click)="verDetalhes(filme)"  />
+
+
+
+
+
+
+      <div class="card-subtitle">
+          <ion-row>
+              <ion-col>
+                  <ion-row>
+                      <ion-col class="fonteTituloFilme">
+                      {{filme.nomeFilme}}
+                      </ion-col>
+                  </ion-row>
+                  <ion-row>
+                      <ion-col width-75 class="labelGeneroFilme">
+                            {{filme.genero}} - {{filme.duracao}} minutos
+                      </ion-col>
+                       <ion-col width-25 class="celulaRating">
+                      </ion-col>
+                  </ion-row>
+                </ion-col>
+         </ion-row>
+      </div>
+
+   </ion-card>
+
+
+
+
+
+
+</ion-content>
+
+<!-- ##########################################################################-->
+
+<ion-toolbar position="bottom" class="toolbarVerSessoes">
+<ion-grid>
+  <ion-row>
+      <ion-col width-50>
+          <button class="botaoVerSessoes" (click)="verSessoes()">VER SESSÕES</button>
+
+      </ion-col>
+      <ion-col width-50  style="text-align:center;">
+          <b> <span class="fonteLabel" style="font-size: 23px; ">{{ contadorFilmesEscolhidos }}</span> </b><br>
+          <span class="fonteLabel" style="font-size: 13px;">filmes escolhidos</span>
+      </ion-col>
+ </ion-row>
+</ion-grid>
+</ion-toolbar>

@@ -1,0 +1,191 @@
+
+/* Classes para o card de filmes / cinemas */
+.card-background-page {
+
+  ion-card {
+    position:relative;
+    text-align: center;
+    height: 31%;
+    font-family: "Open Sans", "Helvetica";
+  }
+
+  .selected {
+    color: black ;
+  }
+
+   .unselected{
+       background-color: white;
+   }
+
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #ff;
+  }
+
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 70%;
+    width: 100%;
+    height: 30%;
+    color: white;
+    background-color: #5e6a7c;
+    margin: 0px;
+  }
+
+}
+
+
+/* Layer que fica sobre a imagem do filme para indicar seleção */
+.marcacaoSelecionado {
+   padding: 0px;
+   opacity: 0.60;
+   position: absolute;
+   width: 100%;
+   height: 70%;
+   margin-top: 0px;
+   z-index: 0;
+   background-color: #FFFFFF;
+   color: #FFFFFF;
+   font-weight: bold;
+}
+
+
+/*Botão round que seleciona um filme */
+.botaoCard{
+color: white;
+    background-color: #e1bd34;
+    position: absolute!important;
+    bottom: 17px !important;
+    right: 12px !important;
+    border-radius: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    width: 41px;
+    height: 41px;
+    padding-right: 18px;
+    padding-left: 17px;
+    border-top-width: 0px;
+    z-index: 1;
+}
+
+
+.botaoCardSelecionado{
+color: white;
+    background-color: #34d255;
+    position: absolute!important;
+    bottom: 17px !important;
+    right: 12px !important;
+    border-radius: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    width: 41px;
+    height: 41px;
+    padding-right: 18px;
+    padding-left: 17px;
+    border-top-width: 0px;
+        z-index: 1;
+
+
+
+}
+
+
+/* Contador de filmes selecionados */
+.labelContador {
+  text-align:center;
+  font-family: "Open Sans", "Helvetica";
+}
+
+
+/* Célula que abriga as estrelas do rating */
+.celulaRating{
+  height: 100% ;
+  display: block;
+  vertical-align: bottom;
+  padding-top: 2px;
+}
+
+
+.labelTituloTela {
+  font-size: 2.0em;
+  width: 100%;
+  font-weight:lighter;
+  padding-left: 10px;
+  background-color:white;
+}
+
+.botaoVerSessoes{
+  color: #ffffff;
+  background-color: #e1b612;
+  width:180px;
+  height: 80%;
+  font-family: "Open Sans", "Helvetica";
+  font-size: inherit;
+}
+
+.fonteLabel{
+  color: #000000;
+  font-family: "Open Sans", "Helvetica";
+}
+
+.fonteTituloFilme{
+  color: #ffffff;
+  font-family: "Open Sans", "Helvetica";
+  text-align:left;
+  font-size: 2.8vh;
+  padding: 0px;
+  text-align: left;
+}
+
+.labelGeneroFilme {
+  font-size: 2vh;
+  font-family: "Open Sans", "Helvetica";
+  text-align: left;
+  padding-left: 0px;
+  padding-top: 2px;
+}
+
+.imagemTamanhoFixo {
+  width: 100%;
+  height: 100%;
+}
+
+ion-chip.ratingIMDB {
+  margin: 3px 3px;
+  padding: 0 11px;
+  height: 22px;
+  border-radius: 11px;
+  font-size: 12px;
+  color: white;
+  font-weight: normal;
+  line-height: 24px;
+  background: #435166;
+  vertical-align: middle;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0px;
+  width: 22%;
+  text-align: right;
+}
+
+.estrelaRating {
+  position:absolute;
+  left: 10px;
+}
+
+.estrelaRatingTamanho {
+  width: 60%;
+
+}
+
+.toolbarVerSessoes {
+    padding: 4px;
+    min-height: 67px;
+}
