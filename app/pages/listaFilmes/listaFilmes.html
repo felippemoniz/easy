@@ -7,7 +7,7 @@
 <ion-content class="card-background-page">
 <br>
 <div class="labelTituloTela">
-Escolha os filmes
+Escolha os filmes.
 </div>
 
 <!--{{filtro.preferencias | json}}-->
@@ -27,7 +27,7 @@ Escolha os filmes
 
 
    <ion-card  #filmeCard *ngFor=" let filme of filmes">
-      
+
 
         <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="filme.selecionado === 'hidden'" (click)="selecionaFilme(filme, filmeCard);" round small >
         <ion-icon name="add" *ngIf="filme.selecionado === 'hidden'"></ion-icon>
