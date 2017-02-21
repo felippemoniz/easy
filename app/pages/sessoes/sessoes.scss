@@ -92,14 +92,15 @@ ion-chip.ratingIMDBSessao {
     box-sizing: border-box;
     position: absolute;
     right: 0px;
-    width: 17%;
+    width: 22vw;
     text-align: right;
 }
 
 .estrelaRatingSessao {
-    position: absolute;
-    left: 30px;
-    top: 2px;
+  position: absolute;
+  left: 0px;
+  top: 2px;
+  margin-left: -5px;
 }
 
 .estrelaRatingTamanhoSessao {
@@ -108,10 +109,10 @@ ion-chip.ratingIMDBSessao {
 }
 
 .TesteSessao{
-  position: absolute;  
-  width: 100% ; 
+  position: absolute;
+  width: 100% ;
   top: 10% ;
-  background-image: url(../../images/linhaSessaoAlta.png);  
+  background-image: url(../../images/linhaSessaoAlta.png);
   height: 40vh;
   background-size: 100%;
 }
