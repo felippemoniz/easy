@@ -4,7 +4,34 @@
 
 <ion-content>
 
-<ion-row style="height: 10%">
+<div>
+<img class='imagemTamanhoFixo'  src="./images/shot1.jpg">
+</div>
+
+<div class="headerDetalhesFilme">
+
+    <div class="posCabecalhoFilme">
+        <span class="fonteTituloFilme">{{filmeSelecionado.nomeFilme}}</span> <br>
+        <span class="labelGeneroFilme">{{filmeSelecionado.genero}} | {{filmeSelecionado.duracao}} minutos</span>
+    </div>
+
+    <div class="posCartazFilme">
+      <img class="imagemTamanhoCartaz" src="./images/cartaz1.jpg">
+    </div>
+
+    <div class="posRatingIMDB">
+      <ion-chip class="ratingIMDBDetalhe">
+        <div class="estrelaRatingDetalhe"><img src="./images/starRating.png" class="estrelaRatingTamanhoDetalhe"></div>
+        <ion-label style="color:white; position:absolute;left:30px"><b>2.9</b>/<span style="font-size: 10px;">10</span></ion-label>
+      </ion-chip>
+    </div>
+
+
+</div>
+
+
+
+<!--ion-row style="height: 10%">
 		<ion-col class="headerDetalhesFilme">
 		          <ion-row>
 		              <ion-col>
@@ -49,7 +76,7 @@
 </ion-row>
 <ion-row>
 		<ion-col><img  src="{{filmeSelecionado.cartaz}}" /></ion-col>
-</ion-row>
+</ion-row-->
 
 
 </ion-content>
