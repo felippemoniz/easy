@@ -1,5 +1,5 @@
 
-  .headerDetalhesFilme {
+.headerDetalhesFilme {
   font-size: 1.0em;
   color: white;
   background-color: #5e6a7c;
@@ -27,9 +27,34 @@
 }
 
 .posRatingIMDB{
-  top: -111px;
-  left: 7px;
+  top: -149px;
+  left: -166px;
   position: relative;
+}
+
+.posBotaoTrailer{
+    top: -153px;
+    left: 261px;
+    position: relative;
+}
+
+.conteudo{
+  padding: 0px 15px;
+  font-family: "Open Sans", "Helvetica";
+  font-size: 12px;
+  p{
+    color: #686c74;
+  }
+  
+}
+
+.botaoTrailer{
+  height: 23px;
+  width: 26%;
+  font-family: "Open Sans", "Helvetica";
+  font-size: 12px;
+  color: white;
+  border-color: white;
 }
 
 .imagemTamanhoFixo {

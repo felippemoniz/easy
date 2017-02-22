@@ -1,6 +1,11 @@
 <ion-navbar *navbar>
-  <ion-title>Detalhes do Filme</ion-title>
+      <ion-nav-title>
+        <img alt="Company Logo"  src="./images/logo.png">
+    </ion-nav-title>
 </ion-navbar>
+
+
+
 
 <ion-content>
 
@@ -12,7 +17,7 @@
 
     <div class="posCabecalhoFilme">
         <span class="fonteTituloFilme">{{filmeSelecionado.nomeFilme}}</span> <br>
-        <span class="labelGeneroFilme">{{filmeSelecionado.genero}} | {{filmeSelecionado.duracao}} minutos</span>
+        <span class="labelGeneroFilme">{{filmeSelecionado.genero}} | {{filmeSelecionado.duracao}} minutos | Musical</span>
     </div>
 
     <div class="posCartazFilme">
@@ -26,10 +31,21 @@
       </ion-chip>
     </div>
 
+    <div class="posBotaoTrailer">
+    <button ion-button outline class="botaoTrailer">TRAILER</button>
+    </div>
 
 </div>
 
-
+<div class="conteudo">
+<p><b>SINOPSE</b><br><br>
+Red, um pássaro com problemas de temperamento, o
+veloz Chuck, e o volátil Bomba sempre foram excluídos
+Mas quando a ilha onde moram é visitada por misteri
+verdes, cabe a estes improváveis rejeitados descobrir 
+qual o plano da gangue suína.
+</p>
+</div>
 
 <!--ion-row style="height: 10%">
 		<ion-col class="headerDetalhesFilme">
