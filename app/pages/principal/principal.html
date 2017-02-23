@@ -1,4 +1,4 @@
-<ion-navbar *navbar>
+<ion-navbar *navbar style="color: red">
   <ion-title>Principal</ion-title>
 </ion-navbar>
 
@@ -8,19 +8,19 @@
   <ion-content class="card-filtros">
 
     <ion-card  #filtroQueroEscolher (click)="mostraFiltro()">
-      <img src="./images/filtro_queroEscolher.png"/>
+      <img src="./images/filtro_queroEscolher.png" style="width: 100%; height: 100%"/>
       <div class="card-textoGrande">Eu quero consultar<br><b>filmes</b> e <b>cinemas</b></div>
       <div class="card-textoPequeno">Compare os horários dos filmes da sua cidade</div>
     </ion-card>
 
     <ion-card #filtroEscolhaPraMim [hidden]="!isVisible()">
-      <img src="./images/filtro_escolhaPraMim.png"/>
+      <img src="./images/filtro_escolhaPraMim.png" style="width: 100%; height: 100%"/>
       <div class="card-textoGrande">Eu quero ir ao<br>cinema <b>agora!</b></div>
       <div class="card-textoPequeno">64 Listings</div>
     </ion-card>
 
 
-    <ion-grid #filtros [hidden]="isVisible()" class="fontePadrao">
+    <ion-grid #filtros [hidden]="isVisible()" class="filtro">
       <ion-row>
           <ion-col class="titulosFiltro">Quero ir</ion-col>
       </ion-row>
