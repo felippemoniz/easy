@@ -5,7 +5,7 @@ import {filtro} from '../../model/filtro';
 import {chip} from '../../model/chip';
 
 @Component({
-  templateUrl: 'build/pages/filtro/filtro.html'
+  templateUrl: 'build/pages/filtros/filtros.html'
 })
 
 export class Filtros {
@@ -22,14 +22,13 @@ export class Filtros {
 
   constructor(private nav: NavController, private navParams: NavParams){
 
-  this.listaQueroIr = ['HOJE','AMANHÃ','TERÇA-FEIRA','QUARTA-FEIRA'];
-  this.listaProcuraPor = ['CINEMAS','FILMES'];
-  //this.listaPreferencias =['DUBLADO','LEGENDADO','3D'];
   this.filtro = new filtro();
   this.carregaFiltros();
+
   }
 
 
+//TODO Deve vir do banco
  carregaFiltros(){
 
      let item = new chip();
@@ -47,6 +46,30 @@ export class Filtros {
      item3.selecionado = false;
      this.listaPreferencias.push (item3);
 
+
+     let item4 = new chip();
+     item4.nome = 'HOJE';
+     item4.selecionado = true;
+     this.listaQueroIr.push (item4);
+
+     let item5 = new chip();
+     item5.nome = 'AMANHÃ';
+     item5.selecionado = false;
+     this.listaQueroIr.push (item5);
+
+
+
+     let item6 = new chip();
+     item6.nome = 'FILMES';
+     item6.selecionado = true;
+     this.listaProcuraPor.push (item6);
+
+     let item7 = new chip();
+     item7.nome = 'CINEMAS';
+     item7.selecionado = false;
+     this.listaProcuraPor.push (item7);
+
+
  }
 
 
@@ -58,15 +81,18 @@ export class Filtros {
     }
   }
 
+
   fecharFiltro(){
         this.mostraFiltros = true;
   }
+
 
   verFilmesCinemas(){
     this.nav.push(ListaFilmes, {
         param1: this.filtro
     });
   }
+
 
   isVisible(){
     return this.mostraFiltros;
@@ -91,6 +117,33 @@ export class Filtros {
     listaPref.selecionado = !listaPref.selecionado;
   }
 
+
+
+
+  selecionaOpcaoQueroIr(listaQuero){
+    this.filtro.quando=listaQuero;
+
+     for (var i = 0; i < this.listaQueroIr.length; i++) {
+        var item = this.listaQueroIr[i];
+        item.selecionado = false;
+     }
+
+    listaQuero.selecionado = !listaQuero.selecionado;
+
+  }
+
+
+  selecionaOpcaoProcurarPor(listaProcura){
+    this.filtro.oQue =listaProcura;
+
+     for (var i = 0; i < this.listaProcuraPor.length; i++) {
+        var item = this.listaProcuraPor[i];
+        item.selecionado = false;
+     }
+
+    listaProcura.selecionado = !listaProcura.selecionado;
+
+  }
 
 
 }

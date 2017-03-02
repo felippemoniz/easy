@@ -1,7 +1,7 @@
 exports.data = [
     {
    	 id: 1, 
-	 nomeFilme: "Memórias póstumas de Bras Cubas",
+	 nomeFilme: "Memórias póstumas de Bras...",
 	 genero: "Animação",
 	 duracao: 90,
      rating: 8.5,

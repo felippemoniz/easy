@@ -5,16 +5,16 @@
 
 
 
-  <ion-content class="card-filtros">
+  <ion-content>
 
-    <ion-card  #filtroQueroEscolher (click)="mostraFiltro()">
-      <img src="./images/filtro_queroEscolher.png" style="width: 100%; height: 100%"/>
-      <div class="card-textoGrande">Eu quero consultar<br><b>filmes</b> e <b>cinemas</b></div>
-      <div class="card-textoPequeno">Compare os horários dos filmes da sua cidade</div>
-    </ion-card>
+    <div class="divHeader">
+       <div class="card-textoGrande">A fim de um cinema?</div>
+       <div class="card-textoPequeno">O <b>EasyMovie</b> te ajuda!</div>
+       <img src="./images/bgFiltros.png" style="width: 100%; height: 100%"/>
+    </div>
 
-
-    <ion-grid #filtros [hidden]="isVisible()" class="filtro">
+<br>
+    <ion-grid  class="filtro">
       <ion-row>
           <ion-col class="titulosFiltro">Quero ir</ion-col>
       </ion-row>
@@ -22,23 +22,33 @@
           <ion-col style="border-bottom: 1px black">
             <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
  
-              <ion-chip *ngFor=" let lista of listaQueroIr" class="inativo">
-                <ion-label class="tag"> {{lista}} &nbsp;</ion-label>
-              </ion-chip>
+                <ion-chip *ngFor=" let listaQuero of listaQueroIr" [ngClass]="listaQuero.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoQueroIr(listaQuero)">
+                  <ion-label class="tag"> {{listaQuero.nome}}</ion-label>
+                </ion-chip>
 
             </ion-scroll>
           </ion-col>
       </ion-row >
+
+      <br>
+      <div class="linhaSeparador"></div> <!----------------------------- -->
+      <br>
+
       <ion-row>
           <ion-col class="titulosFiltro">Procurar por</ion-col>
       </ion-row>
       <ion-row>
           <ion-col>
-              <ion-chip *ngFor=" let listaProcurar of listaProcuraPor" class="ativo">
-                  <ion-label class="tag"> {{listaProcurar}}</ion-label>
-              </ion-chip>
+                <ion-chip *ngFor=" let listaProcura of listaProcuraPor" [ngClass]="listaProcura.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoProcurarPor(listaProcura)">
+                  <ion-label class="tag"> {{listaProcura.nome}}</ion-label>
+                </ion-chip>
           </ion-col>
       </ion-row>
+
+      <br>
+      <div class="linhaSeparador"></div><!----------------------------- -->
+      <br>
+
       <ion-row>
           <ion-col class="titulosFiltro">Preferências</ion-col>
       </ion-row>
@@ -53,6 +63,9 @@
             </ion-col>
           </ion-col>
       </ion-row>
+
+      <br>
+
       <ion-row>
           <ion-col width-67><button class="botaoPrimario" (click)="verFilmesCinemas()">CONTINUAR</button></ion-col>
           <ion-col width-33><button class="botaoSecundario" (click)="fecharFiltro()">VOLTAR</button></ion-col>
