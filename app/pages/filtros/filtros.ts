@@ -46,28 +46,33 @@ export class Filtros {
      item3.selecionado = false;
      this.listaPreferencias.push (item3);
 
-
      let item4 = new chip();
-     item4.nome = 'HOJE';
-     item4.selecionado = true;
-     this.listaQueroIr.push (item4);
+     item4.nome = 'MAX';
+     item4.selecionado = false;
+     this.listaPreferencias.push (item4);
+
 
      let item5 = new chip();
-     item5.nome = 'AMANHÃ';
-     item5.selecionado = false;
+     item5.nome = 'HOJE';
+     item5.selecionado = true;
      this.listaQueroIr.push (item5);
 
-
-
      let item6 = new chip();
-     item6.nome = 'FILMES';
-     item6.selecionado = true;
-     this.listaProcuraPor.push (item6);
+     item6.nome = 'AMANHÃ';
+     item6.selecionado = false;
+     this.listaQueroIr.push (item6);
+
+
 
      let item7 = new chip();
-     item7.nome = 'CINEMAS';
-     item7.selecionado = false;
+     item7.nome = 'FILMES';
+     item7.selecionado = true;
      this.listaProcuraPor.push (item7);
+
+     let item8 = new chip();
+     item8.nome = 'CINEMAS';
+     item8.selecionado = false;
+     this.listaProcuraPor.push (item8);
 
 
  }

@@ -1,7 +1,7 @@
 exports.data = [
     {
    	 id: 1, 
-	 nomeFilme: "Memórias póstumas de Bras...",
+	 nomeFilme: "Produrando Dory",
 	 genero: "Animação",
 	 duracao: 90,
      rating: 8.5,
@@ -11,11 +11,12 @@ exports.data = [
 	 atores: "Dwayne Johnson, Auli´i Cravalho",
 	 distribuidora: "Walt Disney",
 	 cartaz: "http://www.cinemark.com.br/images/filmes/cartaz/moana.jpg",
-	 trailer: ""
+	 trailer: "",
+	 imagemAmostra: "./images/imagem1.jpg"
 	},
 	{
 	 id: 2,
-	 nomeFilme: "Passageiros",
+	 nomeFilme: "A Chegada",
 	 genero: "Ação",
 	 duracao: 90,
 	 rating: 9.0,
@@ -25,11 +26,12 @@ exports.data = [
 	 atores: "Jennifer Lawrence, Chris Pratt, Michael Sheen mais",
 	 distribuidora: "Walt Disney",
 	 cartaz: "http://www.cinemark.com.br/images/filmes/cartaz/passageiros.jpg",
-	 trailer: ""
+	 trailer: "",
+	 imagemAmostra: "./images/imagem2.jpg"
 	},
 	{
 	 id: 3,
-	 nomeFilme: "Hush - A morte Ouve",
+	 nomeFilme: "Interestelar",
 	 genero: "Animação",
 	 duracao: 90,
 	 rating: 2.6,
@@ -39,11 +41,12 @@ exports.data = [
 	 atores: "Dwayne Johnson, Auli´i Cravalho",
 	 distribuidora: "Walt Disney",
 	 cartaz: "http://www.cinemark.com.br/images/filmes/cartaz/moana.jpg",
-	 trailer: ""
+	 trailer: "",
+	 imagemAmostra: "./images/imagem3.jpg"
 	},
 	{
 	 id: 4,
-	 nomeFilme: "The Invited",
+	 nomeFilme: "Passageiros",
 	 genero: "Animação",
 	 duracao: 90,
 	 rating: 3.0,
@@ -53,7 +56,8 @@ exports.data = [
 	 atores: "Dwayne Johnson, Auli´i Cravalho",
 	 distribuidora: "Walt Disney",
 	 cartaz: "http://www.cinemark.com.br/images/filmes/cartaz/moana.jpg",
-	 trailer: ""
+	 trailer: "",
+	 imagemAmostra: "./images/imagem4.jpg"
 	},
 	{
 	 id: 5,
@@ -67,7 +71,8 @@ exports.data = [
 	 atores: "Dwayne Johnson, Auli´i Cravalho",
 	 distribuidora: "Walt Disney",
 	 cartaz: "http://www.cinemark.com.br/images/filmes/cartaz/moana.jpg",
-	 trailer: ""
+	 trailer: "",
+	 imagemAmostra: "./images/testeFull.jpg"
 	},
 	{
 	 id: 6,
@@ -81,7 +86,8 @@ exports.data = [
 	 atores: "Dwayne Johnson, Auli´i Cravalho",
 	 distribuidora: "Walt Disney",
 	 cartaz: "http://www.cinemark.com.br/images/filmes/cartaz/moana.jpg",
-	 trailer: ""
+	 trailer: "",
+	 imagemAmostra: "./images/testeFull.jpg"
 	}
 
     ];
