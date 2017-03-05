@@ -41,7 +41,9 @@ export class ListaFilmes {
 
 
    verSessoes(){
-     this.nav.push(Sessoes);
+     this.nav.push(Sessoes, {
+          param1: this.filmesSelecionados
+      });
    }
 
 
@@ -61,7 +63,7 @@ export class ListaFilmes {
 
 
 
-   //Seleciona os filmes, marcando com um check, atualizando o contador em tela e 
+   //Seleciona os filmes, marcando com um check, atualizando o contador em tela e
    //carregando o array filmes selecionados
    selecionaFilme(filmeEmCartaz, filmeCard) {
 
@@ -70,17 +72,12 @@ export class ListaFilmes {
      var index;
 
      var indexSelecionado = this.filmes.indexOf(filmeEmCartaz);
-    
+
 
     //Marca os filmes selecionados com o "check"
-     if (this.filmes[indexSelecionado].selecionado === 'visible'){
-       this.filmes[indexSelecionado].selecionado = 'hidden'
-     }
-     else{
-       this.filmes[indexSelecionado].selecionado = 'visible'
-     }
+     this.filmes[indexSelecionado].selecionado = !this.filmes[indexSelecionado].selecionado
 
- 
+
      //faz a busca no array de filmes selecionados
      for (var i = 0; i < this.filmesSelecionados.length; i++) {
         var item = this.filmesSelecionados[i];

@@ -7,10 +7,10 @@
 <ion-content class="card-background-page">
 <br>
 <div class="labelTituloTela">
-Escolha os filmes.
+Escolha os filmes
 </div>
 
-<!--{{filtro.preferencias | json}}-->
+<!--{{filmes | json}}-->
 
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
@@ -29,15 +29,15 @@ Escolha os filmes.
    <ion-card  #filmeCard *ngFor=" let filme of filmes">
 
 
-        <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="filme.selecionado === 'hidden'" (click)="selecionaFilme(filme, filmeCard);" round small >
-        <ion-icon name="add" *ngIf="filme.selecionado === 'hidden'"></ion-icon>
+        <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="filme.selecionado === false" (click)="selecionaFilme(filme, filmeCard);" round small >
+        <ion-icon name="add" ></ion-icon>
        </button >
-        <button ion-button  #botaoAdiciona class="botaoCardSelecionado" *ngIf="filme.selecionado === 'visible'" (click)="selecionaFilme(filme, filmeCard);" round small >
-        <ion-icon name="checkmark" *ngIf="filme.selecionado === 'visible'"></ion-icon>
+        <button ion-button  #botaoAdiciona class="botaoCardSelecionado" *ngIf="filme.selecionado === true" (click)="selecionaFilme(filme, filmeCard);" round small >
+        <ion-icon name="checkmark" ></ion-icon>
        </button >
 
 
-      <div  class="marcacaoSelecionado" #layerMarcada [ngStyle]="{'visibility': filme.selecionado}" (click)="verDetalhes(filme)" >
+      <div  #layerMarcada [ngClass]="filme.selecionado ? 'marcacaoSelecionado' : 'marcacaoNaoSelecionado'" (click)="verDetalhes(filme)" >
           <!--img style="width: 100px; position: relative; left: 151px; top:20px" src="./images/imgSelecionado.png"/-->
       </div>
 
