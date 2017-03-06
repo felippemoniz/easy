@@ -1,9 +1,10 @@
-var PROPERTIES = require('./mock-filmesEmCartaz').data
+var PROPERTIES = require('./mock-sessoes').data
 var parser = require('xml2json');
 var got = require('got');
 
 
 function findAll(req, res, next) {
+	console.log('vou consultar o JSON');
     return res.json(PROPERTIES);
 };
 
