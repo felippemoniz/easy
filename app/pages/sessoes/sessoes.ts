@@ -18,7 +18,7 @@ export class Sessoes {
   sessoes: sessao[];
 
 
-
+//lições aprendidas: tive que definir o tipo sessoesService pois dava pau no momento da execução, não faço ideia do porquê
   constructor(private nav: NavController, private navParams: NavParams , private sessoesService : sessoesService){
     this.filmesSelecionados = navParams.get('param1');
     this.sessoesService = sessoesService;
