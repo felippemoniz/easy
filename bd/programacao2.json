@@ -1,4 +1,4 @@
-exports.data = [
+[
   {
     "0": "13390",
     "1": "A Bailarina (dublado)",
@@ -612,14 +612,6 @@ exports.data = [
       {
         "0": "21",
         "1": "Cine Itau Casa Park",
-        "2": "1850",
-        "id_localidade": "21",
-        "nome": "Cine Itau Casa Park",
-        "horario": "1850"
-      },
-      {
-        "0": "21",
-        "1": "Cine Itau Casa Park",
         "2": "2120",
         "id_localidade": "21",
         "nome": "Cine Itau Casa Park",
@@ -784,6 +776,14 @@ exports.data = [
         "id_localidade": "11",
         "nome": "Cinemark Pier 21",
         "horario": "1530"
+      },
+      {
+        "0": "11",
+        "1": "Cinemark Pier 21",
+        "2": "2050",
+        "id_localidade": "11",
+        "nome": "Cinemark Pier 21",
+        "horario": "2050"
       }
     ]
   },
@@ -1260,6 +1260,14 @@ exports.data = [
       {
         "0": "11",
         "1": "Cinemark Pier 21",
+        "2": "1520",
+        "id_localidade": "11",
+        "nome": "Cinemark Pier 21",
+        "horario": "1520"
+      },
+      {
+        "0": "11",
+        "1": "Cinemark Pier 21",
         "2": "2020",
         "id_localidade": "11",
         "nome": "Cinemark Pier 21",
@@ -1388,10 +1396,10 @@ exports.data = [
       {
         "0": "11",
         "1": "Cinemark Pier 21",
-        "2": "1520",
+        "2": "1820",
         "id_localidade": "11",
         "nome": "Cinemark Pier 21",
-        "horario": "1520"
+        "horario": "1820"
       },
       {
         "0": "15",
@@ -2106,22 +2114,6 @@ exports.data = [
         "horario": "1500"
       },
       {
-        "0": "11",
-        "1": "Cinemark Pier 21",
-        "2": "1800",
-        "id_localidade": "11",
-        "nome": "Cinemark Pier 21",
-        "horario": "1800"
-      },
-      {
-        "0": "11",
-        "1": "Cinemark Pier 21",
-        "2": "2100",
-        "id_localidade": "11",
-        "nome": "Cinemark Pier 21",
-        "horario": "2100"
-      },
-      {
         "0": "15",
         "1": "Cinemark Taguatinga Shopping",
         "2": "1905",
@@ -2544,6 +2536,22 @@ exports.data = [
         "id_localidade": "11",
         "nome": "Cinemark Pier 21",
         "horario": "1620"
+      },
+      {
+        "0": "11",
+        "1": "Cinemark Pier 21",
+        "2": "1920",
+        "id_localidade": "11",
+        "nome": "Cinemark Pier 21",
+        "horario": "1920"
+      },
+      {
+        "0": "11",
+        "1": "Cinemark Pier 21",
+        "2": "2220",
+        "id_localidade": "11",
+        "nome": "Cinemark Pier 21",
+        "horario": "2220"
       },
       {
         "0": "11",
@@ -3226,14 +3234,6 @@ exports.data = [
         "horario": "1800"
       },
       {
-        "0": "19",
-        "1": "Cinemark Iguatemi",
-        "2": "2100",
-        "id_localidade": "19",
-        "nome": "Cinemark Iguatemi",
-        "horario": "2100"
-      },
-      {
         "0": "11",
         "1": "Cinemark Pier 21",
         "2": "2200",
@@ -3276,34 +3276,6 @@ exports.data = [
         "id_localidade": "15",
         "nome": "Cinemark Taguatinga Shopping",
         "horario": "1415"
-      }
-    ]
-  },
-  {
-    "0": "13704",
-    "1": "Royal Opera House: Anastasia (Legendado)",
-    "2": "Os eventos ultrapassam a jovem Gr&atilde;-Duquesa Anastasia Romanov e sua fam&iacute;lia: a Primeira Guerra Mundial &eacute; declarada, e ent&atilde;o a Revolu&ccedil;&atilde;o Russa leva suas vidas privilegiadas a um fim.\r\n\r\nUma mulher que se acredita ser Anastasia, &uacute;nica sobrevivente do massacre dos Romanov, est&aacute; encarcerada num asilo. Mem&oacute;ria e fantasia se misturam; Ela lembra seu resgate, a morte de seu marido, o desaparecimento de seu filho e sua tentativa de suic&iacute;dio. Mas, apesar de seus pesadelos, sua f&eacute; em sua pr&oacute;pria identidade n&atilde;o pode ser abalada.",
-    "3": "Romance",
-    "4": "10",
-    "5": "195 minutos",
-    "6": "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/Zp3HnbAz0No?rel=0&wmode=Opaque&enablejsapi=1 feature=player_detailpage\" frameborder=\"0\" allowfullscreen></iframe>",
-    "7": "1",
-    "id_filme": "13704",
-    "nome": "Royal Opera House: Anastasia (Legendado)",
-    "descricao": "Os eventos ultrapassam a jovem Gr&atilde;-Duquesa Anastasia Romanov e sua fam&iacute;lia: a Primeira Guerra Mundial &eacute; declarada, e ent&atilde;o a Revolu&ccedil;&atilde;o Russa leva suas vidas privilegiadas a um fim.\r\n\r\nUma mulher que se acredita ser Anastasia, &uacute;nica sobrevivente do massacre dos Romanov, est&aacute; encarcerada num asilo. Mem&oacute;ria e fantasia se misturam; Ela lembra seu resgate, a morte de seu marido, o desaparecimento de seu filho e sua tentativa de suic&iacute;dio. Mas, apesar de seus pesadelos, sua f&eacute; em sua pr&oacute;pria identidade n&atilde;o pode ser abalada.",
-    "genero": "Romance",
-    "classificacao": "10",
-    "duracao": "195 minutos",
-    "trailer": "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/Zp3HnbAz0No?rel=0&wmode=Opaque&enablejsapi=1 feature=player_detailpage\" frameborder=\"0\" allowfullscreen></iframe>",
-    "gravado": "1",
-    "horario": [
-      {
-        "0": "11",
-        "1": "Cinemark Pier 21",
-        "2": "1930",
-        "id_localidade": "11",
-        "nome": "Cinemark Pier 21",
-        "horario": "1930"
       }
     ]
   },
@@ -3434,5 +3406,33 @@ exports.data = [
         "horario": "2050"
       }
     ]
+  },
+  {
+    "0": "13694",
+    "1": "Waiting for B. (Nacional)",
+    "2": "Document&aacute;rio registrou em 2013 momentos do lado de fora do est&aacute;dio do Morumbi em S&atilde;o Paulo. Tudo para acompanhar centenas de f&atilde;s da cantora Beyonc&eacute;, que chegaram a passar dois meses acampados na fila para tentar conferir o show da diva na primeira fila.",
+    "3": "Document&aacute;rio",
+    "4": "12",
+    "5": "71 minutos",
+    "6": "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/pR_mh7o_nBc?rel=0&wmode=Opaque&enablejsapi=1 feature=player_detailpage\" frameborder=\"0\" allowfullscreen></iframe>",
+    "7": "1",
+    "id_filme": "13694",
+    "nome": "Waiting for B. (Nacional)",
+    "descricao": "Document&aacute;rio registrou em 2013 momentos do lado de fora do est&aacute;dio do Morumbi em S&atilde;o Paulo. Tudo para acompanhar centenas de f&atilde;s da cantora Beyonc&eacute;, que chegaram a passar dois meses acampados na fila para tentar conferir o show da diva na primeira fila.",
+    "genero": "Document&aacute;rio",
+    "classificacao": "12",
+    "duracao": "71 minutos",
+    "trailer": "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/pR_mh7o_nBc?rel=0&wmode=Opaque&enablejsapi=1 feature=player_detailpage\" frameborder=\"0\" allowfullscreen></iframe>",
+    "gravado": "1",
+    "horario": [
+      {
+        "0": "21",
+        "1": "Cine Itau Casa Park",
+        "2": "1930",
+        "id_localidade": "21",
+        "nome": "Cine Itau Casa Park",
+        "horario": "1930"
+      }
+    ]
   }
-];
+]

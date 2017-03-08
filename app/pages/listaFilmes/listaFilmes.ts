@@ -59,6 +59,7 @@ export class ListaFilmes {
            this.filmesEmCartazService.findAll().subscribe(
                data => this.filmes = data
             );
+
   }
 
 
