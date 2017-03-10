@@ -5,12 +5,12 @@ import {filtro} from '../../model/filtro';
 import {chip} from '../../model/chip';
 
 
+
 @Component({
   templateUrl: 'build/pages/principal/principal.html'
 })
 
 export class Principal {
-
 
   constructor(private nav: NavController, private navParams: NavParams){
 

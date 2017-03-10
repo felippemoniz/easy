@@ -3,9 +3,12 @@ import {NavController, NavParams} from 'ionic-angular';
 import {ListaFilmes} from '../listaFilmes/listaFilmes';
 import {filtro} from '../../model/filtro';
 import {chip} from '../../model/chip';
+import {dataDisponivel} from '../../model/dataDisponivel';
+import {datasDisponiveisService} from '../../services/datasDisponiveis-service';
 
 @Component({
-  templateUrl: 'build/pages/filtros/filtros.html'
+  templateUrl: 'build/pages/filtros/filtros.html',
+  providers: [datasDisponiveisService]
 })
 
 export class Filtros {
@@ -18,11 +21,17 @@ export class Filtros {
   filtro: filtro;
   isChecked: boolean = false;
   chipFiltroPreferencia: chip;
+  datas : dataDisponivel[];
 
 
-  constructor(private nav: NavController, private navParams: NavParams){
+  constructor(private nav: NavController, private navParams: NavParams,  private datasDisponiveisService: datasDisponiveisService){
 
   this.filtro = new filtro();
+  this.datasDisponiveisService = datasDisponiveisService;
+  this.datasDisponiveisService.findAll().subscribe(
+               data => this.datas = data
+            );
+
   this.carregaFiltros();
 
   }
@@ -51,19 +60,18 @@ export class Filtros {
      item4.selecionado = false;
      this.listaPreferencias.push (item4);
 
+   /*
+     console.log(this.datas.length);
 
-     let item5 = new chip();
-     item5.nome = 'HOJE';
-     item5.selecionado = true;
-     this.listaQueroIr.push (item5);
+     //Carrega as datas disponíveis
+     for (var i = 0; i < this.datas.length; i++) {
+       let itemData = new chip();
+       itemData.nome = this.datas[i].data;
+       itemData.selecionado = true;
+       this.listaQueroIr.push (itemData);
+     }
 
-     let item6 = new chip();
-     item6.nome = 'AMANHÃ';
-     item6.selecionado = false;
-     this.listaQueroIr.push (item6);
-
-
-
+*/
      let item7 = new chip();
      item7.nome = 'FILMES';
      item7.selecionado = true;
@@ -73,8 +81,6 @@ export class Filtros {
      item8.nome = 'CINEMAS';
      item8.selecionado = false;
      this.listaProcuraPor.push (item8);
-
-
  }
 
 

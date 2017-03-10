@@ -26,14 +26,24 @@ export class ListaFilmes {
   contadorFilmesEscolhidos : number = 0;
   isClassVisible: boolean = false;
   filtro: filtro;
-
+  qtFilme = 0;
 
   constructor(private nav: NavController, private navParams: NavParams, private filmesEmCartazService) {
-
     this.filtro = navParams.get('param1');
     this.filmesEmCartazService = filmesEmCartazService;
-   }
 
+    this.filmesEmCartazService.findAll().subscribe(
+      function(value) {
+        //data => this.filmes = data;
+        this.qtFilme = value.length;
+
+      }, this);
+
+    this.filmesEmCartazService.findAll().subscribe(
+      data => this.filmes = data
+    );           
+
+  }
 
   static get parameters() {
       return [[NavController], [NavParams], [filmesEmCartazService]];
@@ -56,10 +66,13 @@ export class ListaFilmes {
 
   //Busca os registros no serviço
   ngOnInit() {
-           this.filmesEmCartazService.findAll().subscribe(
-               data => this.filmes = data
-            );
+ 
+      /*
 
+        for (var i = 0; i < this.filmes.length; i++) {
+             this.filmes[i].nomeFilme = this.filmes[i].nomeFilme + "@";
+           }
+           */
   }
 
 

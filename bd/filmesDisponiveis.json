@@ -1,0 +1,338 @@
+[
+  {
+    "0": "A Bailarina (dublado)",
+    "1": "13390",
+    "nome": "A Bailarina (dublado)",
+    "id_filme": "13390"
+  },
+  {
+    "0": "A Bela e a Fera 3D (Dublado)",
+    "1": "13756",
+    "nome": "A Bela e a Fera 3D (Dublado)",
+    "id_filme": "13756"
+  },
+  {
+    "0": "A Bela e a Fera 3D (Legendado)",
+    "1": "13746",
+    "nome": "A Bela e a Fera 3D (Legendado)",
+    "id_filme": "13746"
+  },
+  {
+    "0": "A Garota Desconhecida (legendado)",
+    "1": "13721",
+    "nome": "A Garota Desconhecida (legendado)",
+    "id_filme": "13721"
+  },
+  {
+    "0": "A Grande Muralha (Dublado)",
+    "1": "13622",
+    "nome": "A Grande Muralha (Dublado)",
+    "id_filme": "13622"
+  },
+  {
+    "0": "A Grande Muralha (Legendado)",
+    "1": "13657",
+    "nome": "A Grande Muralha (Legendado)",
+    "id_filme": "13657"
+  },
+  {
+    "0": "A Grande Muralha 3D (Dublado)",
+    "1": "13620",
+    "nome": "A Grande Muralha 3D (Dublado)",
+    "id_filme": "13620"
+  },
+  {
+    "0": "A Grande Muralha 3D (Legendado)",
+    "1": "13636",
+    "nome": "A Grande Muralha 3D (Legendado)",
+    "id_filme": "13636"
+  },
+  {
+    "0": "Aliados (Legendado)",
+    "1": "13484",
+    "nome": "Aliados (Legendado)",
+    "id_filme": "13484"
+  },
+  {
+    "0": "At&eacute; o &Uacute;ltimo Homem(Legendado)",
+    "1": "13405",
+    "nome": "At&eacute; o &Uacute;ltimo Homem(Legendado)",
+    "id_filme": "13405"
+  },
+  {
+    "0": "Cinquenta Tons Mais Escuros (Dublado)",
+    "1": "13504",
+    "nome": "Cinquenta Tons Mais Escuros (Dublado)",
+    "id_filme": "13504"
+  },
+  {
+    "0": "Cinquenta Tons Mais Escuros (Legendado)",
+    "1": "13495",
+    "nome": "Cinquenta Tons Mais Escuros (Legendado)",
+    "id_filme": "13495"
+  },
+  {
+    "0": "Estrelas Al&eacute;m do Tempo (legendado)",
+    "1": "13466",
+    "nome": "Estrelas Al&eacute;m do Tempo (legendado)",
+    "id_filme": "13466"
+  },
+  {
+    "0": "Fome de Poder (legendado)",
+    "1": "13719",
+    "nome": "Fome de Poder (legendado)",
+    "id_filme": "13719"
+  },
+  {
+    "0": "Fome de Poder (legendado) - sala platinum",
+    "1": "13767",
+    "nome": "Fome de Poder (legendado) - sala platinum",
+    "id_filme": "13767"
+  },
+  {
+    "0": "Hiroshima, Meu Amor (Legendado)",
+    "1": "13728",
+    "nome": "Hiroshima, Meu Amor (Legendado)",
+    "id_filme": "13728"
+  },
+  {
+    "0": "Insubstitu&iacute;vel (Legendado)",
+    "1": "13732",
+    "nome": "Insubstitu&iacute;vel (Legendado)",
+    "id_filme": "13732"
+  },
+  {
+    "0": "Internet - O Filme (Nacional)",
+    "1": "13643",
+    "nome": "Internet - O Filme (Nacional)",
+    "id_filme": "13643"
+  },
+  {
+    "0": "John Wick - Um Novo Dia Para Matar (dublado)",
+    "1": "13595",
+    "nome": "John Wick - Um Novo Dia Para Matar (dublado)",
+    "id_filme": "13595"
+  },
+  {
+    "0": "Kong - A Ilha da Caveira (Dublado)",
+    "1": "13715",
+    "nome": "Kong - A Ilha da Caveira (Dublado)",
+    "id_filme": "13715"
+  },
+  {
+    "0": "Kong - A Ilha da Caveira 3D (Dublado)",
+    "1": "13714",
+    "nome": "Kong - A Ilha da Caveira 3D (Dublado)",
+    "id_filme": "13714"
+  },
+  {
+    "0": "Kong - A Ilha da Caveira 3D (Dublado) - SALA XD",
+    "1": "13755",
+    "nome": "Kong - A Ilha da Caveira 3D (Dublado) - SALA XD",
+    "id_filme": "13755"
+  },
+  {
+    "0": "Kong - A Ilha da Caveira 3D (Legendado) - SALA XD POLTRONA DBOX",
+    "1": "13748",
+    "nome": "Kong - A Ilha da Caveira 3D (Legendado) - SALA XD POLTRONA DBOX",
+    "id_filme": "13748"
+  },
+  {
+    "0": "Kong: a Ilha da Caveira (legendado)",
+    "1": "13772",
+    "nome": "Kong: a Ilha da Caveira (legendado)",
+    "id_filme": "13772"
+  },
+  {
+    "0": "Kong: A Ilha da Caveira 3D (Legendado)",
+    "1": "13726",
+    "nome": "Kong: A Ilha da Caveira 3D (Legendado)",
+    "id_filme": "13726"
+  },
+  {
+    "0": "La La Land (Legendado)",
+    "1": "13312",
+    "nome": "La La Land (Legendado)",
+    "id_filme": "13312"
+  },
+  {
+    "0": "Lego Batman - O Filme (Dublado)",
+    "1": "13526",
+    "nome": "Lego Batman - O Filme (Dublado)",
+    "id_filme": "13526"
+  },
+  {
+    "0": "Lego Batman - O Filme 3D (Dublado)",
+    "1": "13527",
+    "nome": "Lego Batman - O Filme 3D (Dublado)",
+    "id_filme": "13527"
+  },
+  {
+    "0": "Lion (legendado)",
+    "1": "13571",
+    "nome": "Lion (legendado)",
+    "id_filme": "13571"
+  },
+  {
+    "0": "Logan (dublado)",
+    "1": "13651",
+    "nome": "Logan (dublado)",
+    "id_filme": "13651"
+  },
+  {
+    "0": "Logan (Legendado)",
+    "1": "13634",
+    "nome": "Logan (Legendado)",
+    "id_filme": "13634"
+  },
+  {
+    "0": "Logan (Legendado) - POLTRONA DBOX",
+    "1": "13747",
+    "nome": "Logan (Legendado) - POLTRONA DBOX",
+    "id_filme": "13747"
+  },
+  {
+    "0": "Logan (legendado) - sala platinum",
+    "1": "13710",
+    "nome": "Logan (legendado) - sala platinum",
+    "id_filme": "13710"
+  },
+  {
+    "0": "Manchester &agrave; Beira-Mar (Legendado)",
+    "1": "13317",
+    "nome": "Manchester &agrave; Beira-Mar (Legendado)",
+    "id_filme": "13317"
+  },
+  {
+    "0": "Minha M&atilde;e &eacute; Uma Pe&ccedil;a 2 (Nacional)",
+    "1": "13187",
+    "nome": "Minha M&atilde;e &eacute; Uma Pe&ccedil;a 2 (Nacional)",
+    "id_filme": "13187"
+  },
+  {
+    "0": "Moana - Um Mar de Aventuras (Dublado)",
+    "1": "13246",
+    "nome": "Moana - Um Mar de Aventuras (Dublado)",
+    "id_filme": "13246"
+  },
+  {
+    "0": "Monster Trucks (Dublado)",
+    "1": "13623",
+    "nome": "Monster Trucks (Dublado)",
+    "id_filme": "13623"
+  },
+  {
+    "0": "Moonlight (legendado)",
+    "1": "13625",
+    "nome": "Moonlight (legendado)",
+    "id_filme": "13625"
+  },
+  {
+    "0": "Moonlight - Sob A Luz do Mar (legendado) - sala platinum",
+    "1": "13678",
+    "nome": "Moonlight - Sob A Luz do Mar (legendado) - sala platinum",
+    "id_filme": "13678"
+  },
+  {
+    "0": "Moonlight: Sob a Luz do Luar (Legendado)",
+    "1": "13641",
+    "nome": "Moonlight: Sob a Luz do Luar (Legendado)",
+    "id_filme": "13641"
+  },
+  {
+    "0": "Nega&ccedil;&atilde;o (Legendado)",
+    "1": "13727",
+    "nome": "Nega&ccedil;&atilde;o (Legendado)",
+    "id_filme": "13727"
+  },
+  {
+    "0": "O Crime da G&aacute;vea (Nacional)",
+    "1": "13730",
+    "nome": "O Crime da G&aacute;vea (Nacional)",
+    "id_filme": "13730"
+  },
+  {
+    "0": "Papa Francisco - Conquistando Cora&ccedil;&otilde;es (dublado)",
+    "1": "13742",
+    "nome": "Papa Francisco - Conquistando Cora&ccedil;&otilde;es (dublado)",
+    "id_filme": "13742"
+  },
+  {
+    "0": "Personal Shopper (legendado)",
+    "1": "13722",
+    "nome": "Personal Shopper (legendado)",
+    "id_filme": "13722"
+  },
+  {
+    "0": "Personal Shopper (Legendado) - SALA VIP",
+    "1": "13734",
+    "nome": "Personal Shopper (Legendado) - SALA VIP",
+    "id_filme": "13734"
+  },
+  {
+    "0": "Silencio (legendado)",
+    "1": "13718",
+    "nome": "Silencio (legendado)",
+    "id_filme": "13718"
+  },
+  {
+    "0": "Souvenir (Legendado) - SALA VIP",
+    "1": "13733",
+    "nome": "Souvenir (Legendado) - SALA VIP",
+    "id_filme": "13733"
+  },
+  {
+    "0": "Um Limite Entre N&oacute;s (Legendado)",
+    "1": "13645",
+    "nome": "Um Limite Entre N&oacute;s (Legendado)",
+    "id_filme": "13645"
+  },
+  {
+    "0": "Vers&otilde;es de Um Crime (dublado)",
+    "1": "13740",
+    "nome": "Vers&otilde;es de Um Crime (dublado)",
+    "id_filme": "13740"
+  },
+  {
+    "0": "Vers&otilde;es de Um Crime (Legendado)",
+    "1": "13749",
+    "nome": "Vers&otilde;es de Um Crime (Legendado)",
+    "id_filme": "13749"
+  },
+  {
+    "0": "Waiting for B. (Nacional)",
+    "1": "13694",
+    "nome": "Waiting for B. (Nacional)",
+    "id_filme": "13694"
+  },
+  {
+    "0": "&Oacute;pera na Tela (Legendado)",
+    "1": "13735",
+    "nome": "&Oacute;pera na Tela (Legendado)",
+    "id_filme": "13735"
+  },
+  {
+    "0": "Ghost in the Shell (1995) (Legendado)",
+    "1": "13751",
+    "nome": "Ghost in the Shell (1995) (Legendado)",
+    "id_filme": "13751"
+  },
+  {
+    "0": "A Bela e a Fera 3D (Dublado) - SALA XD",
+    "1": "13757",
+    "nome": "A Bela e a Fera 3D (Dublado) - SALA XD",
+    "id_filme": "13757"
+  },
+  {
+    "0": "A Bela e a Fera 3D (Legendado) - POLTRONAS DBOX",
+    "1": "13752",
+    "nome": "A Bela e a Fera 3D (Legendado) - POLTRONAS DBOX",
+    "id_filme": "13752"
+  },
+  {
+    "0": "A Bela e a Fera 3D (Legendado) - SALA XD POLTRONAS DBOX",
+    "1": "13753",
+    "nome": "A Bela e a Fera 3D (Legendado) - SALA XD POLTRONAS DBOX",
+    "id_filme": "13753"
+  }
+]
