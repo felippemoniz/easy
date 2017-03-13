@@ -28,20 +28,23 @@ export class ListaFilmes {
   filtro: filtro;
   qtFilme = 0;
 
+
   constructor(private nav: NavController, private navParams: NavParams, private filmesEmCartazService) {
     this.filtro = navParams.get('param1');
     this.filmesEmCartazService = filmesEmCartazService;
 
-    this.filmesEmCartazService.findAll().subscribe(
-      function(value) {
-        //data => this.filmes = data;
-        this.qtFilme = value.length;
-
-      }, this);
 
     this.filmesEmCartazService.findAll().subscribe(
-      data => this.filmes = data
-    );           
+                data => {
+                    this.filmes = data; 
+                    this.qtFilme = this.filmes.length;
+                },
+                err => {
+                    console.log(err);
+                },
+                () => console.log(this.qtFilme)
+            );
+      
 
   }
 
@@ -73,6 +76,7 @@ export class ListaFilmes {
              this.filmes[i].nomeFilme = this.filmes[i].nomeFilme + "@";
            }
            */
+
   }
 
 
