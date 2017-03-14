@@ -10,7 +10,7 @@
 Escolha os filmes
 </div>
 
-<!--{{filmes | json}}-->
+ <!-- {{filmes | json}}  -->
 
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
@@ -45,7 +45,7 @@ Escolha os filmes
       <div>
         <ion-chip class="ratingIMDB">
           <div class="estrelaRating"><img src="./images/starRating.png" class="estrelaRatingTamanho"></div>
-          <ion-label style="color:white; position:absolute;left:30px"><b>2.9</b>/<span style="font-size: 10px;">10</span></ion-label>
+          <ion-label style="color:white; position:absolute;left:30px"><b> {{filme.rating}}</b>/<span style="font-size: 10px;">10</span></ion-label>
         </ion-chip>
       </div>
 
@@ -56,7 +56,7 @@ Escolha os filmes
               <ion-col>
                   <ion-row>
                       <ion-col class="fonteTituloFilme">
-                      {{filme.nome}}
+                      {{filme.nomeFilme}}
                       </ion-col>
                   </ion-row>
                   <ion-row>

@@ -38,6 +38,7 @@ export class ListaFilmes {
                 data => {
                     this.filmes = data; 
                     this.qtFilme = this.filmes.length;
+                    console.log(this.qtFilme);
                 },
                 err => {
                     console.log(err);

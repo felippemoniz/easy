@@ -1,4 +1,4 @@
-exports.data = [
+ [
   {
     "0": "13390",
     "1": "A Bailarina (dublado)",
@@ -3435,4 +3435,4 @@ exports.data = [
       }
     ]
   }
-];
+]
