@@ -68,19 +68,6 @@ export class ListaFilmes {
    }
 
 
-  //Busca os registros no serviço
-  ngOnInit() {
- 
-      /*
-
-        for (var i = 0; i < this.filmes.length; i++) {
-             this.filmes[i].nomeFilme = this.filmes[i].nomeFilme + "@";
-           }
-           */
-
-  }
-
-
 
    //Seleciona os filmes, marcando com um check, atualizando o contador em tela e
    //carregando o array filmes selecionados

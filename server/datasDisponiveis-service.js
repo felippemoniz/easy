@@ -1,10 +1,27 @@
 var PROPERTIES = require('./mock-datasDisponiveis').data
 var parser = require('xml2json');
-var got = require('got');
+var mysql      = require('mysql');
+
+
+
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'admin',
+  database : 'easymovie'
+});
 
 
 function findAll(req, res, next) {
-    return res.json(PROPERTIES);
+  var query;
+  var post;
+
+  query="select * from easymovie.tbhorario";
+
+  connection.query(query, function(err, rows, fields) {
+      if (err) throw err;
+      res.json(rows);
+  });
 };
 
 
