@@ -18,45 +18,63 @@ connection.connect();
 
 //################## EXECUCAO DA CARGA DAS TABELAS ######################
 console.log("### INICIO DA CARGA ####");
-//gravaDatasDisponiveis();
+gravaDatasDisponiveis();
 //gravaFilmesEmCartaz();
-recuperaDetalhesFilme("a grande muralha");
 console.log("### FIM DA CARGA #####");
 //#######################################################################
 
-/*
-	filmesEmCartaz.data.push({ 
-	        "nomeFilme"  : unescape(nome),
-	        "genero"     : json[i].genero,
-			"duracao"	: json[i].duracao ,
-			"rating"	: 5 ,
-			"selecionado"	: false,
-			"classificacao" : json[i].classificacao
-	    });
-*/
 
 
-function recuperaDetalhesFilme(nome){
-  var json1, json2 = [];
-  var id;
-  var stringJson;
-  request('http://api.themoviedb.org/3/search/movie?query=&query='+nome+'&language=pt-BR&api_key=5fbddf6b517048e25bc3ac1bbeafb919', function (error, response, body) {
-	  json=JSON.parse(body);
-	  id = json.results[0].id;
-	  
-	  request('http://api.themoviedb.org/3/movie/'+id+'/images?api_key=5fbddf6b517048e25bc3ac1bbeafb919', function (error, response, body) {
-	  json2=JSON.parse(body);
-	  
-	  stringJson = "{sinopse:" + json.results[0].overview + 
-	  			  ", poster: https://image.tmdb.org/t/p/w500/" + json.results[0].poster_path +
-	  			  ", imagem: https://image.tmdb.org/t/p/w500/" + json2.backdrops[0].file_path + "}";
-  	  });
-
-
-  });
-
-
+function recuperaInfo1(nome){
+	var json = [];
+  	var id;
+	return new Promise(function(resolve,object) {	
+		request('http://api.themoviedb.org/3/search/movie?query=&query='+nome+'&language=pt-BR&api_key=5fbddf6b517048e25bc3ac1bbeafb919', function (error, response, body) {
+			if (error) {
+	            reject(error);
+	        } else {
+	        	json=JSON.parse(body);
+	        	console.log("TOTAL:" + json.total_results)
+	        	if (json.total_results > 0) {
+	        		console.log(json.results[0].overview);
+	        	}
+	            resolve(json);
+	        }
+		});
+	});
 }
+
+
+function recuperaInfo2(id){
+	var json = [];
+  	var id;
+	return new Promise(function(resolve,object) {		
+		request('http://api.themoviedb.org/3/movie/'+id+'/images?api_key=5fbddf6b517048e25bc3ac1bbeafb919', function (error, response, body) {
+			if (error) {
+	            reject(error);
+	        } else {
+	        	json=JSON.parse(body);
+	        	console.log("####>")
+	            resolve(json);
+	        }
+		});
+	});
+}
+
+
+function processaPromisses(nome) {
+	var dataRetorno = "";
+	recuperaInfo1(nome).then(function (data1) {
+		return recuperaInfo2(data1[0].id).then(function (data2) {
+			console.log(data1);
+			console.log("#########");
+			console.log(data2);
+		});
+	return data1;
+	});
+	
+}
+
 
 
 
@@ -66,10 +84,13 @@ function gravaDatasDisponiveis(){
 	   var post;
 	   var qtInclusoes=0;
 
+
 	    for(var i = 0; i < json.length; i++) {
 			 post  = {dtcarga: new Date() , data: json[i]};
+			 console.log(format(json[i]));
 			 query = connection.query('INSERT INTO tbdata SET ?', post, function(err, result) {
-			 });
+			 	console.log(err);
+			});
 		}
 }
 
@@ -77,6 +98,7 @@ function gravaDatasDisponiveis(){
 
 function gravaFilmesEmCartaz(){
 	   var json = JSON.parse(fs.readFileSync('server/mock-filmesEmCartaz.js', 'utf8'));
+	   var jsonDetalhes;
 	   var queryFilme;
 	   var querySessao;
 	   var postFilme;
@@ -108,6 +130,9 @@ function gravaFilmesEmCartaz(){
 				nome = nome.substring (0,nome.indexOf("("));
 			}
 
+
+
+
             postFilme = {idfilme: json[i].id_filme ,
 	            		dtcarga:  new Date(),
 	            		nome: nome,
@@ -115,29 +140,29 @@ function gravaFilmesEmCartaz(){
 	            		classificacao: json[i].classificacao,
 	            		duracao: json[i].duracao.replace ("minutos",""),
 	            		sinopse: json[i].descricao,
-	            		notaimdb: 5,
+	            		notaimdb: null,
 	            		linkimdb: null,
-	            		imagem: null,
 	            		linktrailer: null,
-	            		poster:  null,
 	            		tipo: tipo,
 	            		tipo3d : tipo3d}
 
 
             queryFilme = connection.query('INSERT INTO tbfilme SET ?', postFilme, function(err, result) {
-			 });
+            	console.log("Filme")
+			});
 
- 
-		    for(var j = 0; j < json[i].horario.length; j++) { 
 
-        	postSessao = {idfilme : json[i].id_filme,
-        				 idcinema : json[i].horario[j].id_localidade,
-        				 horario  : json[i].horario[j].horario}
+			for(var j = 0; j < json[i].horario.length; j++) { 
+	        	postSessao = {idfilme : json[i].id_filme,
+	        				 idcinema : json[i].horario[j].id_localidade,
+	        				 horario  : json[i].horario[j].horario}
 
-			querySessao = connection.query('INSERT INTO tbhorario SET ?', postSessao, function(err, result) {
-        	});
+				querySessao = connection.query('INSERT INTO tbhorario SET ?', postSessao, function(err, result) {
+					console.log("-----Sessão")
+	        	});
+	    	}
 
-		    }
+
 
 
 	   }

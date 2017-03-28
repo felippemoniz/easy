@@ -17,6 +17,9 @@ function findAll(req, res, next) {
 
   var query;
   var post;
+  var data = req.params.data;
+
+  //console.log(data[0].name);
 
   query="select distinct nome, genero, classificacao, duracao, notaimdb, imagem from easymovie.tbfilme order by nome";
 

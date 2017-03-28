@@ -33,6 +33,9 @@ export class ListaFilmes {
     this.filtro = navParams.get('param1');
     this.filmesEmCartazService = filmesEmCartazService;
 
+    var data = JSON.parse('{dtcarga: "2017-03-27T03:00:00.000Z", data: "2017-03-27T03:00:00.000Z", selecionado: true}');
+    console.log(data.data);
+
 
     this.filmesEmCartazService.findAll().subscribe(
                 data => {

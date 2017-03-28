@@ -16,7 +16,7 @@ function findAll(req, res, next) {
   var query;
   var post;
 
-  query="select * from easymovie.tbhorario";
+  query="SELECT dtcarga, data, false 'selecionado' FROM easymovie.tbdata;";
 
   connection.query(query, function(err, rows, fields) {
       if (err) throw err;

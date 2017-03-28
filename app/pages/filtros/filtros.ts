@@ -37,6 +37,34 @@ export class Filtros {
   }
 
 
+
+
+format(inputDate) {
+    var date = new Date(inputDate);
+    var dateHoje = new Date();
+
+   if (!isNaN(date.getTime())) {
+
+      if (date.getDate() === dateHoje.getDate() && 
+        date.getMonth() === dateHoje.getMonth()){
+          return "HOJE";
+      }
+      else {
+
+            var day = date.getDate().toString();
+            var month = (date.getMonth() + 1).toString();
+
+            return (day[1] ? day : '0' + day[0])  + '/' +
+               (month[1] ? month : '0' + month[0]) + '/' + 
+               date.getFullYear();
+          }
+    }
+}
+
+
+
+
+
 //TODO Deve vir do banco
  carregaFiltros(){
 
@@ -60,18 +88,6 @@ export class Filtros {
      item4.selecionado = false;
      this.listaPreferencias.push (item4);
 
-   /*
-     console.log(this.datas.length);
-
-     //Carrega as datas disponíveis
-     for (var i = 0; i < this.datas.length; i++) {
-       let itemData = new chip();
-       itemData.nome = this.datas[i].data;
-       itemData.selecionado = true;
-       this.listaQueroIr.push (itemData);
-     }
-
-*/
      let item7 = new chip();
      item7.nome = 'FILMES';
      item7.selecionado = true;

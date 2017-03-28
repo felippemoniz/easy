@@ -4,7 +4,6 @@
 
 
 
-
   <ion-content>
 
     <div class="divHeader">
@@ -22,8 +21,8 @@
           <ion-col style="border-bottom: 1px black">
             <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
  
-                <ion-chip *ngFor=" let listaQuero of listaQueroIr" [ngClass]="listaQuero.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoQueroIr(listaQuero)">
-                  <ion-label class="tag"> {{listaQuero.nome}}</ion-label>
+                <ion-chip *ngFor=" let listaQuero of datas" [ngClass]="listaQuero.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoQueroIr(listaQuero)">
+                  <ion-label class="tag"> {{format(listaQuero.data) }} </ion-label>
                 </ion-chip>
 
             </ion-scroll>
@@ -71,5 +70,8 @@
           <ion-col width-33><button class="botaoSecundario" (click)="fecharFiltro()">VOLTAR</button></ion-col>
       </ion-row>
     </ion-grid>
+
+{{datas | json}}
+
 
   </ion-content>
