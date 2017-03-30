@@ -21,7 +21,7 @@ function findAll(req, res, next) {
 
   //console.log(data[0].name);
 
-  query="select distinct nome, genero, classificacao, duracao, notaimdb, imagem from easymovie.tbfilme order by nome";
+  query="select distinct idfilme id, nome, genero, classificacao, duracao, notaimdb, imagem,tipo, false selecionado from easymovie.tbfilme order by nome";
 
   connection.query(query, function(err, rows, fields) {
       if (err) throw err;

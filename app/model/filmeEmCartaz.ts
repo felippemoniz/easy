@@ -6,6 +6,6 @@ export class filmeEmCartaz{
  public genero?: string,
  public duracao?: number,
  public rating?: number,
- public selecionado?: boolean)
+ public selecionado?: number)
  {}
 }

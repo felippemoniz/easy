@@ -148,7 +148,7 @@ format(inputDate) {
 
 
   selecionaOpcaoQueroIr(listaQuero){
-    this.filtro.quando=listaQuero;
+    this.filtro.quando=JSON.stringify(listaQuero);
 
      for (var i = 0; i < this.listaQueroIr.length; i++) {
         var item = this.listaQueroIr[i];
@@ -162,6 +162,7 @@ format(inputDate) {
 
   selecionaOpcaoProcurarPor(listaProcura){
     this.filtro.oQue =listaProcura;
+
 
      for (var i = 0; i < this.listaProcuraPor.length; i++) {
         var item = this.listaProcuraPor[i];

@@ -16,13 +16,11 @@ export class sessoesService {
   }
 
   constructor (private http:Http) {
-    console.log('oi');
       this.http = http;
   }
 
-  findAll() {
-      console.log('FINDALL SESSOES')
-      return this.http.get(sessoesURL)
+  findById(id) {
+        return this.http.get(sessoesURL + id)
           .map(res => res.json())
           .catch(this.handleError);
    

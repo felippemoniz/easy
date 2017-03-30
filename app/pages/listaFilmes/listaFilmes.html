@@ -10,7 +10,7 @@
 Escolha os filmes
 </div>
 
- <!--{{filmes | json}}-->
+<!-- {{filmes | json}}  -->
 
 
 
@@ -31,10 +31,10 @@ Escolha os filmes
    <ion-card  #filmeCard *ngFor=" let filme of filmes">
 
 
-        <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="filme.selecionado === false" (click)="selecionaFilme(filme, filmeCard);" round small >
+        <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="filme.selecionado === 0" (click)="selecionaFilme(filme);" round small >
         <ion-icon name="add" ></ion-icon>
        </button >
-        <button ion-button  #botaoAdiciona class="botaoCardSelecionado" *ngIf="filme.selecionado === true" (click)="selecionaFilme(filme, filmeCard);" round small >
+        <button ion-button  #botaoAdiciona class="botaoCardSelecionado" *ngIf="filme.selecionado === 1" (click)="selecionaFilme(filme);" round small >
         <ion-icon name="checkmark" ></ion-icon>
        </button >
 
@@ -63,7 +63,7 @@ Escolha os filmes
                   </ion-row>
                   <ion-row>
                       <ion-col width-75 class="labelGeneroFilme">
-                            {{filme.genero}} | {{filme.duracao}} minutos | {{filme.classificacao}}
+                            {{filme.genero}} | {{filme.duracao}} minutos | {{filme.tipo}} | {{trataDetalhes("C", filme.classificacao)}}
                       </ion-col>
                        <ion-col width-25 class="celulaRating">
                       </ion-col>

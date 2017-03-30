@@ -33,10 +33,9 @@ export class ListaFilmes {
     this.filtro = navParams.get('param1');
     this.filmesEmCartazService = filmesEmCartazService;
 
-    var data = JSON.parse('{dtcarga: "2017-03-27T03:00:00.000Z", data: "2017-03-27T03:00:00.000Z", selecionado: true}');
-    console.log(data.data);
+    var data = JSON.parse(this.filtro.quando);
 
-
+    //futuramente passar a data como parametro findAll(data.data)
     this.filmesEmCartazService.findAll().subscribe(
                 data => {
                     this.filmes = data; 
@@ -57,6 +56,19 @@ export class ListaFilmes {
   }
 
 
+  trataDetalhes(tipo, detalhe){
+
+    if (tipo == "C"){
+      if (detalhe == 0) {
+        return "Livre"
+      }else{
+        return detalhe + " anos"
+      }
+    }
+
+  }
+
+
    verSessoes(){
      this.nav.push(Sessoes, {
           param1: this.filmesSelecionados
@@ -74,7 +86,7 @@ export class ListaFilmes {
 
    //Seleciona os filmes, marcando com um check, atualizando o contador em tela e
    //carregando o array filmes selecionados
-   selecionaFilme(filmeEmCartaz, filmeCard) {
+   selecionaFilme(filmeEmCartaz) {
 
      var p = [];
      var flagEncontrado= false;
@@ -84,7 +96,12 @@ export class ListaFilmes {
 
 
     //Marca os filmes selecionados com o "check"
-     this.filmes[indexSelecionado].selecionado = !this.filmes[indexSelecionado].selecionado
+     if (this.filmes[indexSelecionado].selecionado == 1){
+         this.filmes[indexSelecionado].selecionado = 0
+     }else{
+          this.filmes[indexSelecionado].selecionado = 1
+     }
+
 
 
      //faz a busca no array de filmes selecionados
@@ -95,6 +112,7 @@ export class ListaFilmes {
            index=i;
         }
      }
+
 
     if (flagEncontrado == false) {
       this.filmesSelecionados.push (filmeEmCartaz);

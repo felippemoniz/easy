@@ -1,17 +1,36 @@
-var PROPERTIES = require('./mock-sessoes').data
+var PROPERTIES = require('./mock-filmesEmCartaz').data
 var parser = require('xml2json');
-var got = require('got');
+var mysql      = require('mysql');
+
+
+
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'admin',
+  database : 'easymovie'
+});
+
 
 
 function findAll(req, res, next) {
-	console.log('vou consultar o JSON');
-    return res.json(PROPERTIES);
-};
+}
+
 
 
 function findById(req, res, next) {
-    var id = req.params.id;
-    res.json(PROPERTIES[id - 1]);
+  var query;
+  var post;
+  var id = req.params.id;
+
+  //console.log(data[0].name);
+
+  query="select * from easymovie.tbFilme filme, easymovie.tbhorario horario, easymovie.tbcinema cinema where horario.idfilme in (?) and horario.idfilme = filme.idfilme and horario.idcinema = cinema.idcinema order by horario asc";
+
+  connection.query(query, id, function(err, rows, fields) {
+      if (err) throw err;
+      res.json(rows);
+  });
 }
 
 

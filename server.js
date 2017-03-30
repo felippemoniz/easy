@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.get('/filmesEmCartaz', filmes.findAll);
 
-app.get('/sessoes', sessoes.findAll);
+app.get('/sessoes/:id', sessoes.findById);
 
 app.get('/datasDisponiveis', datas.findAll);
 

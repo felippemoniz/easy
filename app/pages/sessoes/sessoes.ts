@@ -23,15 +23,24 @@ export class Sessoes {
     this.filmesSelecionados = navParams.get('param1');
     this.sessoesService = sessoesService;
 
+    var filtro = JSON.parse(JSON.stringify(this.filmesSelecionados));
+    console.log(filtro[0].id);
+
+
+    this.sessoesService.findById(filtro[0].id).subscribe(
+                data => {
+                    this.sessoes = data; 
+                },
+                err => {
+                    console.log(err);
+                },
+                () => console.log("")
+            );
+
+
+
   }
 
-
-  //Busca os registros no serviço
-  ngOnInit() {
-           this.sessoesService.findAll().subscribe(
-               data => this.sessoes = data
-            );
-  } 
 
 
   selecionaOpcaoPrefs(listaPref){
