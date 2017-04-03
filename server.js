@@ -13,7 +13,9 @@ app.use(bodyParser.json());
 
 
 
-app.get('/filmesEmCartaz', filmes.findAll);
+app.get('/filmesEmCartaz/:filtro', filmes.findAll);
+
+app.get('/filmesEmCartaz/', filmes.findAll);
 
 app.get('/sessoes/:id', sessoes.findById);
 
@@ -29,3 +31,16 @@ app.get('/notes', function(req, res) {
 });
 
 app.listen(3000)
+
+
+/*
+app.get('/fruit/:fruitName/:fruitColor', function(req, res) {
+    var data = {
+        "fruit": {
+            "apple": req.params.fruitName,
+            "color": req.params.fruitColor
+        }
+    }; 
+
+    send.json(data);
+});*/

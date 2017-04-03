@@ -34,9 +34,17 @@ export class ListaFilmes {
     this.filmesEmCartazService = filmesEmCartazService;
 
     var data = JSON.parse(this.filtro.quando);
+    var filtro="";
+
+
+    for (var i = 0; i < this.filtro.preferencias.length; i++) {
+        filtro = filtro + "','" + this.filtro.preferencias[i].nome;
+    } 
+
+    filtro = filtro.substring(2,filtro.length)+ "'";
 
     //futuramente passar a data como parametro findAll(data.data)
-    this.filmesEmCartazService.findAll().subscribe(
+    this.filmesEmCartazService.findAll(filtro).subscribe(
                 data => {
                     this.filmes = data; 
                     this.qtFilme = this.filmes.length;
@@ -47,8 +55,6 @@ export class ListaFilmes {
                 },
                 () => console.log(this.qtFilme)
             );
-      
-
   }
 
   static get parameters() {
@@ -57,9 +63,8 @@ export class ListaFilmes {
 
 
   trataDetalhes(tipo, detalhe){
-
     if (tipo == "C"){
-      if (detalhe == 0) {
+      if (detalhe == "0" || detalhe=="") {
         return "Livre"
       }else{
         return detalhe + " anos"

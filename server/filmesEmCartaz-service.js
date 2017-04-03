@@ -17,15 +17,20 @@ function findAll(req, res, next) {
 
   var query;
   var post;
-  var data = req.params.data;
+  var filtro = req.params.filtro;
 
-  //console.log(data[0].name);
+  query="select distinct idfilme id, nome, genero, classificacao, duracao, notaimdb, imagem,tipo, tipo3d, false selecionado from easymovie.tbfilme " +
+  "where tipo IN ("+filtro+")" ;
 
-  query="select distinct idfilme id, nome, genero, classificacao, duracao, notaimdb, imagem,tipo, false selecionado from easymovie.tbfilme order by nome";
 
   connection.query(query, function(err, rows, fields) {
-      if (err) throw err;
-      res.json(rows);
+      if(err) {
+          throw err;
+      }else{
+        console.log( query.sql );
+        res.json(rows);
+      }
+
   });
 
 }

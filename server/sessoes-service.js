@@ -23,9 +23,7 @@ function findById(req, res, next) {
   var post;
   var id = req.params.id;
 
-  //console.log(data[0].name);
-
-  query="select * from easymovie.tbFilme filme, easymovie.tbhorario horario, easymovie.tbcinema cinema where horario.idfilme in (?) and horario.idfilme = filme.idfilme and horario.idcinema = cinema.idcinema order by horario asc";
+  query="select * from easymovie.tbFilme filme, easymovie.tbhorario horario, easymovie.tbcinema cinema where horario.idfilme in ("+id+") and horario.idfilme = filme.idfilme and horario.idcinema = cinema.idcinema order by horario asc";
 
   connection.query(query, id, function(err, rows, fields) {
       if (err) throw err;

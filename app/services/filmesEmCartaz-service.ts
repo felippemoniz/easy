@@ -19,9 +19,8 @@ export class filmesEmCartazService {
       this.http = http;
   }
 
-  findAll() {
-      console.log('FINDALL')
-      return this.http.get(filmesEmCartazURL)
+  findAll(filtro) {
+      return this.http.get(filmesEmCartazURL+filtro)
           .map(res => res.json())
           .catch(this.handleError);
    
