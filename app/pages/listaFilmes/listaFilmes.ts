@@ -136,4 +136,12 @@ export class ListaFilmes {
     listaPref.selecionado = !listaPref.selecionado;
   }
 
+
+
+
+
+
+
+
+
 }

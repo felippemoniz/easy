@@ -19,7 +19,7 @@ connection.connect();
 //################## EXECUCAO DA CARGA DAS TABELAS ######################
 console.log("### INICIO DA CARGA ####");
 gravaDatasDisponiveis();
-//gravaFilmesEmCartaz();
+gravaFilmesEmCartaz();
 console.log("### FIM DA CARGA #####");
 //#######################################################################
 
@@ -87,7 +87,6 @@ function gravaDatasDisponiveis(){
 
 	    for(var i = 0; i < json.length; i++) {
 			 post  = {dtcarga: new Date() , data: json[i]};
-			 console.log(format(json[i]));
 			 query = connection.query('INSERT INTO tbdata SET ?', post, function(err, result) {
 			 	console.log(err);
 			});
@@ -135,8 +134,8 @@ function gravaFilmesEmCartaz(){
 
             postFilme = {idfilme: json[i].id_filme ,
 	            		dtcarga:  new Date(),
-	            		nome: nome,
-	            		genero: json[i].genero,
+	            		nome: convert(nome),
+	            		genero: convert(json[i].genero),
 	            		classificacao: json[i].classificacao,
 	            		duracao: json[i].duracao.replace ("minutos",""),
 	            		sinopse: json[i].descricao,
@@ -172,4 +171,39 @@ function gravaFilmesEmCartaz(){
 
 connection.end();
 
+function convert(str)
+{
 
+	str = str.replace("&amp;" , '&' );
+	str = str.replace("&lt;" , '<' );
+	str = str.replace("&gt;" , '>' );
+	str = str.replace("&ordf;" , 'ª' );  
+	str = str.replace("&Agrave;" , 'À' );
+	str = str.replace("&Aacute;" , 'Á' );
+	str = str.replace("&Acirc;" , 'Â' );
+	str = str.replace("&Atilde;" , 'Ã' );  
+	str = str.replace("&Ccedil;" , 'Ç' );
+	str = str.replace("&Egrave;" , 'È' );
+	str = str.replace("&Eacute;" , 'É' );
+	str = str.replace("&Ecirc;" , 'Ê' );  
+	str = str.replace("&Iacute;" , 'Í' );
+	str = str.replace("&Oacute;" , 'Ó' );
+	str = str.replace("&Ocirc;" , 'Ô' );
+	str = str.replace("&Otilde;" , 'Õ' );  
+	str = str.replace("&Uacute;" , 'Ú' );
+	str = str.replace("&agrave;" , 'à' );
+	str = str.replace("&aacute;" , 'á' );
+	str = str.replace("&acirc;" , 'â' );  
+	str = str.replace("&atilde;" , 'ã' );
+	str = str.replace("&ccedil;" , 'ç' );
+	str = str.replace("&egrave;" , 'è' );  
+	str = str.replace("&eacute;" , 'é' );
+	str = str.replace("&ecirc;" , 'ê' );
+	str = str.replace("&iacute;" , 'í' );  
+	str = str.replace("&oacute;" , 'ó' );
+	str = str.replace("&ocirc;" , 'ô' ); 
+	str = str.replace("&otilde;" , 'õ' );
+	str = str.replace("&uacute; " , 'ú' ); 
+
+  return str;
+}

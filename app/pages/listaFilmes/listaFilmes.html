@@ -1,5 +1,3 @@
-
-
 <ion-navbar *navbar>
   <ion-title></ion-title>
 </ion-navbar>
@@ -10,9 +8,7 @@
 Escolha os filmes
 </div>
 
-<!-- {{filmes | json}}  -->
-
-
+<!-- {{filmes | json}} -->
 
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
@@ -51,7 +47,7 @@ Escolha os filmes
         </ion-chip>
       </div>
 
-      <img  src={{filme.imagemAmostra}} (click)="verDetalhes(filme)"  />
+      <img  src={{filme.imagem}} (click)="verDetalhes(filme)"  />
 
       <div class="card-subtitle">
           <ion-row>

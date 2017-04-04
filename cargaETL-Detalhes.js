@@ -35,13 +35,12 @@ connection.query("SELECT distinct nome FROM easymovie.tbfilme", function(err, ro
     for (var i in rows) {
     	json=recuperaInfo(rows[i].nome);
         if (json.total_results > 0) {
-        	query=connection.query('update easymovie.tbfilme SET poster=? WHERE nome = ?', [json.results[0].poster_path,rows[i].nome], function(err, result) {
-        		console.log(query.sql);
+        	query=connection.query('update easymovie.tbfilme SET poster=?, imagem=? WHERE nome = ?', [json.results[0].poster_path,"https://image.tmdb.org/t/p/w500"+json.results[0].imagem,rows[i].nome], function(err, result) {
         	});
         }  
     }
 });
-connection.end();
+
 }
 
 
@@ -50,12 +49,19 @@ connection.end();
 
 function recuperaInfo(nome){
 	var json = [];
-  	var id;
+  var json2 = [];
+  var id;
+  var res2
 
 	console.log("______________________________")
   	console.log("Vou fazer com :" + nome)
 	var res = request('GET', 'http://api.themoviedb.org/3/search/movie?query=&query='+nome+'&language=pt-BR&api_key=5fbddf6b517048e25bc3ac1bbeafb919');
-	json=JSON.parse(res.getBody());
+  json=JSON.parse(res.getBody());
+  if (json.total_results > 0){
+    res2 = request('GET', 'https://api.themoviedb.org/3/movie/'+json.results[0].id+'/images?api_key=5fbddf6b517048e25bc3ac1bbeafb919');
+    json2=JSON.parse(res2.getBody());
+    json.results[0].imagem = json2.backdrops[0].file_path
+  }
 	console.log("SERVICO OK COM :" + nome)
 	return json;
 
