@@ -25,57 +25,6 @@ console.log("### FIM DA CARGA #####");
 
 
 
-function recuperaInfo1(nome){
-	var json = [];
-  	var id;
-	return new Promise(function(resolve,object) {	
-		request('http://api.themoviedb.org/3/search/movie?query=&query='+nome+'&language=pt-BR&api_key=5fbddf6b517048e25bc3ac1bbeafb919', function (error, response, body) {
-			if (error) {
-	            reject(error);
-	        } else {
-	        	json=JSON.parse(body);
-	        	console.log("TOTAL:" + json.total_results)
-	        	if (json.total_results > 0) {
-	        		console.log(json.results[0].overview);
-	        	}
-	            resolve(json);
-	        }
-		});
-	});
-}
-
-
-function recuperaInfo2(id){
-	var json = [];
-  	var id;
-	return new Promise(function(resolve,object) {		
-		request('http://api.themoviedb.org/3/movie/'+id+'/images?api_key=5fbddf6b517048e25bc3ac1bbeafb919', function (error, response, body) {
-			if (error) {
-	            reject(error);
-	        } else {
-	        	json=JSON.parse(body);
-	        	console.log("####>")
-	            resolve(json);
-	        }
-		});
-	});
-}
-
-
-function processaPromisses(nome) {
-	var dataRetorno = "";
-	recuperaInfo1(nome).then(function (data1) {
-		return recuperaInfo2(data1[0].id).then(function (data2) {
-			console.log(data1);
-			console.log("#########");
-			console.log(data2);
-		});
-	return data1;
-	});
-	
-}
-
-
 
 
 function gravaDatasDisponiveis(){
