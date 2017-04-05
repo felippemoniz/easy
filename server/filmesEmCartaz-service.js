@@ -19,15 +19,14 @@ function findAll(req, res, next) {
   var post;
   var filtro = req.params.filtro;
 
-  query="select distinct idfilme id, nome, genero, classificacao, duracao, notaimdb, imagem,tipo, tipo3d, false selecionado from easymovie.tbfilme " +
+  query="select distinct idfilme id, nome, genero, sinopse, poster, classificacao, duracao, notaimdb, imagem,tipo, tipo3d, false selecionado from easymovie.tbfilme " +
   "where tipo IN ("+filtro+") order by nome" ;
 
 
   connection.query(query, function(err, rows, fields) {
       if(err) {
-          throw err;
+        throw err;
       }else{
-        console.log( query.sql );
         res.json(rows);
       }
 

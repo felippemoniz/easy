@@ -27,4 +27,17 @@ export class Detalhes {
       return [[NavController], [NavParams]];
   }
 
+
+  trataDetalhes(tipo, detalhe){
+    if (tipo == "C"){
+      if (detalhe == "0" || detalhe=="") {
+        return "Livre"
+      }else{
+        return detalhe + " anos"
+      }
+    }
+
+  }
+
+
 }
