@@ -3,7 +3,7 @@ var mysql      = require('mysql');
 var parser = require('xml2json');
 var got = require('got');
 var fs = require('fs');
-var request = require('request');
+var request = require('sync-request');
 
 
 var connection = mysql.createConnection({
@@ -19,7 +19,6 @@ connection.connect();
 //################## EXECUCAO DA CARGA DAS TABELAS ######################
 console.log("### INICIO DA CARGA ####");
 gravaDatasDisponiveis();
-gravaFilmesEmCartaz();
 console.log("### FIM DA CARGA #####");
 //#######################################################################
 
@@ -27,25 +26,90 @@ console.log("### FIM DA CARGA #####");
 
 
 
+
 function gravaDatasDisponiveis(){
-	   var json = JSON.parse(fs.readFileSync('server/mock-datasDisponiveis.js', 'utf8'));
+	   var jsonDatas;
+	   var jsonFilmesExistentes
 	   var query;
 	   var post;
 	   var qtInclusoes=0;
 
+	   var res = request('GET', 'http://brasilia.deboa.com/api.php?f=datasDisponiveis');
+	   var respostaString = res.getBody().toString();
+	   jsonDatas=JSON.parse(respostaString.substring(2,respostaString.length-1));
 
-	    for(var i = 0; i < json.length; i++) {
-			 post  = {dtcarga: new Date() , data: json[i]};
-			 query = connection.query('INSERT INTO tbdata SET ?', post, function(err, result) {
-			 	console.log(err);
-			});
-		}
+	   for(var i = 0; i < jsonDatas.length; i++) {
+			 //post  = {dtcarga: new Date() , data: jsonDatas[i]};
+			 //query = connection.query('INSERT INTO tbdata SET ?', post, function(err, result) {console.log(err);});
+			 gravaFilmesEmCartaz(jsonDatas[i])
+	   }
+
 }
 
 
 
-function gravaFilmesEmCartaz(){
-	   var json = JSON.parse(fs.readFileSync('server/mock-filmesEmCartaz.js', 'utf8'));
+
+
+function filmeExistentes(){
+
+var query = connection.query('SELECT distinct(idfilme) from tbfilme ', function(err, rows, fields) {
+    for (var i in rows) {
+        console.log(rows[i]);
+    }
+});
+
+
+}
+
+
+
+
+function gravaSessoes(json,data){
+
+
+	  for(var i = 0; i < json.length; i++) {
+
+	     for(var j = 0; j < json[i].horario.length; j++) { 
+	        	postSessao = {idfilme : json[i].id_filme,
+	        				 idcinema : json[i].horario[j].id_localidade,
+	        				 horario  : json[i].horario[j].horario,
+						 data : data}
+
+				querySessao = connection.query('INSERT INTO tbhorario SET ?', postSessao, function(err, result) {
+				console.log("-----Sessão")
+	        	});
+	    	}
+
+	   }
+
+}
+
+
+
+
+
+function isFilmeExiste(json, id){
+
+ for(var i = 0; i < json.length; i++) {
+    if (json[i] = id){
+	return true;
+    }
+ }
+
+return false;
+
+}
+
+
+
+function gravaFilmesEmCartaz(data){
+
+	   var res = request('GET', 'http://brasilia.deboa.com/api.php?f=pesquisa&data='+data);
+	   var respostaString = res.getBody().toString();
+	   json=JSON.parse(respostaString.substring(2,respostaString.length-1));
+   
+	   var jsonFilmesExistentes = filmeExistentes();
+	   
 	   var jsonDetalhes;
 	   var queryFilme;
 	   var querySessao;
@@ -56,7 +120,12 @@ function gravaFilmesEmCartaz(){
 	   var tipo;
 	   var sala;
 
+
 	  for(var i = 0; i < json.length; i++) {
+
+	  if (!isFilmeExiste(jsonFilmesExistentes, json[i].id_filme)) {
+
+
 			nome = json[i].nome;
 			tipo3D="";
 			tipo="";
@@ -79,43 +148,36 @@ function gravaFilmesEmCartaz(){
 			}
 
 
+    		postFilme = {idfilme: json[i].id_filme ,
+        		dtcarga:  new Date(),
+        		nome: convert(nome),
+        		genero: convert(json[i].genero),
+        		classificacao: json[i].classificacao,
+        		duracao: json[i].duracao.replace ("minutos",""),
+        		sinopse: json[i].descricao,
+        		notaimdb: null,
+        		linkimdb: null,
+        		linktrailer: null,
+        		tipo: tipo,
+        		tipo3d : tipo3d}
 
-
-            postFilme = {idfilme: json[i].id_filme ,
-	            		dtcarga:  new Date(),
-	            		nome: convert(nome),
-	            		genero: convert(json[i].genero),
-	            		classificacao: json[i].classificacao,
-	            		duracao: json[i].duracao.replace ("minutos",""),
-	            		sinopse: json[i].descricao,
-	            		notaimdb: null,
-	            		linkimdb: null,
-	            		linktrailer: null,
-	            		tipo: tipo,
-	            		tipo3d : tipo3d}
-
-
-            queryFilme = connection.query('INSERT INTO tbfilme SET ?', postFilme, function(err, result) {
-            	console.log("Filme")
+            	queryFilme = connection.query('INSERT INTO tbfilme SET ?', postFilme, function(err, result) {
+            			console.log("Filme")
 			});
 
-
-			for(var j = 0; j < json[i].horario.length; j++) { 
-	        	postSessao = {idfilme : json[i].id_filme,
-	        				 idcinema : json[i].horario[j].id_localidade,
-	        				 horario  : json[i].horario[j].horario}
-
-				querySessao = connection.query('INSERT INTO tbhorario SET ?', postSessao, function(err, result) {
-					console.log("-----Sessão")
-	        	});
-	    	}
-
-
+		}
 
 
 	   }
 
+	   gravaSessoes(json,data);
+
 }
+
+
+
+
+
 
 
 connection.end();
