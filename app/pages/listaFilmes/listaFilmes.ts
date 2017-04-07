@@ -76,7 +76,7 @@ export class ListaFilmes {
 
    verSessoes(){
      this.nav.push(Sessoes, {
-          param1: this.filmesSelecionados
+          param1: this.filmesSelecionados, param2 : this.filtro
       });
    }
 

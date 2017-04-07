@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {sessoesService} from '../../services/sessoes-service';
 import {sessao} from '../../model/sessao'; 
-
+import {filtro} from '../../model/filtro';
 
 
 @Component({
@@ -16,15 +16,19 @@ export class Sessoes {
 
   filmesSelecionados = [];
   sessoes: sessao[];
+  filtroInicial: filtro;
 
 
 //lições aprendidas: tive que definir o tipo sessoesService pois dava pau no momento da execução, não faço ideia do porquê
  constructor(private nav: NavController, private navParams: NavParams , private sessoesService : sessoesService){
     this.filmesSelecionados = navParams.get('param1');
+    this.filtroInicial = navParams.get('param2');
     this.sessoesService = sessoesService;
 
 
     var filtro="";
+
+    console.log(this.filtroInicial);
 
 
     for (var i = 0; i < this.filmesSelecionados.length; i++) {
@@ -35,7 +39,7 @@ export class Sessoes {
 
 
 
-    this.sessoesService.findById(filtro).subscribe(
+    this.sessoesService.findById(filtro,this.filtroInicial).subscribe(
                 data => {
                     this.sessoes = data; 
                 },

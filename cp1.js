@@ -4,6 +4,7 @@ var parser = require('xml2json');
 var got = require('got');
 var fs = require('fs');
 var request = require('sync-request');
+var sync = require('synchronize');
 
 
 var connection = mysql.createConnection({
@@ -39,11 +40,10 @@ function gravaDatasDisponiveis(){
 	   jsonDatas=JSON.parse(respostaString.substring(2,respostaString.length-1));
 
 	   for(var i = 0; i < jsonDatas.length; i++) {
-			 //post  = {dtcarga: new Date() , data: jsonDatas[i]};
-			 //query = connection.query('INSERT INTO tbdata SET ?', post, function(err, result) {console.log(err);});
+			 post  = {dtcarga: new Date() , data: jsonDatas[i]};
+			 query = connection.query('INSERT INTO tbdata SET ?', post, function(err, result) {console.log(err);});
 			 gravaFilmesEmCartaz(jsonDatas[i])
 	   }
-
 }
 
 
@@ -51,14 +51,14 @@ function gravaDatasDisponiveis(){
 
 
 function filmeExistentes(){
-
-var query = connection.query('SELECT distinct(idfilme) from tbfilme ', function(err, rows, fields) {
-    for (var i in rows) {
-        console.log(rows[i]);
-    }
-});
-
-
+	var query = connection.query('SELECT distinct(idfilme) from tbfilme', function(err, rows, fields) {
+		console.log(err);
+	});
+	if (query.rows !== undefined){
+		return JSON.parse(query.rows);
+	}else{
+		return null;
+	}
 }
 
 
@@ -76,7 +76,7 @@ function gravaSessoes(json,data){
 						 data : data}
 
 				querySessao = connection.query('INSERT INTO tbhorario SET ?', postSessao, function(err, result) {
-				console.log("-----Sessão")
+				//console.log("-----Sessão")
 	        	});
 	    	}
 
@@ -90,14 +90,17 @@ function gravaSessoes(json,data){
 
 function isFilmeExiste(json, id){
 
- for(var i = 0; i < json.length; i++) {
-    if (json[i] = id){
-	return true;
-    }
- }
-
-return false;
-
+ if (JSON.stringify(json)=='{}' ){
+	 for(var i = 0; i < json.length; i++) {
+	    if (json[i] = id){
+		return true;
+	    }
+	 }
+	return false;
+}
+else{
+	return false;
+}
 }
 
 
@@ -107,8 +110,10 @@ function gravaFilmesEmCartaz(data){
 	   var res = request('GET', 'http://brasilia.deboa.com/api.php?f=pesquisa&data='+data);
 	   var respostaString = res.getBody().toString();
 	   json=JSON.parse(respostaString.substring(2,respostaString.length-1));
-   
-	   var jsonFilmesExistentes = filmeExistentes();
+   	   var jsonFilmesExistentes
+
+	   jsonFilmesExistentes = filmeExistentes();
+
 	   
 	   var jsonDetalhes;
 	   var queryFilme;
@@ -119,7 +124,8 @@ function gravaFilmesEmCartaz(data){
 	   var tipo3d;
 	   var tipo;
 	   var sala;
-
+	   var duracao;
+	   var tipoAudio;
 
 	  for(var i = 0; i < json.length; i++) {
 
@@ -130,30 +136,39 @@ function gravaFilmesEmCartaz(data){
 			tipo3D="";
 			tipo="";
 
-			if (nome.indexOf("3D") + 1 ){
-				nome = nome.replace ("3D","");
-				tipo3d="3D";
+			if (nome !=null){
+
+					//console.log("Achei no " + nome + "o 3D, na posicao : "+ nome.indexOf("3D"))
+
+					if (nome.indexOf("3D") > 0 ){
+						nome = nome.replace ("3D","");
+						tipo3d="3D";
+					}
+
+					if (nome.indexOf("dublado") > 0 || nome.indexOf("Dublado") > 0){
+						//nome = nome.replace ("DUBLADO","");
+						tipo="DUBLADO";
+					}else if (nome.indexOf("legendado") > 0 || nome.indexOf("Legendado") > 0){
+						//nome = nome.replace ("LEGENDADO","");
+						tipo="LEGENDADO";
+					}
+
+					if (nome.indexOf("(") > 0 ){
+						nome = nome.substring (0,nome.indexOf("("));
+					}
+
 			}
 
-			if (nome.indexOf("Dublado") + 1){
-				//nome = nome.replace ("DUBLADO","");
-				tipo="DUBLADO";
-			}else if (nome.indexOf("Legendado") + 1){
-				//nome = nome.replace ("LEGENDADO","");
-				tipo="LEGENDADO";
+			if (json[i].duracao != null){
+				duracao=json[i].duracao.replace ("minutos","")
 			}
-
-			if (nome.indexOf("(") + 1 ){
-				nome = nome.substring (0,nome.indexOf("("));
-			}
-
 
     		postFilme = {idfilme: json[i].id_filme ,
         		dtcarga:  new Date(),
         		nome: convert(nome),
         		genero: convert(json[i].genero),
         		classificacao: json[i].classificacao,
-        		duracao: json[i].duracao.replace ("minutos",""),
+        		duracao: duracao,
         		sinopse: json[i].descricao,
         		notaimdb: null,
         		linkimdb: null,
@@ -162,7 +177,7 @@ function gravaFilmesEmCartaz(data){
         		tipo3d : tipo3d}
 
             	queryFilme = connection.query('INSERT INTO tbfilme SET ?', postFilme, function(err, result) {
-            			console.log("Filme")
+            			//console.log("Filme")
 			});
 
 		}
@@ -184,7 +199,7 @@ connection.end();
 
 function convert(str)
 {
-
+if (str !=null){
 	str = str.replace("&amp;" , '&' );
 	str = str.replace("&lt;" , '<' );
 	str = str.replace("&gt;" , '>' );
@@ -215,6 +230,6 @@ function convert(str)
 	str = str.replace("&ocirc;" , 'ô' ); 
 	str = str.replace("&otilde;" , 'õ' );
 	str = str.replace("&uacute; " , 'ú' ); 
-
+}
   return str;
 }
