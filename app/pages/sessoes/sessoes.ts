@@ -26,9 +26,8 @@ export class Sessoes {
     this.sessoesService = sessoesService;
 
 
+    var dataSessoes = JSON.parse(this.filtroInicial.quando);
     var filtro="";
-
-    console.log(this.filtroInicial);
 
 
     for (var i = 0; i < this.filmesSelecionados.length; i++) {
@@ -39,7 +38,7 @@ export class Sessoes {
 
 
 
-    this.sessoesService.findById(filtro,this.filtroInicial).subscribe(
+    this.sessoesService.findById(filtro,dataSessoes.data).subscribe(
                 data => {
                     this.sessoes = data; 
                 },

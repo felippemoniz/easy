@@ -20,7 +20,7 @@ export class sessoesService {
   }
 
   findById(id,data) {
-        return this.http.get(sessoesURL + id + data)
+        return this.http.get(sessoesURL + id +"/"+ data)
           .map(res => res.json())
           .catch(this.handleError);
    

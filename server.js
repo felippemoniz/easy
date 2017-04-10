@@ -19,6 +19,9 @@ app.get('/filmesEmCartaz/', filmes.findAll);
 
 app.get('/sessoes/:id/:data', sessoes.findById);
 
+
+
+
 app.get('/datasDisponiveis', datas.findAll);
 
 app.get('', function(req, res) {
