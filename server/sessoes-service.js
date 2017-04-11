@@ -24,7 +24,6 @@ function findById(req, res, next) {
   var id = req.params.id;
   var data = req.params.data;
 
-  console.log(data.substring(0,10))
 
   query="select * from easymovie.tbFilme filme, easymovie.tbhorario horario, easymovie.tbcinema cinema where horario.idfilme in ("+id+") and  horario.data='"+data.substring(0,10)+"' and horario.idfilme = filme.idfilme and horario.idcinema = cinema.idcinema order by horario asc";
 
@@ -32,6 +31,22 @@ function findById(req, res, next) {
       if (err) throw err;
       res.json(rows);
   });
+
+  contabilizaAcesso(id);
+}
+
+
+
+function contabilizaAcesso(id){
+
+  console.log("===>" + id)
+
+  query="UPDATE easymovie.tbFilme SET qtacessos = qtacessos + 1  WHERE idfilme in ("+ id + ")";
+
+  connection.query(query, id, function(err, rows, fields) {
+      if (err) throw err;
+  });
+
 }
 
 

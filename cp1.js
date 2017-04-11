@@ -4,7 +4,7 @@ var parser = require('xml2json');
 var got = require('got');
 var fs = require('fs');
 var request = require('sync-request');
-var sync = require('synchronize');
+
 
 
 var connection = mysql.createConnection({
