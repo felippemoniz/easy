@@ -19,8 +19,7 @@ app.get('/filmesEmCartaz/', filmes.findAll);
 
 app.get('/sessoes/:id/:data', sessoes.findById);
 
-
-
+app.get('/sessoesAgora/', sessoes.findNow);
 
 app.get('/datasDisponiveis', datas.findAll);
 
@@ -36,14 +35,3 @@ app.get('/notes', function(req, res) {
 app.listen(3000)
 
 
-/*
-app.get('/fruit/:fruitName/:fruitColor', function(req, res) {
-    var data = {
-        "fruit": {
-            "apple": req.params.fruitName,
-            "color": req.params.fruitColor
-        }
-    }; 
-
-    send.json(data);
-});*/

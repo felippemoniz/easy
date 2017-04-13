@@ -28,13 +28,28 @@ export class Filtros {
 
   this.filtro = new filtro();
   this.datasDisponiveisService = datasDisponiveisService;
+   
   this.datasDisponiveisService.findAll().subscribe(
-               data => this.datas = data
+                data => {
+                    this.datas = data;
+                    this.listaQueroIr = data; 
+                },
+                err => {
+                    console.log(err);
+                },
+                () => console.log()
             );
+
+
+
 
   this.carregaFiltros();
 
   }
+
+
+
+
 
 
 
@@ -82,11 +97,6 @@ format(inputDate) {
      item3.nome = '3D';
      item3.selecionado = false;
      this.listaPreferencias.push (item3);
-
-     let item4 = new chip();
-     item4.nome = 'MAX';
-     item4.selecionado = false;
-     this.listaPreferencias.push (item4);
 
      let item7 = new chip();
      item7.nome = 'FILMES';
@@ -149,9 +159,11 @@ format(inputDate) {
 
   selecionaOpcaoQueroIr(listaQuero){
     this.filtro.quando=JSON.stringify(listaQuero);
+    var item;
+
 
      for (var i = 0; i < this.listaQueroIr.length; i++) {
-        var item = this.listaQueroIr[i];
+        item = this.listaQueroIr[i];
         item.selecionado = false;
      }
 

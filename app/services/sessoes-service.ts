@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 
 let sessoesURL = SERVER_URL + 'sessoes/';
+let sessoesAgoraURL = SERVER_URL + 'sessoesAgora/';
 
 @Injectable()
 export class sessoesService {
@@ -25,6 +26,15 @@ export class sessoesService {
           .catch(this.handleError);
    
   }
+
+
+  findNow() {
+        return this.http.get(sessoesAgoraURL)
+          .map(res => res.json())
+          .catch(this.handleError);
+   
+  }
+
 
   handleError(error) {
       console.error(error);

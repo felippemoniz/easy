@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {Filtros} from '../filtros/filtros';
 import {filtro} from '../../model/filtro';
 import {chip} from '../../model/chip';
+import {SessoesAgora} from '../sessoesAgora/sessoesAgora';
 
 
 
@@ -22,6 +23,9 @@ export class Principal {
   }
 
 
+  mostraEscolhas(){
+  	this.nav.push(SessoesAgora);
+  }
 
 
 

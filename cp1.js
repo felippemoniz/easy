@@ -135,6 +135,7 @@ function gravaFilmesEmCartaz(data){
 			nome = json[i].nome;
 			tipo3D="";
 			tipo="";
+			sala="";
 
 			if (nome !=null){
 
@@ -143,6 +144,22 @@ function gravaFilmesEmCartaz(data){
 					if (nome.indexOf("3D") > 0 ){
 						nome = nome.replace ("3D","");
 						tipo3d="3D";
+					}
+
+					if (nome.indexOf("sala platinum") > 0){
+						sala = "Sala Platinum"
+					}
+
+					if (nome.indexOf("SALA VIP")) > 0){
+						sala = "Sala Vip"
+					}
+
+					if (nome.indexOf("SALA XD")) > 0){
+						sala = "Sala XD"
+					}
+
+					if (nome.indexOf("POLTRONAS DBOX")) > 0){
+						sala = "Sala D-BOX"
 					}
 
 					if (nome.indexOf("dublado") > 0 || nome.indexOf("Dublado") > 0){
@@ -174,7 +191,9 @@ function gravaFilmesEmCartaz(data){
         		linkimdb: null,
         		linktrailer: null,
         		tipo: tipo,
-        		tipo3d : tipo3d}
+        		tipo3d : tipo3d,
+        		sala: sala,
+        		qtacessos: 0}
 
             	queryFilme = connection.query('INSERT INTO tbfilme SET ?', postFilme, function(err, result) {
             			//console.log("Filme")
