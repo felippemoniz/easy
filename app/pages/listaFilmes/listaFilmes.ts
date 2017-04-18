@@ -71,6 +71,14 @@ export class ListaFilmes {
       }
     }
 
+   if (tipo == "N"){
+      if (detalhe == "0" || detalhe=="") {
+        return "-"
+      }else{
+        return detalhe;
+      }
+    }
+
   }
 
 

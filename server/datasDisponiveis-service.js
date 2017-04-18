@@ -8,7 +8,8 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'admin',
-  database : 'easymovie'
+  database : 'easymovie',
+  port: '3306'
 });
 
 
