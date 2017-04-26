@@ -43,7 +43,7 @@ Escolha os filmes
       <div>
         <ion-chip class="ratingIMDB">
           <div class="estrelaRating"><img src="./images/starRating.png" class="estrelaRatingTamanho"></div>
-          <ion-label style="color:white; position:absolute;left:30px"><b> {{trataDetalhes("N",filme.notaimdb)}}</b>/<span style="font-size: 10px;">10</span></ion-label>
+          <ion-label style="color:white; position:absolute;left:30px"><b> {{trataDetalhes("N",filme.notaimdb)}}</b> /<span style="font-size: 10px;">10</span></ion-label>
         </ion-chip>
       </div>
 
@@ -61,7 +61,7 @@ Escolha os filmes
                   </ion-row>
                   <ion-row>
                       <ion-col  class="labelGeneroFilme">
-                            {{filme.genero}} | <b>{{filme.tipo}}-{{filme.tipo3d}}</b> | {{trataDetalhes("C", filme.classificacao)}}
+                            {{filme.genero}} | {{filme.duracao}} minutos | {{trataDetalhes("C", filme.classificacao)}}
                       </ion-col>
                   </ion-row>
                 </ion-col>

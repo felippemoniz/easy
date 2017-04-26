@@ -19,10 +19,18 @@ function findAll(req, res, next) {
   var post;
   var filtro = req.params.filtro;
 
-  query="select distinct idfilme id, nome, genero, sinopse, poster, classificacao, duracao, notaimdb, imagem,tipo, qtacessos, tipo3d, false selecionado from easymovie.tbfilme " +
-  "where tipo IN ("+filtro+") order by qtacessos desc, nome asc" ;
 
 
+  
+  /*
+  query="select distinct idfilme id, nome, genero, sinopse, poster, classificacao, duracao, notaimdb, imagem,tipo, qtacessos, sala, tipo3d, false selecionado from easymovie.tbfilme " +
+  "where (tipo IN ("+filtro+") or tipo3d IN ("+filtro+")) order by qtacessos desc, nome asc" ;
+  */
+
+  query = "SELECT distinct tbTitulo.*, tbfilme.genero, tbfilme.sinopse, tbfilme.poster, tbfilme.classificacao, tbfilme.duracao, tbfilme.notaimdb, tbfilme.imagem FROM easymovie.tbtitulofilme tbTitulo,easymovie.tbfilme tbFilme where tbTitulo.nome = tbfilme.nome and "+
+          "(tbfilme.tipo IN ("+filtro+") or tbfilme.tipo3d IN ("+filtro+")) order by tbTitulo.nome";
+
+//TODO iterar o json e incluir os ids de cada filme
   connection.query(query, function(err, rows, fields) {
       if(err) {
         throw err;

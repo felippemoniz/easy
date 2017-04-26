@@ -31,12 +31,12 @@ export class Sessoes {
 
 
     for (var i = 0; i < this.filmesSelecionados.length; i++) {
-        filtro = filtro + "," + this.filmesSelecionados[i].id;
+        filtro = filtro + "," + this.filmesSelecionados[i].nome;
     } 
 
     filtro = filtro.substring(1,filtro.length)
 
-
+    console.log(filtro)
 
     this.sessoesService.findById(filtro,dataSessoes.data).subscribe(
                 data => {
