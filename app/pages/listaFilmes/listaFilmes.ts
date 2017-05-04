@@ -120,7 +120,7 @@ export class ListaFilmes {
      //faz a busca no array de filmes selecionados
      for (var i = 0; i < this.filmesSelecionados.length; i++) {
         var item = this.filmesSelecionados[i];
-        if ( item.nome == filmeEmCartaz.nome) {
+        if ( item.id == filmeEmCartaz.id) {
            flagEncontrado = true;
            index=i;
         }

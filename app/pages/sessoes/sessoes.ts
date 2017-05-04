@@ -28,17 +28,26 @@ export class Sessoes {
 
     var dataSessoes = JSON.parse(this.filtroInicial.quando);
     var filtro="";
+    var filtroPreferencias="";
 
 
+    //Recupera os ids dos filmes selecionados
     for (var i = 0; i < this.filmesSelecionados.length; i++) {
-        filtro = filtro + "," + this.filmesSelecionados[i].nome;
+        filtro = filtro + "," + this.filmesSelecionados[i].id;
     } 
 
     filtro = filtro.substring(1,filtro.length)
 
-    console.log(filtro)
+   //Recupera as preferências da tela de filtro inicial (dublado, legendado, 3d)
+   for (var i = 0; i < this.filtroInicial.preferencias.length; i++) {
+        filtroPreferencias = filtroPreferencias + "','" + this.filtroInicial.preferencias[i].nome;
+    } 
 
-    this.sessoesService.findById(filtro,dataSessoes.data).subscribe(
+    filtroPreferencias = filtroPreferencias.substring(2,filtroPreferencias.length)+ "'";
+
+
+
+    this.sessoesService.findById(filtro,dataSessoes.data,filtroPreferencias).subscribe(
                 data => {
                     this.sessoes = data; 
                 },

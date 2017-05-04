@@ -21,37 +21,38 @@ function findAll(req, res, next) {
 
 
 
-/*
-#Esta query deve funcionar.
 
-SELECT 
-distinct tbTitulo.*, 
-tbfilme.genero, 
-tbfilme.sinopse, 
-tbfilme.poster, 
-tbfilme.classificacao, 
-tbfilme.duracao, 
-tbfilme.notaimdb, 
-tbfilme.imagem 
-FROM 
-easymovie.tbtitulo tbTitulo,
-easymovie.tbfilme tbFilme,
-easymovie.tbtitulofilme tbtitulofilme
-where 
-tbtitulo.idTitulo = tbtitulofilme.idTitulo and 
-tbfilme.idfilme = tbtitulofilme.idfilme and
-(tbfilme.tipo IN ('DUBLADO') ) order by tbTitulo.nome
-*/
+  query= "SELECT "+
+  "distinct "+
+  "tbTitulo.idTitulo id,"+
+  "tbTitulo.nome,"+
+  "tbTitulo.selecionado,"+
+  "tbTitulo.qtacessos,"+
+  "tbfilme.genero, "+
+  "tbfilme.sinopse, "+
+  "tbfilme.poster, "+
+  "tbfilme.classificacao, "+
+  "tbfilme.duracao, "+
+  "tbfilme.notaimdb, "+
+  "tbfilme.imagem "+
+  "FROM "+
+  "easymovie.tbtitulo tbTitulo,"+
+  "easymovie.tbfilme tbFilme,"+
+  "easymovie.tbtitulofilme tbtitulofilme "+
+  "where "+
+  "tbtitulo.idTitulo = tbtitulofilme.idTitulo and "+
+  "tbfilme.idfilme = tbtitulofilme.idfilme and "+
+  "(tbfilme.tipo IN ("+filtro+") or tbfilme.tipo3d IN ("+filtro+")) order by qtacessos desc, nome asc";
 
   
   /*
   query="select distinct idfilme id, nome, genero, sinopse, poster, classificacao, duracao, notaimdb, imagem,tipo, qtacessos, sala, tipo3d, false selecionado from easymovie.tbfilme " +
   "where (tipo IN ("+filtro+") or tipo3d IN ("+filtro+")) order by qtacessos desc, nome asc" ;
-  */
+  
 
   query = "SELECT distinct tbTitulo.*, tbfilme.genero, tbfilme.sinopse, tbfilme.poster, tbfilme.classificacao, tbfilme.duracao, tbfilme.notaimdb, tbfilme.imagem FROM easymovie.tbtitulo tbTitulo,easymovie.tbfilme tbFilme where tbTitulo.nome = tbfilme.nome and "+
           "(tbfilme.tipo IN ("+filtro+") or tbfilme.tipo3d IN ("+filtro+")) order by tbTitulo.nome";
-
+*/
 
   connection.query(query, function(err, rows, fields) {
       if(err) {
