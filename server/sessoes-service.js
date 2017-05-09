@@ -25,6 +25,7 @@ function findById(req, res, next) {
   var data = req.params.data;
   var preferencia = req.params.preferencia;
 
+  console.log(preferencia)
 
   query="select * "+
   "from " +
@@ -41,8 +42,9 @@ function findById(req, res, next) {
   "tbhorario.idfilme = tbFilme.idfilme and " +
   "tbhorario.idcinema = tbcinema.idcinema and " +
   "tbtitulo.idTitulo = tbtitulofilme.idTitulo and " +
-  "tbfilme.idfilme = tbtitulofilme.idfilme " +
-  "order by horario asc"
+  "tbfilme.idfilme = tbtitulofilme.idfilme and" +
+  "(tbfilme.tipo IN ("+preferencia+") or tbfilme.tipo3d IN ("+preferencia+"))" +
+  "order by horario asc";
 
 
   /*

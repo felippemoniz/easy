@@ -38,6 +38,7 @@ export class Sessoes {
 
     filtro = filtro.substring(1,filtro.length)
 
+
    //Recupera as preferências da tela de filtro inicial (dublado, legendado, 3d)
    for (var i = 0; i < this.filtroInicial.preferencias.length; i++) {
         filtroPreferencias = filtroPreferencias + "','" + this.filtroInicial.preferencias[i].nome;
