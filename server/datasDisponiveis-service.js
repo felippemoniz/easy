@@ -9,11 +9,7 @@ var connection = mysql.createConnection({
   user     : 'root',
   password : 'admin',
   database : 'easymovie',
-<<<<<<< HEAD
   port     : '3306'
-=======
-  port: '3306'
->>>>>>> d3467ca9e16385f909f1f754d053815870345a06
 });
 
 
