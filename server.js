@@ -17,7 +17,7 @@ app.get('/filmesEmCartaz/:filtro', filmes.findAll);
 
 app.get('/filmesEmCartaz/', filmes.findAll);
 
-app.get('/sessoes/:id/:data', sessoes.findById);
+app.get('/sessoes/:id/:data/:preferencia', sessoes.findById);
 
 app.get('/sessoesAgora/', sessoes.findNow);
 
@@ -33,3 +33,5 @@ app.get('/notes', function(req, res) {
 });
 
 app.listen(3000)
+
+

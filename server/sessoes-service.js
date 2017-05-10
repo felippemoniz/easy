@@ -23,10 +23,34 @@ function findById(req, res, next) {
   var post;
   var id = req.params.id;
   var data = req.params.data;
+  var preferencia = req.params.preferencia;
+
+  console.log(preferencia)
+
+  query="select * "+
+  "from " +
+  "easymovie.tbtitulo tbTitulo," +
+  "easymovie.tbfilme tbFilme," +
+  "easymovie.tbtitulofilme tbtitulofilme," +
+  "easymovie.tbcinema tbcinema," +
+  "easymovie.tbhorario tbhorario " +
+  "where " +
+  "tbTitulo.idTitulo in ("+id+") and  " +
+  "tbtitulo.idTitulo = tbtitulofilme.idTitulo and " +
+  "tbfilme.idfilme = tbtitulofilme.idfilme and " +
+  "tbhorario.data='"+data.substring(0,10)+"' and " +
+  "tbhorario.idfilme = tbFilme.idfilme and " +
+  "tbhorario.idcinema = tbcinema.idcinema and " +
+  "tbtitulo.idTitulo = tbtitulofilme.idTitulo and " +
+  "tbfilme.idfilme = tbtitulofilme.idfilme and" +
+  "(tbfilme.tipo IN ("+preferencia+") or tbfilme.tipo3d IN ("+preferencia+"))" +
+  "order by horario asc";
 
 
+  /*
   query="select * from easymovie.tbFilme filme, easymovie.tbhorario horario, easymovie.tbcinema cinema where horario.idfilme in ("+id+") and  horario.data='"+data.substring(0,10)+"' and horario.idfilme = filme.idfilme and horario.idcinema = cinema.idcinema order by horario asc";
-
+  */
+  
   connection.query(query, id, function(err, rows, fields) {
       if (err) throw err;
       contabilizaAcesso(id);
@@ -85,7 +109,7 @@ function contabilizaAcesso(id){
 
   console.log("===>" + id)
 
-  query="UPDATE easymovie.tbFilme SET qtacessos = qtacessos + 1  WHERE idfilme in ("+ id + ")";
+  query="UPDATE easymovie.tbTitulo SET qtacessos = qtacessos + 1  WHERE idTitulo in ("+ id + ")";
 
   connection.query(query, id, function(err, rows, fields) {
       if (err) throw err;

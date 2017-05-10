@@ -8,6 +8,8 @@ import {NavParams} from 'ionic-angular';
 import {filtro} from '../../model/filtro';
 import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
 import {chip} from '../../model/chip';
+//import { LoadingController } from 'ionic-angular';
+
 
 @Component({
   templateUrl: 'build/pages/listaFilmes/listaFilmes.html',
@@ -29,7 +31,7 @@ export class ListaFilmes {
   qtFilme = 0;
 
 
-  constructor(private nav: NavController, private navParams: NavParams, private filmesEmCartazService) {
+  constructor(private nav: NavController, private navParams: NavParams,  private filmesEmCartazService) {
     this.filtro = navParams.get('param1');
     this.filmesEmCartazService = filmesEmCartazService;
 
@@ -43,23 +45,51 @@ export class ListaFilmes {
 
     filtro = filtro.substring(2,filtro.length)+ "'";
 
-    //futuramente passar a data como parametro findAll(data.data)
-    this.filmesEmCartazService.findAll(filtro).subscribe(
-                data => {
-                    this.filmes = data; 
-                    this.qtFilme = this.filmes.length;
-                    console.log(this.qtFilme);
-                },
-                err => {
-                    console.log(err);
-                },
-                () => console.log(this.qtFilme)
-            );
+/*
+    let loader = this.loading.create({
+      content: 'Getting latest entries...',
+    });
+
+    loader.present().then(() => {
+*/
+                  //futuramente passar a data como parametro findAll(data.data)
+                  this.filmesEmCartazService.findAll(filtro).subscribe(
+                              data => {
+                                  this.filmes = data; 
+                                  this.qtFilme = this.filmes.length;
+                                  console.log(this.qtFilme);
+                              },
+                              err => {
+                                  console.log(err);
+                              },
+                              () => console.log(this.qtFilme)
+                          );
+//    loader.dismiss();
+//    });
+
   }
 
   static get parameters() {
       return [[NavController], [NavParams], [filmesEmCartazService]];
   }
+
+
+/*
+  ionViewLoaded() {
+    let loader = this.loading.create({
+      content: 'Getting latest entries...',
+    });
+
+    loader.present().then(() => {
+      this.someService.getLatestEntries()
+        .subscribe(res => {
+          this.latestEntries = res;
+        });
+      loader.dismiss();
+    });
+  }
+*/
+
 
 
   trataDetalhes(tipo, detalhe){
@@ -68,6 +98,14 @@ export class ListaFilmes {
         return "Livre"
       }else{
         return detalhe + " anos"
+      }
+    }
+
+   if (tipo == "N"){
+      if (detalhe == "0" || detalhe=="") {
+        return "-"
+      }else{
+        return detalhe;
       }
     }
 

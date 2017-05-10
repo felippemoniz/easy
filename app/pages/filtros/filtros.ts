@@ -84,12 +84,12 @@ format(inputDate) {
  carregaFiltros(){
 
      let item = new chip();
-     item.nome = 'DUBLADO';
+     item.nome = 'LEGENDADO';
      item.selecionado = false;
      this.listaPreferencias.push (item);
 
      let item2 = new chip();
-     item2.nome = 'LEGENDADO';
+     item2.nome = 'DUBLADO';
      item2.selecionado = false;
      this.listaPreferencias.push (item2);
 

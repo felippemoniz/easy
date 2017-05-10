@@ -24,7 +24,7 @@ Escolha os filmes
 <!-- ################################ CARDS #####################################-->
 
 
-   <ion-card  #filmeCard *ngFor=" let filme of filmes">
+   <ion-card  #filmeCard *ngFor=" let filme of filmes;let i=index">
 
 
         <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="filme.selecionado === 0" (click)="selecionaFilme(filme);" round small >
@@ -43,9 +43,11 @@ Escolha os filmes
       <div>
         <ion-chip class="ratingIMDB">
           <div class="estrelaRating"><img src="./images/starRating.png" class="estrelaRatingTamanho"></div>
-          <ion-label style="color:white; position:absolute;left:30px"><b> {{filme.notaimdb}}</b>/<span style="font-size: 10px;">10</span></ion-label>
+          <ion-label style="color:white; position:absolute;left:30px"><b> {{trataDetalhes("N",filme.notaimdb)}}</b> /<span style="font-size: 10px;">10</span></ion-label>
         </ion-chip>
       </div>
+
+      <div class="tagRanking" *ngIf="i<3 && filme.qtacessos > 0"><b>{{i + 1}}º</b> MAIS PROCURADO</div>
 
       <img  src={{filme.imagem}} (click)="verDetalhes(filme)"  />
 
@@ -58,10 +60,8 @@ Escolha os filmes
                       </ion-col>
                   </ion-row>
                   <ion-row>
-                      <ion-col width-75 class="labelGeneroFilme">
-                            {{filme.genero}} | {{filme.duracao}} minutos | {{filme.tipo}}-{{filme.tipo3d}} | {{trataDetalhes("C", filme.classificacao)}}
-                      </ion-col>
-                       <ion-col width-25 class="celulaRating">
+                      <ion-col  class="labelGeneroFilme">
+                            {{filme.genero}} | {{filme.duracao}} minutos | {{trataDetalhes("C", filme.classificacao)}}
                       </ion-col>
                   </ion-row>
                 </ion-col>
