@@ -23,14 +23,7 @@ app.get('/sessoesAgora/', sessoes.findNow);
 
 app.get('/datasDisponiveis', datas.findAll);
 
-app.get('', function(req, res) {
-  res.json({notes: ":-)"})
-})
 
-app.get('/notes', function(req, res) {
-  res.json({notes: "This is your notebook. Edit this to start saving your notes!"})
-
-});
 
 app.listen(3000)
 
