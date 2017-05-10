@@ -58,12 +58,24 @@ format(inputDate) {
     var date = new Date(inputDate);
     var dateHoje = new Date();
 
+    /*
+    Retirar depois
+    */
+    dateHoje.setDate(7);
+    dateHoje.setMonth(3);
+
+
+
    if (!isNaN(date.getTime())) {
 
       if (date.getDate() === dateHoje.getDate() && 
         date.getMonth() === dateHoje.getMonth()){
           return "HOJE";
       }
+      else if (date.getDate() === (dateHoje.getDate() + 1))   {
+           return "AMANHÃ";
+      }
+
       else {
 
             var day = date.getDate().toString();

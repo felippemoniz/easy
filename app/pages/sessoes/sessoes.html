@@ -8,13 +8,22 @@
 Veja as Sessões
 </div>
 
-<!--{{filmesSelecionados | json}} -->
+<!-- {{filtroInicial | json}}  -->
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
   <ion-chip  *ngFor=" let filme of filmesSelecionados" [ngClass]="filme.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(filme)">
     <ion-label class="tag"> {{filme.nome | uppercase}}</ion-label>
   </ion-chip>
 </ion-scroll>
+
+
+<ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
+  <ion-chip  *ngFor=" let listaPref of filtroInicial.preferencias" [ngClass]="listaPref.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(listaPref)">
+    <ion-label class="tag"> {{listaPref.nome}}</ion-label>
+  </ion-chip>
+</ion-scroll>
+
+
 
 <br><br>
 
