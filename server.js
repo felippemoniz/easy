@@ -33,5 +33,3 @@ app.get('/notes', function(req, res) {
 });
 
 app.listen(3000)
-
-
