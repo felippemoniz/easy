@@ -100,6 +100,19 @@ ion-chip.ativo {
     box-sizing: border-box;
 }
 
+ion-chip.breadcrumb {
+    margin: 7px 6px 6px 0px;
+    padding: 0 20px;
+    height: 18px;
+    border-radius: 11px;
+    font-size: 9px;
+    color: white;
+    font-weight: normal;
+    line-height: 18px;
+    background: #a3cade;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
 
 ion-chip.inativo {
      margin: 3px 3px;

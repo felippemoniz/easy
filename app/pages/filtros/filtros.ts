@@ -1,6 +1,7 @@
 import {Component} from '@angular/core'
 import {NavController, NavParams} from 'ionic-angular';
 import {ListaFilmes} from '../listaFilmes/listaFilmes';
+import {ListaCinemas} from '../listaCinemas/listaCinemas';
 import {filtro} from '../../model/filtro';
 import {chip} from '../../model/chip';
 import {dataDisponivel} from '../../model/dataDisponivel';
@@ -112,13 +113,14 @@ format(inputDate) {
 
      let item7 = new chip();
      item7.nome = 'FILMES';
-     item7.selecionado = true;
+     item7.selecionado = false;
      this.listaProcuraPor.push (item7);
 
      let item8 = new chip();
      item8.nome = 'CINEMAS';
      item8.selecionado = false;
      this.listaProcuraPor.push (item8);
+
  }
 
 
@@ -137,9 +139,21 @@ format(inputDate) {
 
 
   verFilmesCinemas(){
-    this.nav.push(ListaFilmes, {
-        param1: this.filtro
-    });
+  
+    var teste = JSON.stringify(this.filtro.oQue);
+    var filtro = JSON.parse(teste);
+    
+    if (filtro.nome === "FILMES"){
+            this.nav.push(ListaFilmes, {
+                param1: this.filtro
+            });
+    }
+        else{
+            this.nav.push(ListaCinemas, {
+                param1: this.filtro
+            });
+    }
+    
   }
 
 
@@ -186,7 +200,6 @@ format(inputDate) {
 
   selecionaOpcaoProcurarPor(listaProcura){
     this.filtro.oQue =listaProcura;
-
 
      for (var i = 0; i < this.listaProcuraPor.length; i++) {
         var item = this.listaProcuraPor[i];

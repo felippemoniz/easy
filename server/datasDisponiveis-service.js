@@ -5,13 +5,21 @@ var mysql      = require('mysql');
 
 
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'admin',
+  host     : 'b1q8husmi-mysql.services.clever-cloud.com',
+  user     : 'unxcjdfsmma6sjcu',
+  password : 'aGaNXlJ08feLpUpSa9e',
   database : 'easymovie',
   port     : '3306'
 });
 
+
+/*
+Host  b1q8husmi-mysql.services.clever-cloud.com
+Database  b1q8husmi
+User  unxcjdfsmma6sjcu
+Port  3306
+Password  aGaNXlJ08feLpUpSa9e
+*/
 
 function findAll(req, res, next) {
   var query;
