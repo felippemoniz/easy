@@ -17,10 +17,16 @@ import {chip} from '../../model/chip';
 
 
 
-
 export class ListaCinemas {
 
+  filtro: filtro;
 
+  constructor(private nav: NavController, private navParams: NavParams) {
+    
+    this.filtro = navParams.get('param1');
+    console.log (this.filtro.preferencias)
+
+  }
 
 
 
