@@ -41,7 +41,7 @@ export class ListaFilmes {
 
     for (var i = 0; i < this.filtro.preferencias.length; i++) {
         filtro = filtro + "','" + this.filtro.preferencias[i].nome;
-    } 
+    }
 
     filtro = filtro.substring(2,filtro.length)+ "'";
 
@@ -55,7 +55,7 @@ export class ListaFilmes {
                   //futuramente passar a data como parametro findAll(data.data)
                   this.filmesEmCartazService.findAll(filtro).subscribe(
                               data => {
-                                  this.filmes = data; 
+                                  this.filmes = data;
                                   this.qtFilme = this.filmes.length;
                                   console.log(this.qtFilme);
                               },
