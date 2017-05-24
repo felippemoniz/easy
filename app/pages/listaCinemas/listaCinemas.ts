@@ -23,7 +23,7 @@ export class ListaCinemas {
   filtro: filtro;
   cinemas: cinema[];
   cinemasSelecionados = [];
-  contadorFilmesEscolhidos : number = 0;
+  contadorCinemasEscolhidos : number = 0;
 
   constructor(private nav: NavController, private navParams: NavParams, private cinemaService:cinemaService) {
 
@@ -46,8 +46,6 @@ export class ListaCinemas {
 
   selecionaCinema(cinema) {
 
-
-
     var p = [];
     var flagEncontrado= false;
     var index;
@@ -67,7 +65,7 @@ export class ListaCinemas {
     //faz a busca no array de filmes selecionados
     for (var i = 0; i < this.cinemasSelecionados.length; i++) {
        var item = this.cinemasSelecionados[i];
-       if ( item.id == cinema.idcinema) {
+       if ( item.idcinema == cinema.idcinema) {
           flagEncontrado = true;
           index=i;
        }
@@ -82,6 +80,15 @@ export class ListaCinemas {
      this.cinemasSelecionados.splice(index,1);
      this.contadorCinemasEscolhidos = this.cinemasSelecionados.length;
    }
+
 }
+
+
+verSessoes(){
+  this.nav.push(Sessoes, {
+       param1: this.cinemasSelecionados, param2 : this.filtro
+   });
+}
+
 
 }

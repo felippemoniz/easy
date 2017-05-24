@@ -4,6 +4,6 @@ public idcinema?:number,
 public nomecinema?: string,
 public latitude?:number,
 public longitude?:number,
-public selecionado?: boolean)
+public selecionado?: number)
  {}
 }

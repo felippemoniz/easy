@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 
 let cinemas = SERVER_URL + 'cinemas/';
+let sessoes = SERVER_URL + 'sessoesPorCinema/';
 
 @Injectable()
 export class cinemaService {
@@ -25,6 +26,14 @@ export class cinemaService {
           .catch(this.handleError);
 
   }
+
+  findByTheater(id,data,preferencia) {
+        return this.http.get(sessoes + id +"/"+ data + "/"+ preferencia )
+          .map(res => res.json())
+          .catch(this.handleError);
+
+  }
+
 
   handleError(error) {
       console.error(error);
