@@ -21,7 +21,7 @@
           <ion-col style="border-bottom: 1px black">
             <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
  
-                <ion-chip *ngFor=" let listaQuero of datas" [ngClass]="listaQuero.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoQueroIr(listaQuero)">
+                <ion-chip *ngFor=" let listaQuero of datas" [ngClass]="listaQuero.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaOpcaoQueroIr(listaQuero)">
                   <ion-label class="tag"> {{format(listaQuero.data) }} </ion-label>
                 </ion-chip>
 
@@ -38,7 +38,7 @@
       </ion-row>
       <ion-row>
           <ion-col>
-                <ion-chip *ngFor=" let listaProcura of listaProcuraPor" [ngClass]="listaProcura.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoProcurarPor(listaProcura)">
+                <ion-chip *ngFor=" let listaProcura of listaProcuraPor" [ngClass]="listaProcura.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaOpcaoProcurarPor(listaProcura)">
                   <ion-label class="tag"> {{listaProcura.nome}}</ion-label>
                 </ion-chip>
           </ion-col>
@@ -55,7 +55,7 @@
           <ion-col>
             <ion-col>
               <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
-                <ion-chip *ngFor=" let listaPref of listaPreferencias" [ngClass]="listaPref.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(listaPref)">
+                <ion-chip *ngFor=" let listaPref of listaPreferencias" [ngClass]="listaPref.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaOpcaoPrefs(listaPref)">
                   <ion-label class="tag"> {{listaPref.nome}}</ion-label>
                 </ion-chip>
               </ion-scroll>

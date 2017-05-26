@@ -9,7 +9,10 @@ import {NavParams} from 'ionic-angular';
 import {filtro} from '../../model/filtro';
 import {cinemaService} from '../../services/cinema-service';
 import {chip} from '../../model/chip';
+import {Geolocation} from 'ionic-native'; 
 
+
+declare var geolib : any;
 
 @Component({
   templateUrl: 'build/pages/listaCinemas/listaCinemas.html',
@@ -40,6 +43,37 @@ export class ListaCinemas {
                   () => console.log()
               );
 
+   // setInterval(() => {
+      this.getAllDistances();
+   // }, 3000);
+    
+
+  }
+
+
+  private getDistance (origin, destination){
+    let distance = geolib.getDistance(origin, destination);
+    
+    return geolib.convertUnit('km',distance,2);
+  }
+
+
+
+
+  private getAllDistances(){
+
+    Geolocation.getCurrentPosition().then(result=>{
+
+      for (let i = 0; i < this.cinemas.length; i++){
+        let cinema = this.cinemas[i];
+        cinema.distancia = this.getDistance(
+          {latitude: result.coords.latitude,
+           longitude: result.coords.longitude},
+          {latitude : cinema.latitude,
+           longitude : cinema.longitude}
+          )
+        }      
+    });
 
   }
 
@@ -86,7 +120,9 @@ export class ListaCinemas {
 
 verSessoes(){
   this.nav.push(Sessoes, {
-       param1: this.cinemasSelecionados, param2 : this.filtro
+       param1: this.cinemasSelecionados, 
+       param2 : this.filtro,
+       param3 : "C"
    });
 }
 

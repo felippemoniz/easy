@@ -7,6 +7,8 @@ import 'rxjs/add/operator/map';
 
 let sessoesURL = SERVER_URL + 'sessoes/';
 let sessoesAgoraURL = SERVER_URL + 'sessoesAgora/';
+let sessoesPorCinemaURL = SERVER_URL + 'sessoesPorCinema/';
+
 
 @Injectable()
 export class sessoesService {
@@ -27,6 +29,12 @@ export class sessoesService {
    
   }
 
+  findByTheater(id,data,preferencia) {
+        return this.http.get(sessoesPorCinemaURL + id +"/"+ data + "/"+ preferencia )
+          .map(res => res.json())
+          .catch(this.handleError);
+   
+  }
 
   findNow() {
         return this.http.get(sessoesAgoraURL)
