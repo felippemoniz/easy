@@ -4,9 +4,9 @@ var cinema = (function () {
         this.idcinema = idcinema;
         this.nomecinema = nomecinema;
         this.latitude = latitude;
-		    this.longitude = longitude;
-		    this.distancia = distancia;
-		    this.selecionado = selecionado;
+	    this.longitude = longitude;
+	    this.distancia = distancia;
+	    this.selecionado = selecionado;
     }
     return cinema;
 }());

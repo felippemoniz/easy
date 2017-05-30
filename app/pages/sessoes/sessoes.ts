@@ -10,7 +10,7 @@ declare var geolib : any;
 
 @Component({
   templateUrl: 'build/pages/sessoes/sessoes.html' ,
-  providers: [sessoesService] 
+  providers: [sessoesService]
 })
 
 
@@ -36,7 +36,6 @@ export class Sessoes {
     var filtro="";
     var filtroPreferencias="";
 
-    console.log(this.tipoPesquisa)
 
 
    //Recupera as preferências da tela de filtro inicial (dublado, legendado, 3d)
@@ -91,34 +90,38 @@ export class Sessoes {
 
     }
 
+  this.getAllDistances();
 
-    this.getGeolocalizacao();
 
   }
 
 
 
-  private getGeolocalizacao(){
+  private getDistance (origin, destination){
+    let distance = geolib.getDistance(origin, destination);
+    
+    return geolib.convertUnit('km',distance,2);
+  }
+
+
+
+
+  private getAllDistances(){
 
     Geolocation.getCurrentPosition().then(result=>{
-           this.latitude = result.coords.latitude;
-           this.Longitude = result.coords.longitude;
+      for (let i = 0; i < this.sessoes.length; i++){
+        let sessao = this.sessoes[i];
+        sessao.distancia = this.getDistance(
+           {latitude: result.coords.latitude,
+           longitude: result.coords.longitude},
+           {latitude : sessao.latitude,
+           longitude : sessao.longitude}
+          )
+        }      
     });
 
   }
 
-
-  //AS primeiras sessoes vem com a localizacao undefined, porque o getgeolocalizacao ainda nao retornou
-  private getDistance (latitude, longitude){
-    let distance = geolib.getDistance(
-           {latitude:this.latitude,
-           longitude: this.Longitude},
-          {latitude : Number(latitude),
-           longitude : Number(longitude)}
-           );
-    
-    return geolib.convertUnit('km',distance,2);
-  }
 
 
 

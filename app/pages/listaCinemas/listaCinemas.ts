@@ -14,6 +14,7 @@ import {Geolocation} from 'ionic-native';
 
 declare var geolib : any;
 
+
 @Component({
   templateUrl: 'build/pages/listaCinemas/listaCinemas.html',
   providers: [cinemaService]
@@ -51,6 +52,13 @@ export class ListaCinemas {
   }
 
 
+
+  private mycomparator(a,b) {
+    return parseInt(a.distancia, 10) - parseInt(b.distancia, 10);
+  }
+
+
+
   private getDistance (origin, destination){
     let distance = geolib.getDistance(origin, destination);
     
@@ -72,7 +80,12 @@ export class ListaCinemas {
           {latitude : cinema.latitude,
            longitude : cinema.longitude}
           )
-        }      
+        }    
+        
+        this.cinemas.sort(function (a, b) {
+          return a.distancia - b.distancia;
+        });
+
     });
 
   }

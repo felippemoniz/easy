@@ -8,6 +8,9 @@ export class sessao{
  public duracao?: number,
  public rating?: number,
  public imagemAvatar?: string,
+ public latitude?:number,
+ public longitude?:number,
+ public distancia?:number,
  public selecionado?: boolean)
  {}
 }

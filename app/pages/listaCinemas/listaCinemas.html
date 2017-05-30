@@ -18,11 +18,13 @@ Escolha os cinemas
 </ion-scroll>
 
 
+<!--Scrol somente da tela de resultado -->
+<ion-scroll  scrollY="true" class="scrollVerticalCinemas" overflow-scroll="true" >
 
 <!-- ################################ CARDS #####################################-->
 
 
-   <ion-card  #cinemaCard *ngFor=" let cinema of cinemas;let i=index">
+   <ion-card  #cinemaCard *ngFor=" let cinema of cinemas "> 
 
 
         <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="cinema.selecionado === 0" (click)="selecionaCinema(cinema);" round small >
@@ -60,6 +62,7 @@ Escolha os cinemas
 
    </ion-card>
 
+</ion-scroll>
 </ion-content>
 
 
