@@ -17,12 +17,13 @@ Veja as Sessões
 </ion-scroll>
 
 
-Essas são todas as sessões que ainda vão começar em cinemas que estão próximos a você
 
 <ion-row class="headerSessoes">
 <ion-col width-75>Sessões a partir de <b>agora</b></ion-col>
 <ion-col width-33 style="font-size: 10px"></ion-col>
 </ion-row>
+
+<button class="botaoVerSessoes" (click)="verSessoesProximas()">teste</button>
 
 <!--Scrol somente da tela de resultado -->
 <ion-scroll  scrollY="true" class="scrollVertical" overflow-scroll="true" >
@@ -34,17 +35,16 @@ teste
   			<ion-row style="height:90%">
   				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
 
-					<b>{{formataHora(sessao.horario)}}</b><br>...<br>{{calculaHoraFim(formataHora(sessao.horario), sessao.duracao)}}
+					<span style="font-weight:bold;">{{formataHora(sessao.horario)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 11px;">{{calculaHoraFim(formataHora(sessao.horario), sessao.duracao)}}</span>
 
   				</ion-col>
   				<ion-col width-80>
                       <ion-avatar style="position: absolute"><img src={{sessao.poster}}></ion-avatar>
                       <div style="padding-left: 40px">
                           <span class="fonteLabelTituloFilme">{{sessao.nome}}</span><br>
-                          <span class="fonteLabelTituloCinema" >{{sessao.nomecinema}}</span><br>
-                          <span class="fonteLabelTituloDistancia">(A XX km de você)</span><br>
+                          <span class="fonteLabelTituloCinema" ><b>{{sessao.nomecinema}}</b></span><br>
+                          <span class="fonteLabelTituloDistancia"><b>{{ formataDistanciaAmigavel(sessao.distancia) }}</b> de você  ({{sessao.distancia}} km)</span><br>
                           <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} - {{sessao.tipo3d}}</span><br>
-
                           <ion-chip class="ratingIMDBSessao">
                             <div class="estrelaRatingSessao"><img src="./images/starRating.png" class="estrelaRatingTamanhoSessao"></div>
                             <span style="color:white; position:absolute;left:30px"><b>{{sessao.notaimdb}}</b>/<span style="font-size: 10px;">10</span></span>

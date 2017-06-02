@@ -53,7 +53,7 @@ Escolha os cinemas
                   </ion-row>
                   <ion-row>
                       <ion-col  class="labelGeneroFilme">
-                            Está a <b>{{cinema.distancia}} km</b> de você
+                            <b>{{ formataDistanciaAmigavel(cinema.distancia) }}</b> de você ({{cinema.distancia}} km)
                       </ion-col>
                   </ion-row>
                 </ion-col>

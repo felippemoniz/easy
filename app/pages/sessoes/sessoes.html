@@ -8,7 +8,7 @@
 Veja as Sessões
 </div>
 
-<!--  {{itensSelecionados | json}} -->
+ <!-- {{filtroInicial | json}}  -->
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
   <ion-chip  *ngFor=" let filme of itensSelecionados" class="breadcrumb">
@@ -44,7 +44,7 @@ Veja as Sessões
   			<ion-row style="height:90%">
   				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
 
-					<b>{{formataHora(sessao.horario)}}</b><br>...<br>{{calculaHoraFim(formataHora(sessao.horario), sessao.duracao)}}
+          <span style="font-weight:bold;">{{formataHora(sessao.horario)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 11px;">{{calculaHoraFim(formataHora(sessao.horario), sessao.duracao)}}</span>
 
   				</ion-col>
   				<ion-col width-80>
@@ -52,7 +52,7 @@ Veja as Sessões
                       <div style="padding-left: 40px">
                           <span class="fonteLabelTituloFilme">{{sessao.nome}}</span><br>
                           <span class="fonteLabelTituloCinema" >{{sessao.nomecinema}}</span><br>
-                          <span class="fonteLabelTituloDistancia">(A <b>{{sessao.distancia}} km </b>de você)</span><br>
+                          <span class="fonteLabelTituloDistancia"><b>{{ formataDistanciaAmigavel(sessao.distancia) }}</b> de você ({{sessao.distancia}} km)</span><br>
                           <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} - {{sessao.tipo3d}}</span><br>
 
                           <ion-chip class="ratingIMDBSessao">

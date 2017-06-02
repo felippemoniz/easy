@@ -10,6 +10,7 @@ import {filtro} from '../../model/filtro';
 import {cinemaService} from '../../services/cinema-service';
 import {chip} from '../../model/chip';
 import {Geolocation} from 'ionic-native'; 
+import { Loading } from 'ionic-angular';
 
 
 declare var geolib : any;
@@ -28,15 +29,18 @@ export class ListaCinemas {
   cinemas: cinema[];
   cinemasSelecionados = [];
   contadorCinemasEscolhidos : number = 0;
+  public loading = Loading.create();
 
   constructor(private nav: NavController, private navParams: NavParams, private cinemaService:cinemaService) {
 
     this.filtro = navParams.get('param1');
     this.cinemaService = cinemaService;
+    this.nav.present(this.loading);
 
     this.cinemaService.findAll().subscribe(
                   data => {
                       this.cinemas = data;
+                      this.loading.dismiss();
                   },
                   err => {
                       console.log(err);
@@ -44,17 +48,9 @@ export class ListaCinemas {
                   () => console.log()
               );
 
-   // setInterval(() => {
-      this.getAllDistances();
-   // }, 3000);
-    
 
-  }
+    this.getAllDistances();
 
-
-
-  private mycomparator(a,b) {
-    return parseInt(a.distancia, 10) - parseInt(b.distancia, 10);
   }
 
 
@@ -65,6 +61,23 @@ export class ListaCinemas {
     return geolib.convertUnit('km',distance,2);
   }
 
+
+
+  formataDistanciaAmigavel(distancia){
+
+    if (distancia <= 2) {
+      return "Bem perto";
+    }
+    else if (distancia > 2 && distancia <= 5){
+      return "Perto";
+    }
+    else if (distancia > 5 && distancia <= 20){
+      return "Um pouco longe";
+    }
+    else {
+      return "Bem longe";
+    }
+  }
 
 
 

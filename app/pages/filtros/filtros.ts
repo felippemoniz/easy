@@ -6,6 +6,7 @@ import {filtro} from '../../model/filtro';
 import {chip} from '../../model/chip';
 import {dataDisponivel} from '../../model/dataDisponivel';
 import {datasDisponiveisService} from '../../services/datasDisponiveis-service';
+import { Loading } from 'ionic-angular';
 
 @Component({
   templateUrl: 'build/pages/filtros/filtros.html',
@@ -23,17 +24,20 @@ export class Filtros {
   isChecked: boolean = false;
   chipFiltroPreferencia: chip;
   datas : dataDisponivel[];
+  public loading = Loading.create();
 
 
   constructor(private nav: NavController, private navParams: NavParams,  private datasDisponiveisService: datasDisponiveisService){
 
   this.filtro = new filtro();
   this.datasDisponiveisService = datasDisponiveisService;
+  this.nav.present(this.loading);
    
   this.datasDisponiveisService.findAll().subscribe(
                 data => {
                     this.datas = data;
                     this.listaQueroIr = data; 
+                    this.loading.dismiss(); 
                 },
                 err => {
                     console.log(err);
