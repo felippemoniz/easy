@@ -2,75 +2,46 @@
   <ion-title></ion-title>
 </ion-navbar>
 
- 
+
 
   <ion-content>
 
     <div class="divHeader">
-       <div class="card-textoGrande">A fim de um cinema?</div>
-       <div class="card-textoPequeno">O <b>EasyMovie</b> te ajuda!</div>
-       <img src="./images/bgFiltros.png" style="width: 100%; height: 100%"/>
+           <div class="card-textoGrande" style="top: 30%;">
+              Existem <span style="color:#e1b612">21 sessões</span><br>
+              começando agora na sua cidade.<br>
+          </div>
+          <div class="card-textoGrande" style=" top: 70%;">
+              E aí, que tal um cineminha?
+           </div>
+           <img src="./images/headerPrincipal.png" style="width: 100%; height: 100%"/>
     </div>
 
 <br>
-    <ion-grid  class="filtro">
-      <ion-row>
-          <ion-col class="titulosFiltro">Quero ir</ion-col>
-      </ion-row>
-      <ion-row >
-          <ion-col style="border-bottom: 1px black">
-            <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
- 
-                <ion-chip *ngFor=" let listaQuero of datas" [ngClass]="listaQuero.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaOpcaoQueroIr(listaQuero)">
-                  <ion-label class="tag"> {{format(listaQuero.data) }} </ion-label>
-                </ion-chip>
 
-            </ion-scroll>
-          </ion-col>
-      </ion-row >
-
-      <br>
-      <div class="linhaSeparador"></div> <!----------------------------- -->
-      <br>
-
-      <ion-row>
-          <ion-col class="titulosFiltro">Procurar por</ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col>
-                <ion-chip *ngFor=" let listaProcura of listaProcuraPor" [ngClass]="listaProcura.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaOpcaoProcurarPor(listaProcura)">
-                  <ion-label class="tag"> {{listaProcura.nome}}</ion-label>
-                </ion-chip>
-          </ion-col>
-      </ion-row>
-
-      <br>
-      <div class="linhaSeparador"></div><!----------------------------- -->
-      <br>
-
-      <ion-row>
-          <ion-col class="titulosFiltro">Preferências</ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col>
-            <ion-col>
-              <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
-                <ion-chip *ngFor=" let listaPref of listaPreferencias" [ngClass]="listaPref.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaOpcaoPrefs(listaPref)">
-                  <ion-label class="tag"> {{listaPref.nome}}</ion-label>
-                </ion-chip>
-              </ion-scroll>
-            </ion-col>
-          </ion-col>
-      </ion-row>
-
-      <br>
-
-      <ion-row>
-          <ion-col width-67><button class="botaoPrimario" (click)="verFilmesCinemas()">CONTINUAR</button></ion-col>
-          <ion-col width-33><button class="botaoSecundario" (click)="fecharFiltro()">VOLTAR</button></ion-col>
-      </ion-row>
-    </ion-grid>
-
+<ion-grid style="padding: 0;">
+  <ion-row>
+    <ion-col col-50 class="botaoMenu">
+      <ion-grid>
+            <ion-row>
+                <ion-col col-3 class="botaoMenu" style="padding: 0;"><img src="./images/imgCinema.png"/></ion-col>
+                <ion-col col-9 class="botaoMenu">Cinemas<br><span style="font-size: 0.6em;">da sua cidade</span></ion-col>
+            </ion-row>
+          </ion-grid>
+    </ion-col>
+    <ion-col col-50 class="botaoMenu">
+      <ion-grid>
+            <ion-row>
+                <ion-col col-3 class="botaoMenu"><img src="./images/imgFilme.png"/></ion-col>
+                <ion-col col-9 class="botaoMenu">Filmes<br><span style="font-size: 0.6em;">da sua cidade</span></ion-col>
+            </ion-row>
+          </ion-grid>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="botaoMenu">This column will take 6 columns</ion-col>
+  </ion-row>
+</ion-grid>
 
 
 

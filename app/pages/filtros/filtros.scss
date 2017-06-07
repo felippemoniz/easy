@@ -4,25 +4,26 @@
     text-align: center;
   }
 
- 
+
   .card-textoGrande {
     position: absolute;
-    top: 30%;
-    font-size: 2.2em;
-    line-height: 40px;
+    font-size: 1.5em;
+    line-height: 26px;
     width: 100%;
     color: #fff;
+    font-family: "Open Sans", "Helvetica";
 
   }
 
-  .card-textoPequeno {
-    font-size: 1em;
-    position: absolute;
-    top: 58%;
-    width: 100%;
-    color: #fff;
-  }
+  
 
+.botaoMenu{
+  font-size: 1.2em;
+  border: 1px solid #ccc8c5;
+  text-align: center;
+  font-family: "Open Sans", "Helvetica";
+  line-height: 15px;
+}
 
 .linhaSeparador{
   border: 1px solid #ccd0d6;
