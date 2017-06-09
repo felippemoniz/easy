@@ -1,7 +1,13 @@
 
+  .background{
+    background-color: #f8f4f1
+  }
+
   .divHeader {
     position: relative;
     text-align: center;
+    height: 37%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
   }
 
 
@@ -15,15 +21,49 @@
 
   }
 
+.slider-slides{
+  display: flex;
+  flex-direction: row;
+}
   
-
 .botaoMenu{
   font-size: 1.2em;
-  border: 1px solid #ccc8c5;
+  border-top:  1px solid #ccc8c5; 
   text-align: center;
   font-family: "Open Sans", "Helvetica";
   line-height: 15px;
+  padding: 4%;
+  background-color: #ffffff;
 }
+
+
+.labelMaisProcurados {
+  font-size: 0.9em;
+  font-family: "Open Sans", "Helvetica";
+  border-top:  1px solid #ccc8c5; 
+  line-height: 15px;
+  position: relative;
+  color:#5b6062;
+  background-color: #ffffff;
+}
+
+
+
+.botaoImagem{
+  position: absolute;
+}
+
+.botaoTexto{
+    font-size: 1.2em;
+    font-family: "Open Sans", "Helvetica";
+    line-height: 15px;
+    position: relative;
+    color:#5b6062
+
+}
+
+
+
 
 .linhaSeparador{
   border: 1px solid #ccd0d6;

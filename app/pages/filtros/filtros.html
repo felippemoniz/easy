@@ -4,11 +4,11 @@
 
 
 
-  <ion-content>
+  <ion-content class="background">
 
-    <div class="divHeader">
+    <div class="divHeader" >
            <div class="card-textoGrande" style="top: 30%;">
-              Existem <span style="color:#e1b612">21 sessões</span><br>
+              Existem <span style="color:#e1b612"><b>21 sessões</b></span><br>
               começando agora na sua cidade.<br>
           </div>
           <div class="card-textoGrande" style=" top: 70%;">
@@ -21,28 +21,64 @@
 
 <ion-grid style="padding: 0;">
   <ion-row>
-    <ion-col col-50 class="botaoMenu">
-      <ion-grid>
-            <ion-row>
-                <ion-col col-3 class="botaoMenu" style="padding: 0;"><img src="./images/imgCinema.png"/></ion-col>
-                <ion-col col-9 class="botaoMenu">Cinemas<br><span style="font-size: 0.6em;">da sua cidade</span></ion-col>
-            </ion-row>
-          </ion-grid>
+    <ion-col #botaoCinema class="botaoMenu" style="border-right:  1px solid #ccc8c5;" (tap)="verCinemas(botaoCinema)">
+    <br>
+              <ion-grid >
+                  <ion-row>
+                      <ion-col col-3 class="botaoImagem" style="padding: 0; left: -38%; "><img src="./images/imgCinema.png"/></ion-col>
+                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 37%;">Cinemas&nbsp;&nbsp;<br><span style="font-size: 0.6em;">da sua cidade</span></ion-col>
+                  </ion-row>
+             </ion-grid>
+    <br>
     </ion-col>
-    <ion-col col-50 class="botaoMenu">
-      <ion-grid>
-            <ion-row>
-                <ion-col col-3 class="botaoMenu"><img src="./images/imgFilme.png"/></ion-col>
-                <ion-col col-9 class="botaoMenu">Filmes<br><span style="font-size: 0.6em;">da sua cidade</span></ion-col>
-            </ion-row>
-          </ion-grid>
+    <ion-col col-50 class="botaoMenu" (tap)="verFilmes()">
+    <br>
+            <ion-grid>
+                  <ion-row>
+                      <ion-col col-3 class="botaoImagem" style="padding: 0; left: 12%;"><img src="./images/imgFilme.png"/></ion-col>
+                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 35%;">Filmes&nbsp;&nbsp;&nbsp;&nbsp;<br><span style="font-size: 0.6em;">da sua cidade</span></ion-col>
+                  </ion-row>
+            </ion-grid>
+    <br>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col class="botaoMenu">This column will take 6 columns</ion-col>
+    <ion-col class="botaoMenu" style="border-bottom:  1px solid #ccc8c5;">
+    <br>
+             <ion-grid>
+                  <ion-row>
+                      <ion-col col-3 class="botaoImagem" style="padding: 0; left: -38%; "><img src="./images/imgAgora.png"/></ion-col>
+                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 18%;">O que tem agora?<br><span style="font-size: 0.6em;">Veja as sessões que estão <b>começando agora</b></span></ion-col>
+                  </ion-row>
+            </ion-grid>
+    <br>
+    </ion-col>
   </ion-row>
 </ion-grid>
 
+<br>
 
+<ion-grid style="padding: 0;">
+  <ion-row>
+    <ion-col class="labelMaisProcurados"> MAIS PROCURADOS </ion-col>
+  </ion-row>
+    <ion-row>
+    <ion-col class="botaoMenu"> 
+
+    <ion-slides  #mySlider [options]="{slidesPerView: 2}">
+        <ion-slide>
+          <img src="http://placehold.it/150x150">
+          </ion-slide>
+        <ion-slide>
+          <img src="http://placehold.it/150x150">
+          </ion-slide>
+         <ion-slide>
+          <img src="http://placehold.it/150x150">
+          </ion-slide>
+      </ion-slides>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
   </ion-content>
