@@ -26,6 +26,15 @@ export class filmesEmCartazService {
    
   }
 
+
+  getTop6() {
+      return this.http.get(SERVER_URL + "topFilmes/")
+          .map(res => res.json())
+          .catch(this.handleError);
+   
+  }
+
+
   handleError(error) {
       console.error(error);
       return Observable.throw(error.json().error || 'Server error');

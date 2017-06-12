@@ -5,28 +5,37 @@ import {ListaCinemas} from '../listaCinemas/listaCinemas';
 import {filtro} from '../../model/filtro';
 import {chip} from '../../model/chip';
 import { Loading } from 'ionic-angular';
+import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
+import {filmeEmCartaz} from '../../model/filmeEmCartaz';
 
 @Component({
-  templateUrl: 'build/pages/filtros/filtros.html'
+  templateUrl: 'build/pages/filtros/filtros.html',
+  providers: [filmesEmCartazService]
 })
 
 export class Filtros {
 
-  mostraFiltros: boolean = true;
-  listaQueroIr= [];
-  listaProcuraPor=  [];
-  listaPreferencias= [];
-  clicker: boolean = false;
-  filtro: filtro;
-  isChecked: boolean = false;
-  chipFiltroPreferencia: chip;
+  filmes: filmeEmCartaz[];
   public loading = Loading.create();
   testSlides: string[] = [];
   @ViewChild('botaoCinema') botaoCinema: any;
 
 
-  constructor(private nav: NavController, private navParams: NavParams){
+  constructor(private nav: NavController, private navParams: NavParams,  private filmesEmCartazService: filmesEmCartazService){
+  
 
+      this.filmesEmCartazService = filmesEmCartazService;
+
+      this.filmesEmCartazService.getTop6().subscribe(
+                  data => {
+                      this.filmes = data;
+                      console.log(this.filmes.length)
+                  },
+                  err => {
+                      console.log(err);
+                  },
+                  () => console.log()
+              );
 
   }
 
@@ -34,24 +43,15 @@ export class Filtros {
 
   verCinemas(botaoCinema){
       this.botaoCinema.class
-      this.nav.push(ListaCinemas, {
-          param1: this.filtro
-      });
+      this.nav.push(ListaCinemas);
   }
 
 
   verFilmes(){
-      this.nav.push(ListaFilmes, {
-          param1: this.filtro
-      });
+      this.nav.push(ListaFilmes);
   }
 
 
-
-
-  isVisible(){
-    return this.mostraFiltros;
-  }
 
 
 

@@ -25,6 +25,14 @@
   display: flex;
   flex-direction: row;
 }
+
+
+.slide-zoom {
+    display: block;
+    width: 88%;
+    text-align: center;
+}
+
   
 .botaoMenu{
   font-size: 1.2em;
@@ -36,17 +44,55 @@
   background-color: #ffffff;
 }
 
+.botaoMenuTopFilmes{
+  font-size: 1.2em;
+  text-align: center;
+  font-family: "Open Sans", "Helvetica";
+  line-height: 15px;
+  padding-top: 0%;
+  background-color: #ffffff;
+}
+
 
 .labelMaisProcurados {
   font-size: 0.9em;
   font-family: "Open Sans", "Helvetica";
-  border-top:  1px solid #ccc8c5; 
+  border-top: 1px solid #ccc8c5;
   line-height: 15px;
   position: relative;
-  color:#5b6062;
+  color: #7c8082;
   background-color: #ffffff;
+  padding: 2%;
 }
 
+
+.overlayFilme {
+  padding: 0px;
+  opacity: 0.4;
+  position: absolute;
+  width: 89%;
+  height: 100%;
+  margin-top: 0px;
+  z-index: 0;
+  background-color: #515a6e;
+  color: #fffefe;
+  font-weight: bold;
+  visibility: visible;
+}
+
+.overlayFilmeTexto {
+    padding: 0px;
+    position: absolute;
+    width: 89%;
+    height: 100%;
+    margin-top: 0px;
+    z-index: 1;
+    color: #ffffff;
+    font-weight: lighter;
+    visibility: visible;
+    font-family: "Open Sans", "Helvetica";
+   font-size: 0.9em;
+}
 
 
 .botaoImagem{

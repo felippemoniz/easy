@@ -3,7 +3,6 @@
 </ion-navbar>
 
 
-
   <ion-content class="background">
 
     <div class="divHeader" >
@@ -63,17 +62,13 @@
     <ion-col class="labelMaisProcurados"> MAIS PROCURADOS </ion-col>
   </ion-row>
     <ion-row>
-    <ion-col class="botaoMenu"> 
+    <ion-col class="botaoMenuTopFilmes"> 
 
-    <ion-slides  #mySlider [options]="{slidesPerView: 2}">
-        <ion-slide>
-          <img src="http://placehold.it/150x150">
-          </ion-slide>
-        <ion-slide>
-          <img src="http://placehold.it/150x150">
-          </ion-slide>
-         <ion-slide>
-          <img src="http://placehold.it/150x150">
+    <ion-slides  #mySlider [options]="{slidesPerView: 2}" >
+        <ion-slide *ngFor="let slide of filmes">
+          <div class="overlayFilmeTexto">{{slide.nome}}</div>   
+          <div class="overlayFilme"></div>       
+          <img  src={{slide.imagem}} />
           </ion-slide>
       </ion-slides>
 
