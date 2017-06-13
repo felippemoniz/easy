@@ -47,7 +47,7 @@
              <ion-grid>
                   <ion-row>
                       <ion-col col-3 class="botaoImagem" style="padding: 0; left: -38%; "><img src="./images/imgAgora.png"/></ion-col>
-                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 18%;">O que tem agora?<br><span style="font-size: 0.6em;">Veja as sessões que estão <b>começando agora</b></span></ion-col>
+                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 16%;">O que tem agora?<br><span style="font-size: 0.6em;">Veja as sessões que estão <b>começando agora</b></span></ion-col>
                   </ion-row>
             </ion-grid>
     <br>
@@ -65,7 +65,8 @@
     <ion-col class="botaoMenuTopFilmes"> 
 
     <ion-slides  #mySlider [options]="{slidesPerView: 2}" >
-        <ion-slide *ngFor="let slide of filmes">
+        <ion-slide *ngFor="let slide of filmes;let i=index" >
+          <div class="overlayClassificacao">{{i + 1}}º</div>
           <div class="overlayFilmeTexto">{{slide.nome}}</div>   
           <div class="overlayFilme"></div>       
           <img  src={{slide.imagem}} />
