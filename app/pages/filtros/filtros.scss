@@ -6,8 +6,8 @@
   .divHeader {
     position: relative;
     text-align: center;
-    height: 37%;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    height: 31%;
+    box-shadow: 0 7px 6px rgba(0, 0, 0, 0.3);
   }
 
 
@@ -29,17 +29,17 @@
 
 .slide-zoom {
     display: block;
-    width: 88%;
+    width: 97%;
     text-align: center;
 }
 
   
 .botaoMenu{
   font-size: 1.1em;
-  border-top:  1px solid #e0dedd; 
+  border-top: 1px solid #e0dedd;
   text-align: center;
   font-family: "Open Sans", "Helvetica";
-  line-height: 15px;
+  line-height: 13px;
   padding: 4%;
   background-color: #ffffff;
 }
@@ -63,27 +63,29 @@
   color: #7c8082;
   background-color: #ffffff;
   padding: 2%;
+  font-weight: bold;
 }
 
 
 .overlayFilme {
-  padding: 0px;
-  opacity: 0.4;
-  position: absolute;
-  width: 89%;
-  height: 100%;
-  margin-top: 0px;
-  z-index: 0;
-  background-color: #515a6e;
-  color: #fffefe;
-  font-weight: bold;
-  visibility: visible;
+    padding: 0px;
+    opacity: 0.6;
+    position: absolute;
+    width: 97%;
+    height: 100%;
+    margin-top: 0px;
+    z-index: 0;
+    background-color: #515a6e;
+    color: #fffefe;
+    font-weight: bold;
+    visibility: visible;
+      box-shadow: 0 7px 6px rgba(0, 0, 0, 0.3);
 }
 
 .overlayFilmeTexto {
     padding: 0px;
     position: absolute;
-    width: 89%;
+    width: 96%;
     height: 100%;
     margin-top: 0px;
     z-index: 1;
@@ -96,10 +98,12 @@
 }
 
 .overlayClassificacao{
-    position: absolute;
+position: absolute;
+    border-radius: 11px;
     width: 13%;
-    height: 25%;
-    margin-top: 0px;
+    height: 22%;
+    margin-top: 2px;
+    margin-left: 2px;
     z-index: 2;
     color: #ffffff;
     background-color: #409b6b;
@@ -182,7 +186,19 @@ ion-badge{
     }
 
     .labelMaisProcurados {
-        font-size: 0.8em;
+        font-size: 0.7em;
+    }
+
+    .botaoMenu{
+        padding: 3%;
+    }
+
+    .botaoTexto{
+      font-size: 1.1em;
+      font-family: "Open Sans", "Helvetica";
+      line-height: 15px;
+      position: relative;
+      color:#5b6062
     }
 
   }
