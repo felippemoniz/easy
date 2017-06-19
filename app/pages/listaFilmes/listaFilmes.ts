@@ -32,26 +32,16 @@ export class ListaFilmes {
 
 
   constructor(private nav: NavController, private navParams: NavParams,  private filmesEmCartazService) {
-    this.filtro = navParams.get('param1');
+    //this.filtro = navParams.get('param1');
     this.filmesEmCartazService = filmesEmCartazService;
 
-    var data = JSON.parse(this.filtro.quando);
+    //var data = JSON.parse(this.filtro.quando);
     var filtro="";
 
 
-    for (var i = 0; i < this.filtro.preferencias.length; i++) {
-        filtro = filtro + "','" + this.filtro.preferencias[i].nome;
-    }
+    filtro = "2017-06-19";
 
-    filtro = filtro.substring(2,filtro.length)+ "'";
 
-/*
-    let loader = this.loading.create({
-      content: 'Getting latest entries...',
-    });
-
-    loader.present().then(() => {
-*/
                   //futuramente passar a data como parametro findAll(data.data)
                   this.filmesEmCartazService.findAll(filtro).subscribe(
                               data => {
@@ -64,31 +54,17 @@ export class ListaFilmes {
                               },
                               () => console.log(this.qtFilme)
                           );
-//    loader.dismiss();
-//    });
+
 
   }
+
 
   static get parameters() {
       return [[NavController], [NavParams], [filmesEmCartazService]];
   }
 
 
-/*
-  ionViewLoaded() {
-    let loader = this.loading.create({
-      content: 'Getting latest entries...',
-    });
 
-    loader.present().then(() => {
-      this.someService.getLatestEntries()
-        .subscribe(res => {
-          this.latestEntries = res;
-        });
-      loader.dismiss();
-    });
-  }
-*/
 
 
 
