@@ -8,7 +8,7 @@
 Veja as Sessões
 </div>
 
- <!-- {{filtroInicial | json}}  -->
+  {{sessoes | json}}
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
   <ion-chip  *ngFor=" let filme of itensSelecionados" class="breadcrumb">
@@ -17,13 +17,13 @@ Veja as Sessões
   </ion-chip>
 </ion-scroll>
 
-
+<!--
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
   <ion-chip  *ngFor=" let listaPref of filtroInicial.preferencias" class="breadcrumb">
     <ion-label class="tag"> {{listaPref.nome}}</ion-label>
   </ion-chip>
 </ion-scroll>
-
+-->
 
 
 <br><br>

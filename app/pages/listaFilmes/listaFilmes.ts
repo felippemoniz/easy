@@ -90,8 +90,8 @@ export class ListaFilmes {
 
    verSessoes(){
      this.nav.push(Sessoes, {
-          param1: this.filmesSelecionados, 
-          param2 : this.filtro,
+          param1: this.filmesSelecionados,
+          //param2 : this.filtro,
           param3 : "F"
       });
    }
@@ -128,7 +128,8 @@ export class ListaFilmes {
      //faz a busca no array de filmes selecionados
      for (var i = 0; i < this.filmesSelecionados.length; i++) {
         var item = this.filmesSelecionados[i];
-        if ( item.id == filmeEmCartaz.id) {
+
+        if ( item.idfilme == filmeEmCartaz.idfilme) {
            flagEncontrado = true;
            index=i;
         }

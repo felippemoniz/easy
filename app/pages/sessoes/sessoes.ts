@@ -2,9 +2,9 @@ import {OnInit} from '@angular/core';
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {sessoesService} from '../../services/sessoes-service';
-import {sessao} from '../../model/sessao'; 
+import {sessao} from '../../model/sessao';
 import {filtro} from '../../model/filtro';
-import {Geolocation} from 'ionic-native'; 
+import {Geolocation} from 'ionic-native';
 
 declare var geolib : any;
 
@@ -31,20 +31,22 @@ export class Sessoes {
     this.tipoPesquisa = navParams.get('param3');
     this.sessoesService = sessoesService;
 
+    console.log("steste")
 
-    var dataSessoes = JSON.parse(this.filtroInicial.quando);
+    //var dataSessoes = JSON.parse(this.filtroInicial.quando);
+    var dataSessoes;
     var filtro="";
     var filtroPreferencias="";
 
 
 
    //Recupera as preferências da tela de filtro inicial (dublado, legendado, 3d)
-   for (var i = 0; i < this.filtroInicial.preferencias.length; i++) {
+/*   for (var i = 0; i < this.filtroInicial.preferencias.length; i++) {
         filtroPreferencias = filtroPreferencias + "','" + this.filtroInicial.preferencias[i].nome;
-    } 
+    }
 
     filtroPreferencias = filtroPreferencias.substring(2,filtroPreferencias.length)+ "'";
-
+*/
 
 
     //Se a consulta vier da página de cinemas
@@ -53,17 +55,17 @@ export class Sessoes {
             //Recupera os ids dos filmes selecionados
             for (var i = 0; i < this.itensSelecionados.length; i++) {
                 filtro = filtro + "," + this.itensSelecionados[i].idcinema;
-            } 
+            }
 
             filtro = filtro.substring(1,filtro.length)
 
 
             this.sessoesService.findByTheater(filtro,dataSessoes.data,filtroPreferencias).subscribe(
                         data => {
-                            this.sessoes = data; 
+                            this.sessoes = data;
                         },
                         err => {
-                            console.log(err); 
+                            console.log(err);
                         },
                         () => console.log("")
             );
@@ -73,13 +75,13 @@ export class Sessoes {
             //Recupera os ids dos filmes selecionados
             for (var i = 0; i < this.itensSelecionados.length; i++) {
                 filtro = filtro + "," + this.itensSelecionados[i].id;
-            } 
+            }
 
             filtro = filtro.substring(1,filtro.length)
 
-            this.sessoesService.findById(filtro,dataSessoes.data,filtroPreferencias).subscribe(
+            this.sessoesService.findById(filtro,"2017-06-18",filtroPreferencias).subscribe(
                         data => {
-                            this.sessoes = data; 
+                            this.sessoes = data;
                         },
                         err => {
                             console.log(err);
@@ -99,7 +101,7 @@ export class Sessoes {
 
   private getDistance (origin, destination){
     let distance = geolib.getDistance(origin, destination);
-    
+
     return geolib.convertUnit('km',distance,2);
   }
 
@@ -117,7 +119,7 @@ export class Sessoes {
            {latitude : sessao.latitude,
            longitude : sessao.longitude}
           )
-        }      
+        }
     });
 
   }
@@ -155,9 +157,9 @@ calculaHoraFim(time, minsToAdd) {
   var bits = time.split(':');
   var mins = bits[0]*60 + (+bits[1]) + (+minsToAdd);
 
-  return z(mins%(24*60)/60 | 0) + ':' + z(mins%60);  
+  return z(mins%(24*60)/60 | 0) + ':' + z(mins%60);
 
-}  
+}
 
 
   recuperaDistancia(idCinema){
