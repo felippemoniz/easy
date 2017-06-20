@@ -18,36 +18,23 @@ export class Sessoes {
 
   itensSelecionados = [];
   sessoes: sessao[];
-  filtroInicial: filtro;
+  filtroData: string;
   tipoPesquisa;
   latitude : number;
   Longitude : number;
 
 
+
 //lições aprendidas: tive que definir o tipo sessoesService pois dava pau no momento da execução, não faço ideia do porquê
  constructor(private nav: NavController, private navParams: NavParams , private sessoesService : sessoesService){
     this.itensSelecionados = navParams.get('param1');
-    this.filtroInicial = navParams.get('param2');
+    this.filtroData = navParams.get('param2');
     this.tipoPesquisa = navParams.get('param3');
     this.sessoesService = sessoesService;
 
-    console.log("steste")
+    var filtro = ""
 
-    //var dataSessoes = JSON.parse(this.filtroInicial.quando);
-    var dataSessoes;
-    var filtro="";
-    var filtroPreferencias="";
-
-
-
-   //Recupera as preferências da tela de filtro inicial (dublado, legendado, 3d)
-/*   for (var i = 0; i < this.filtroInicial.preferencias.length; i++) {
-        filtroPreferencias = filtroPreferencias + "','" + this.filtroInicial.preferencias[i].nome;
-    }
-
-    filtroPreferencias = filtroPreferencias.substring(2,filtroPreferencias.length)+ "'";
-*/
-
+    console.log(this.tipoPesquisa)
 
     //Se a consulta vier da página de cinemas
     if (this.tipoPesquisa === "C"){
@@ -60,7 +47,7 @@ export class Sessoes {
             filtro = filtro.substring(1,filtro.length)
 
 
-            this.sessoesService.findByTheater(filtro,dataSessoes.data,filtroPreferencias).subscribe(
+            this.sessoesService.findByTheater(filtro,this.filtroData).subscribe(
                         data => {
                             this.sessoes = data;
                         },
@@ -74,12 +61,13 @@ export class Sessoes {
 
             //Recupera os ids dos filmes selecionados
             for (var i = 0; i < this.itensSelecionados.length; i++) {
-                filtro = filtro + "," + this.itensSelecionados[i].id;
+                filtro = filtro + "," + this.itensSelecionados[i].idfilme;
             }
 
             filtro = filtro.substring(1,filtro.length)
 
-            this.sessoesService.findById(filtro,"2017-06-18",filtroPreferencias).subscribe(
+
+            this.sessoesService.findById(filtro,this.filtroData).subscribe(
                         data => {
                             this.sessoes = data;
                         },
@@ -92,7 +80,7 @@ export class Sessoes {
 
     }
 
-  this.getAllDistances();
+ // this.getAllDistances();
 
 
   }
@@ -146,6 +134,7 @@ formataDistanciaAmigavel(distancia){
 
 
 formataHora(hora){
+  var horaString = hora.toString();
   return hora.substring(0,2) + ":" + hora.substring(2,4);
 }
 

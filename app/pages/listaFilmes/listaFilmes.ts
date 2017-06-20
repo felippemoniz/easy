@@ -27,33 +27,27 @@ export class ListaFilmes {
   filmesSelecionados = [];
   contadorFilmesEscolhidos : number = 0;
   isClassVisible: boolean = false;
-  filtro: filtro;
   qtFilme = 0;
+  filtroData : string;
 
 
   constructor(private nav: NavController, private navParams: NavParams,  private filmesEmCartazService) {
-    //this.filtro = navParams.get('param1');
+    this.filtroData = navParams.get('param1');
     this.filmesEmCartazService = filmesEmCartazService;
 
-    //var data = JSON.parse(this.filtro.quando);
-    var filtro="";
 
-
-    filtro = "2017-06-19";
-
-
-                  //futuramente passar a data como parametro findAll(data.data)
-                  this.filmesEmCartazService.findAll(filtro).subscribe(
-                              data => {
-                                  this.filmes = data;
-                                  this.qtFilme = this.filmes.length;
-                                  console.log(this.qtFilme);
-                              },
-                              err => {
-                                  console.log(err);
-                              },
-                              () => console.log(this.qtFilme)
-                          );
+    //futuramente passar a data como parametro findAll(data.data)
+    this.filmesEmCartazService.findAll(this.filtroData).subscribe(
+                data => {
+                    this.filmes = data;
+                    this.qtFilme = this.filmes.length;
+                    console.log(this.qtFilme);
+                },
+                err => {
+                    console.log(err);
+                },
+                () => console.log(this.qtFilme)
+            );
 
 
   }
@@ -91,7 +85,7 @@ export class ListaFilmes {
    verSessoes(){
      this.nav.push(Sessoes, {
           param1: this.filmesSelecionados,
-          //param2 : this.filtro,
+          param2 : this.filtroData,
           param3 : "F"
       });
    }
@@ -145,13 +139,11 @@ export class ListaFilmes {
       this.contadorFilmesEscolhidos = this.filmesSelecionados.length;
     }
 
+
 }
 
 
-  selecionaOpcaoPrefs(listaPref){
-    //this.filtro.preferencias.splice(listaPref);
-    listaPref.selecionado = !listaPref.selecionado;
-  }
+
 
 
 

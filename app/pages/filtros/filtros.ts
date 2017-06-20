@@ -48,7 +48,12 @@ export class Filtros {
 
 
   verFilmes(){
-      this.nav.push(ListaFilmes);
+
+     this.nav.push(ListaFilmes, {
+          param1: "2017-06-20"
+      });
+
+
   }
 
 

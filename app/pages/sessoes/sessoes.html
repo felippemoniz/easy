@@ -8,7 +8,7 @@
 Veja as Sessões
 </div>
 
-  {{sessoes | json}}
+ <!-- {{sessoes | json}} -->
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
   <ion-chip  *ngFor=" let filme of itensSelecionados" class="breadcrumb">
@@ -44,7 +44,7 @@ Veja as Sessões
   			<ion-row style="height:90%">
   				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
 
-          <span style="font-weight:bold;">{{formataHora(sessao.horario)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 11px;">{{calculaHoraFim(formataHora(sessao.horario), sessao.duracao)}}</span>
+          <span style="font-weight:bold;">{{formataHora(sessao.hora)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 11px;">{{calculaHoraFim(formataHora(sessao.hora), sessao.duracao)}}</span>
 
   				</ion-col>
   				<ion-col width-80>

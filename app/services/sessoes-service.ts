@@ -22,15 +22,15 @@ export class sessoesService {
       this.http = http;
   }
 
-  findById(id,data,preferencia) {
-        return this.http.get(sessoesURL + id +"/"+ data + "/"+ preferencia )
+  findById(id,data) {
+        return this.http.get(sessoesURL + id +"/"+ data )
           .map(res => res.json())
           .catch(this.handleError);
    
   }
 
-  findByTheater(id,data,preferencia) {
-        return this.http.get(sessoesPorCinemaURL + id +"/"+ data + "/"+ preferencia )
+  findByTheater(id,data) {
+        return this.http.get(sessoesPorCinemaURL + id +"/"+ data  )
           .map(res => res.json())
           .catch(this.handleError);
    
