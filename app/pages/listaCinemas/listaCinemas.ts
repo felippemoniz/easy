@@ -9,7 +9,7 @@ import {NavParams} from 'ionic-angular';
 import {filtro} from '../../model/filtro';
 import {cinemaService} from '../../services/cinema-service';
 import {chip} from '../../model/chip';
-import {Geolocation} from 'ionic-native'; 
+import {Geolocation} from 'ionic-native';
 import { Loading } from 'ionic-angular';
 
 
@@ -25,15 +25,15 @@ declare var geolib : any;
 
 export class ListaCinemas {
 
-  filtro: filtro;
   cinemas: cinema[];
   cinemasSelecionados = [];
   contadorCinemasEscolhidos : number = 0;
   public loading = Loading.create();
+  filtroData : string;
 
   constructor(private nav: NavController, private navParams: NavParams, private cinemaService:cinemaService) {
 
-    this.filtro = navParams.get('param1');
+    this.filtroData = navParams.get('param1');
     this.cinemaService = cinemaService;
     this.nav.present(this.loading);
 
@@ -57,7 +57,7 @@ export class ListaCinemas {
 
   private getDistance (origin, destination){
     let distance = geolib.getDistance(origin, destination);
-    
+
     return geolib.convertUnit('km',distance,2);
   }
 
@@ -90,11 +90,11 @@ export class ListaCinemas {
         cinema.distancia = this.getDistance(
           {latitude: result.coords.latitude,
            longitude: result.coords.longitude},
-          {latitude : cinema.latitude,
-           longitude : cinema.longitude}
+          {latitude : cinema.longitude,
+           longitude : cinema.latitude}
           )
-        }    
-        
+        }
+
         this.cinemas.sort(function (a, b) {
           return a.distancia - b.distancia;
         });
@@ -146,8 +146,8 @@ export class ListaCinemas {
 
 verSessoes(){
   this.nav.push(Sessoes, {
-       param1: this.cinemasSelecionados, 
-       param2 : this.filtro,
+       param1: this.cinemasSelecionados,
+       param2 : this.filtroData,
        param3 : "C"
    });
 }

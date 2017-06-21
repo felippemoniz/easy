@@ -22,11 +22,11 @@ export class Filtros {
 
 
   constructor(private nav: NavController, private navParams: NavParams,  private filmesEmCartazService: filmesEmCartazService){
-  
+
 
       this.filmesEmCartazService = filmesEmCartazService;
 
-     /* this.filmesEmCartazService.getTop6().subscribe(
+     this.filmesEmCartazService.getTop6().subscribe(
                   data => {
                       this.filmes = data;
                       console.log(this.filmes.length)
@@ -36,26 +36,33 @@ export class Filtros {
                   },
                   () => console.log()
               );
-*/
+
   }
 
 
 
-  verCinemas(botaoCinema){
-      this.botaoCinema.class
-      this.nav.push(ListaCinemas);
+  verCinemas(){
+     console.log("sdfasdfasdfasdfasd")
+     this.nav.push(ListaCinemas, {
+          param1: "2017-06-20"
+      });
   }
 
 
   verFilmes(){
-
      this.nav.push(ListaFilmes, {
           param1: "2017-06-20"
       });
-
-
   }
 
+
+  verSessoes(){
+    this.nav.push(Sessoes, {
+         param1: this.cinemasSelecionados,
+         param2 : this.filtroData,
+         param3 : "C"
+     });
+  }
 
 
 

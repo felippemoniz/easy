@@ -27,8 +27,8 @@ export class cinemaService {
 
   }
 
-  findByTheater(id,data,preferencia) {
-        return this.http.get(sessoes + id +"/"+ data + "/"+ preferencia )
+  findByTheater(id,data) {
+        return this.http.get(sessoes + id +"/"+ data )
           .map(res => res.json())
           .catch(this.handleError);
 

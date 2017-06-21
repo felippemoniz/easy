@@ -80,7 +80,7 @@ export class Sessoes {
 
     }
 
- // this.getAllDistances();
+  this.getAllDistances();
 
 
   }
@@ -89,7 +89,6 @@ export class Sessoes {
 
   private getDistance (origin, destination){
     let distance = geolib.getDistance(origin, destination);
-
     return geolib.convertUnit('km',distance,2);
   }
 
@@ -101,9 +100,10 @@ export class Sessoes {
     Geolocation.getCurrentPosition().then(result=>{
       for (let i = 0; i < this.sessoes.length; i++){
         let sessao = this.sessoes[i];
+
         sessao.distancia = this.getDistance(
-           {latitude: result.coords.latitude,
-           longitude: result.coords.longitude},
+           {latitude: result.coords.longitude,
+           longitude: result.coords.latitude},
            {latitude : sessao.latitude,
            longitude : sessao.longitude}
           )
@@ -135,7 +135,7 @@ formataDistanciaAmigavel(distancia){
 
 formataHora(hora){
   var horaString = hora.toString();
-  return hora.substring(0,2) + ":" + hora.substring(2,4);
+  return horaString.substring(0,2) + ":" + horaString.substring(2,4);
 }
 
 

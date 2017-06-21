@@ -20,7 +20,7 @@
 
 <ion-grid style="padding: 0;">
   <ion-row>
-    <ion-col #botaoCinema class="botaoMenu" style="border-right:  1px solid #ccc8c5;" (tap)="verCinemas(botaoCinema)">
+    <ion-col #botaoCinema class="botaoMenu" style="border-right:  1px solid #ccc8c5;" (tap)="verCinemas()">
     <br>
               <ion-grid >
                   <ion-row>
@@ -42,7 +42,7 @@
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col class="botaoMenu" style="border-bottom:  1px solid #ccc8c5;">
+    <ion-col class="botaoMenu" (tap)="verSessoesAgora()" style="border-bottom:  1px solid #ccc8c5;">
     <br>
              <ion-grid>
                   <ion-row>
@@ -62,13 +62,13 @@
     <ion-col class="labelMaisProcurados">MAIS PROCURADOS </ion-col>
   </ion-row>
     <ion-row>
-    <ion-col class="botaoMenuTopFilmes"> 
+    <ion-col class="botaoMenuTopFilmes">
 
-    <ion-slides  #mySlider [options]="{slidesPerView: 2}" >
+    <ion-slides  #mySlider [options]="{slidesPerView: 2.2}" >
         <ion-slide *ngFor="let slide of filmes;let i=index" >
           <div class="overlayClassificacao">{{i + 1}}º</div>
-          <div class="overlayFilmeTexto">{{slide.nome}}</div>   
-          <div class="overlayFilme"></div>       
+          <div class="overlayFilmeTexto">{{slide.nome}}</div>
+          <div class="overlayFilme"></div>
           <img  src={{slide.imagem}} />
           </ion-slide>
       </ion-slides>

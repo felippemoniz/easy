@@ -41,7 +41,7 @@ Escolha os filmes
         </ion-chip>
       </div>
 
-      <div class="tagRanking" *ngIf="i<3 && filme.qtacessos > 0"><b>{{i + 1}}º</b> MAIS PROCURADO</div>
+      <div class="tagRanking" *ngIf="i<3 && filme.qtacesso > 0"><b>{{i + 1}}º</b> MAIS PROCURADO</div>
 
       <img  src={{filme.imagem}} (click)="verDetalhes(filme)"  />
 
@@ -55,7 +55,7 @@ Escolha os filmes
                   </ion-row>
                   <ion-row>
                       <ion-col  class="labelGeneroFilme">
-                            {{filme.genero}} | {{filme.duracao}} minutos | {{trataDetalhes("C", filme.classificacao)}}
+                            {{filme.genero}} | {{filme.duracao}} minutos | {{ filme.classificacao}}
                       </ion-col>
                   </ion-row>
                 </ion-col>

@@ -11,11 +11,7 @@ Escolha os cinemas
 <!-- {{cinemas | json}} -->
 
 
-<ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
-  <ion-chip  *ngFor=" let listaPref of filtro.preferencias" class="breadcrumb">
-    <ion-label class="tag"> {{listaPref.nome}}</ion-label>
-  </ion-chip>&nbsp;
-</ion-scroll>
+
 
 
 <!--Scrol somente da tela de resultado -->
@@ -24,7 +20,7 @@ Escolha os cinemas
 <!-- ################################ CARDS #####################################-->
 
 
-   <ion-card  #cinemaCard *ngFor=" let cinema of cinemas "> 
+   <ion-card  #cinemaCard *ngFor=" let cinema of cinemas ">
 
 
         <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="cinema.selecionado === 0" (click)="selecionaCinema(cinema);" round small >
@@ -41,14 +37,14 @@ Escolha os cinemas
 
       <!--div class="tagRanking" *ngIf="i<3 && filme.qtacessos > 0"><b>{{i + 1}}º</b> MAIS PROCURADO</div-->
 
-      <img  src="./images/card.png" (click)="verDetalhes(filme)" >
+      <img  src={{cinema.imagem}} (click)="verDetalhes(filme)" >
 
       <div class="card-subtitle">
           <ion-row>
               <ion-col>
                   <ion-row>
                       <ion-col class="fonteTituloFilme">
-                      {{cinema.nomecinema}}
+                      {{cinema.nome}}
                       </ion-col>
                   </ion-row>
                   <ion-row>
