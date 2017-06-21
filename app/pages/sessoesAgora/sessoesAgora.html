@@ -35,14 +35,14 @@ teste
   			<ion-row style="height:90%">
   				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
 
-					<span style="font-weight:bold;">{{formataHora(sessao.horario)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 11px;">{{calculaHoraFim(formataHora(sessao.horario), sessao.duracao)}}</span>
+					<span style="font-weight:bold;">{{formataHora(sessao.hora)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 11px;">{{calculaHoraFim(formataHora(sessao.hora), sessao.duracao)}}</span>
 
   				</ion-col>
   				<ion-col width-80>
                       <ion-avatar style="position: absolute"><img src={{sessao.poster}}></ion-avatar>
                       <div style="padding-left: 40px">
-                          <span class="fonteLabelTituloFilme">{{sessao.nome}}</span><br>
-                          <span class="fonteLabelTituloCinema" ><b>{{sessao.nomecinema}}</b></span><br>
+                          <span class="fonteLabelTituloFilme">{{sessao.nomeFilme}}</span><br>
+                          <span class="fonteLabelTituloCinema" ><b>{{sessao.nomeCinema}}</b></span><br>
                           <span class="fonteLabelTituloDistancia"><b>{{ formataDistanciaAmigavel(sessao.distancia) }}</b> de você  ({{sessao.distancia}} km)</span><br>
                           <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} - {{sessao.tipo3d}}</span><br>
                           <ion-chip class="ratingIMDBSessao">

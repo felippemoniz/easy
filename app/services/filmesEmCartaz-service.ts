@@ -35,6 +35,13 @@ export class filmesEmCartazService {
   }
 
 
+  getEstreias(cidade) {
+        var url = 'https://api-content.ingresso.com/v0/templates/soon/'+cidade;
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
+
+
   handleError(error) {
       console.error(error);
       return Observable.throw(error.json().error || 'Server error');

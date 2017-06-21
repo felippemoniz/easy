@@ -8,7 +8,6 @@ import {NavParams} from 'ionic-angular';
 import {filtro} from '../../model/filtro';
 import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
 import {chip} from '../../model/chip';
-//import { LoadingController } from 'ionic-angular';
 
 
 @Component({

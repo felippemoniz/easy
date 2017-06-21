@@ -25,15 +25,17 @@ export class SessoesAgora {
   latitude : number;
   Longitude : number;
   public loading = Loading.create();
+  filtroData: string;
 
 
 //lições aprendidas: tive que definir o tipo sessoesService pois dava pau no momento da execução, não faço ideia do porquê
  constructor(private nav: NavController, private navParams: NavParams , private sessoesService : sessoesService){
 
+    this.filtroData = navParams.get('param1');
     this.sessoesService = sessoesService;
     this.nav.present(this.loading);
 
-    this.sessoesService.findNow().subscribe(
+    this.sessoesService.findNow(this.filtroData).subscribe(
                 data => {
                     this.sessoes = data;
                     this.loading.dismiss(); 
@@ -52,7 +54,8 @@ export class SessoesAgora {
 
 
   formataHora(hora){
-    return hora.substring(0,2) + ":" + hora.substring(2,4);
+    var horaString = hora.toString();
+    return horaString.substring(0,2) + ":" + horaString.substring(2,4);
   }
 
 
@@ -104,11 +107,12 @@ export class SessoesAgora {
     Geolocation.getCurrentPosition().then(result=>{
       for (let i = 0; i < this.sessoes.length; i++){
         let sessao = this.sessoes[i];
+        console.log(result.coords.latitude + " - " + result.coords.longitude)
         sessao.distancia = this.getDistance(
            {latitude: result.coords.latitude,
            longitude: result.coords.longitude},
-           {latitude : sessao.latitude,
-           longitude : sessao.longitude}
+           {latitude : sessao.longitude,
+           longitude : sessao.latitude}
           )
         }      
     });

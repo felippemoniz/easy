@@ -36,8 +36,8 @@ export class sessoesService {
    
   }
 
-  findNow() {
-        return this.http.get(sessoesAgoraURL)
+  findNow(data) {
+        return this.http.get(sessoesAgoraURL + data )
           .map(res => res.json())
           .catch(this.handleError);
    

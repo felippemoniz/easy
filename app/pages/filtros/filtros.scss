@@ -18,7 +18,28 @@
     width: 100%;
     color: #fff;
     font-family: "Open Sans", "Helvetica";
+  }
 
+
+  .botaoSuperior{
+
+    position: absolute;
+    line-height: 26px;
+    width: 100%;
+    color: #ffffff;
+    font-family: "Open Sans", "Helvetica";
+    background-color: #ffffff;
+    opacity: 0.8;
+  }
+
+.botaoSuperiorTexto{
+
+    position: absolute;
+    font-size: 1.2em;
+    line-height: 26px;
+    width: 100%;
+    color: #ffffff;
+    font-family: "Open Sans", "Helvetica";
   }
 
 .slider-slides{
@@ -69,7 +90,7 @@
 
 .overlayFilme {
     padding: 0px;
-    opacity: 0.6;
+    opacity: 0.4;
     position: absolute;
     width: 97%;
     height: 100%;
@@ -101,7 +122,7 @@
 position: absolute;
     border-radius: 11px;
     width: 13%;
-    height: 22%;
+    height: 37%;
     margin-top: 2px;
     margin-left: 2px;
     z-index: 2;

@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core'
 import {NavController, NavParams} from 'ionic-angular';
 import {ListaFilmes} from '../listaFilmes/listaFilmes';
 import {ListaCinemas} from '../listaCinemas/listaCinemas';
+import {SessoesAgora} from '../sessoesAgora/sessoesAgora';
 import {filtro} from '../../model/filtro';
 import {chip} from '../../model/chip';
 import { Loading } from 'ionic-angular';
@@ -24,9 +25,9 @@ export class Filtros {
   constructor(private nav: NavController, private navParams: NavParams,  private filmesEmCartazService: filmesEmCartazService){
 
 
-      this.filmesEmCartazService = filmesEmCartazService;
+     this.filmesEmCartazService = filmesEmCartazService;
 
-     this.filmesEmCartazService.getTop6().subscribe(
+     this.filmesEmCartazService.getEstreias(12).subscribe(
                   data => {
                       this.filmes = data;
                       console.log(this.filmes.length)
@@ -56,11 +57,9 @@ export class Filtros {
   }
 
 
-  verSessoes(){
-    this.nav.push(Sessoes, {
-         param1: this.cinemasSelecionados,
-         param2 : this.filtroData,
-         param3 : "C"
+  verSessoesAgora(){
+    this.nav.push(SessoesAgora, {
+        param1: "2017-06-20"
      });
   }
 
