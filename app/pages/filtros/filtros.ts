@@ -27,7 +27,7 @@ export class Filtros {
 
      this.filmesEmCartazService = filmesEmCartazService;
 
-     this.filmesEmCartazService.getEstreias(12).subscribe(
+     this.filmesEmCartazService.getTop6().subscribe(
                   data => {
                       this.filmes = data;
                       console.log(this.filmes.length)

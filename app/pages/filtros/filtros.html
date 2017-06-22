@@ -60,19 +60,18 @@
 
 <ion-grid style="padding: 0;">
   <ion-row>
-    <ion-col class="labelMaisProcurados">MAIS PROCURADOS </ion-col>
+    <ion-col class="labelMaisProcurados" style="padding: 2%;">O QUE VEM POR AÍ </ion-col>
   </ion-row>
     <ion-row>
-    <ion-col class="botaoMenuTopFilmes">
+    <ion-col class="labelMaisProcurados" style="opacity:0.5">
 
-    <ion-slides  #mySlider [options]="{slidesPerView: 2.2}" >
-        <ion-slide *ngFor="let slide of filmes;let i=index" >
-          <div class="overlayClassificacao">{{i + 1}}º</div>
-          <div class="overlayFilmeTexto">{{slide.nome}}</div>
-          <div class="overlayFilme"></div>
-          <img  src={{slide.imagem}} />
-          </ion-slide>
-      </ion-slides>
+
+      <div  #filmeCard *ngFor=" let filme of filmes;let i=index"   style="width:100%">
+        <div class="overlayFilme">{{filme.nome}}<br><span style="font-size:0.6em">Estreia em <b>9 dias</b> (12/12/2012)</span></div>
+        <img  src={{filme.imagem}}  (click)="verDetalhes(filme)"  />
+      </div>
+
+
     </ion-col>
   </ion-row>
   <ion-row>
