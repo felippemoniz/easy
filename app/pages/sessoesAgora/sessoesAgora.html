@@ -23,7 +23,7 @@ Veja as Sessões
 <ion-col width-33 style="font-size: 10px"></ion-col>
 </ion-row>
 
-<button class="botaoVerSessoes" (click)="verSessoesProximas()">teste</button>
+<button class="botaoVerSessoes" (click)="verSessoesProximas()">Só próximos (teste)</button>
 
 <!--Scrol somente da tela de resultado -->
 <ion-scroll  scrollY="true" class="scrollVertical" overflow-scroll="true" >
@@ -39,7 +39,7 @@ teste
 
   				</ion-col>
   				<ion-col width-80>
-                      <ion-avatar style="position: absolute"><img src={{sessao.poster}}></ion-avatar>
+                      <img src={{sessao.poster}}  class="posterPequeno">
                       <div style="padding-left: 40px">
                           <span class="fonteLabelTituloFilme">{{sessao.nomeFilme}}</span><br>
                           <span class="fonteLabelTituloCinema" ><b>{{sessao.nomeCinema}}</b></span><br>

@@ -20,10 +20,13 @@ export class Filtros {
   public loading = Loading.create();
   testSlides: string[] = [];
   @ViewChild('botaoCinema') botaoCinema: any;
+  dataAtual: string ="";
+
 
 
   constructor(private nav: NavController, private navParams: NavParams,  private filmesEmCartazService: filmesEmCartazService){
 
+     this.dataAtual = this.retornaDataAtual();
 
      this.filmesEmCartazService = filmesEmCartazService;
 
@@ -41,25 +44,34 @@ export class Filtros {
   }
 
 
+retornaDataAtual(){
+  var dataAtual = new Date();
+  var dia = ("0" + (dataAtual.getDate())).slice(-2)
+  var mes = ("0" + (dataAtual.getMonth() + 1)).slice(-2)
+  var ano = dataAtual.getFullYear();
+
+  return ano + "-" + mes + "-" + dia;
+}
+
 
   verCinemas(){
      console.log("sdfasdfasdfasdfasd")
      this.nav.push(ListaCinemas, {
-          param1: "2017-06-20"
+          param1: this.dataAtual
       });
   }
 
 
   verFilmes(){
      this.nav.push(ListaFilmes, {
-          param1: "2017-06-20"
+          param1: this.dataAtual
       });
   }
 
 
   verSessoesAgora(){
     this.nav.push(SessoesAgora, {
-        param1: "2017-06-20"
+        param1: this.dataAtual
      });
   }
 
