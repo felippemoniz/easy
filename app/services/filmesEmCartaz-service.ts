@@ -23,7 +23,7 @@ export class filmesEmCartazService {
       return this.http.get(filmesEmCartazURL+filtro)
           .map(res => res.json())
           .catch(this.handleError);
-   
+
   }
 
 
@@ -31,16 +31,15 @@ export class filmesEmCartazService {
       return this.http.get(SERVER_URL + "topFilmes/")
           .map(res => res.json())
           .catch(this.handleError);
-   
+
   }
 
 
-  getEstreias(cidade) {
-        var url = 'https://api-content.ingresso.com/v0/templates/soon/'+cidade;
+/*        var url = 'https://api-content.ingresso.com/v0/templates/soon/'+cidade;
         var response = this.http.get(url).map(res => res.json());
         return response;
     }
-
+*/
 
   handleError(error) {
       console.error(error);
