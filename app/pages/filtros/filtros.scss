@@ -33,6 +33,14 @@
     height: 15%;
   }
 
+ion-select {
+    max-width: 100%;
+}
+
+.select-text {
+    line-height: initial;
+}
+
 .botaoSuperiorTexto{
     position: absolute;
     font-size: 1em;
@@ -90,7 +98,7 @@
 
 .overlayFilme {
   position: absolute;
-  height: 6%;
+  height: 3.5%;
   margin-top: 22%;
   width: 100%;
   opacity: 0.8;

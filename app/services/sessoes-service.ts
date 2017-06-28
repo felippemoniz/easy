@@ -29,6 +29,15 @@ export class sessoesService {
    
   }
 
+
+  getDates(data) {
+        return this.http.get(SERVER_URL + 'getDates/' + data )
+          .map(res => res.json())
+          .catch(this.handleError);
+   
+  }
+
+
   findByTheater(id,data) {
         return this.http.get(sessoesPorCinemaURL + id +"/"+ data  )
           .map(res => res.json())

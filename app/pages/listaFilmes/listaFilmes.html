@@ -76,14 +76,14 @@ Escolha os filmes
 <ion-toolbar position="bottom" class="toolbarVerSessoes" >
 <ion-grid >
   <ion-row>
-      <ion-col width-50>
-          <button class="botaoVerSessoes" (click)="verSessoes()">VER SESSÕES</button>
-
-      </ion-col>
       <ion-col width-50  style="text-align:center;">
-          <b> <span class="fonteLabel" style="font-size: 23px; ">{{ contadorFilmesEscolhidos }}</span> </b><br>
+          <b> <span class="fonteLabel" style="font-size: 23px; ">{{ contadorFilmesEscolhidos }}</span> </b>
           <span class="fonteLabel" style="font-size: 13px;">filmes escolhidos</span>
       </ion-col>
+        <ion-col width-50>
+          <button class="botaoVerSessoes" (click)="verSessoes()">VER SESSÕES</button>
+      </ion-col>
+
  </ion-row>
 </ion-grid>
 </ion-toolbar>

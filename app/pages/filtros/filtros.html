@@ -14,15 +14,13 @@
           <div class="botaoSuperiorTexto" style=" bottom: 0%; width: 50%; ">Brasília</div>
           <div class="botaoSuperior" style=" bottom: 0%; width: 49.5%; height: 18% "></div>
 
-          <div class="botaoSuperiorTexto" style=" bottom: 0%; width: 50%; left:50%">
-          </div>
 
-          <div class="botaoSuperior" style=" bottom: 0%; width: 50%;left:50%; height: 18% ">
+          <div class="botaoSuperior" style=" bottom: 0%; width: 50%; left:50%; height: 18%">
+          </div>
+          <div class="botaoSuperiorTexto" style=" bottom: 0%; width: 50%;left:50%; height: 18% ">
             
-              <ion-select  submitText="Okay" cancelText="Nah">
-                <ion-option value="dos">DOS</ion-option>
-                <ion-option value="lunix">Linux</ion-option>
-                <ion-option value="mac7">Mac OS 7</ion-option>
+              <ion-select submitText="Ok" cancelText="Fechar" [(ngModel)]="dataEscolhida">
+                      <ion-option *ngFor=" let data of datas;let i=index" value="{{data.data}}"><b>{{formataData(data.data)}}</b> ({{data.diasemana}})</ion-option>
               </ion-select>
 
           </div>
@@ -81,8 +79,8 @@
 
 
       <div  #filmeCard *ngFor=" let filme of filmes;let i=index"   style="width:100%">
-        <div class="overlayFilme">{{filme.nome}}<br><span style="font-size:0.6em">Estreia em <b>9 dias</b> (12/12/2012)</span></div>
-        <img  src={{filme.imagem}}  (click)="verDetalhes(filme)"  />
+        <div class="overlayFilme">{{filme.title}}<br><span style="font-size:0.6em">Estreia em {{filme.premiereDate.dayAndMonth}} ({{filme.premiereDate.dayOfWeek}})</span></div>
+        <img  src={{filme.images[1].url}}  /> 
       </div>
 
 
