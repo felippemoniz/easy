@@ -29,9 +29,9 @@ export class Filtros {
 
 
 
-  constructor(private nav: NavController, 
-              private navParams: NavParams,  
-              private filmesEmCartazService: filmesEmCartazService, 
+  constructor(private nav: NavController,
+              private navParams: NavParams,
+              private filmesEmCartazService: filmesEmCartazService,
               private sessoesService : sessoesService,
               public http: Http){
 
@@ -61,7 +61,7 @@ export class Filtros {
                       console.log(err);
                   },
                   () => console.log()
-      );  
+      );
 
   }
 
@@ -84,7 +84,7 @@ export class Filtros {
     dataReduzida = data.substring(0,10)
     mes = data.substring(5,7);
     dia = data.substring(8,10)
- 
+
     if (dataReduzida == this.retornaDataAtual()){
       return "Hoje"
     }
