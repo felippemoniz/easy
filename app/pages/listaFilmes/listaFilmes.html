@@ -3,16 +3,16 @@
 </ion-navbar>
 
 <ion-content class="card-background-page">
-<br>
+
 <div class="labelTituloTela">
 Escolha os filmes
 </div>
-
+<br><br>
 <!-- {{filmes | json}}  -->
 
 
+<ion-scroll  scrollY="true" class="scrollVerticalFilmes" overflow-scroll="true" >
 
-<br>
 
 
 <!-- ################################ CARDS #####################################-->
@@ -64,11 +64,7 @@ Escolha os filmes
 
    </ion-card>
 
-
-
-
-
-
+</ion-scroll>
 </ion-content>
 
 <!-- ##########################################################################-->
@@ -83,7 +79,6 @@ Escolha os filmes
         <ion-col width-50>
           <button class="botaoVerSessoes" (click)="verSessoes()">VER SESSÕES</button>
       </ion-col>
-
  </ion-row>
 </ion-grid>
 </ion-toolbar>

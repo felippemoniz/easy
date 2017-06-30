@@ -25,8 +25,7 @@ export class Filtros {
   testSlides: string[] = [];
   @ViewChild('botaoCinema') botaoCinema: any;
   dataAtual: string ="";
-  dataEscolhida : string;
-
+  dataEscolhida : string = ""
 
 
   constructor(private nav: NavController,
@@ -39,7 +38,7 @@ export class Filtros {
 
      this.filmesEmCartazService = filmesEmCartazService;
      this.sessoesService = sessoesService;
-
+/*
      this.filmesEmCartazService.getTop6().subscribe(
                   data => {
                       this.filmes = data
@@ -50,7 +49,7 @@ export class Filtros {
                   },
                   () => console.log()
       );
-
+*/
 
       this.sessoesService.getDates(this.dataAtual).subscribe(
                   data => {
@@ -118,8 +117,16 @@ export class Filtros {
 
 
   verFilmes(){
+     var data = this.dataEscolhida;
+     if (data=="") {
+       data = this.dataAtual;
+     }
+     else{
+       data=this.formataDataServico(this.dataEscolhida)
+     }
+     
      this.nav.push(ListaFilmes, {
-          param1: this.formataDataServico(this.dataEscolhida)
+          param1: data
       });
   }
 
