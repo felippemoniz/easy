@@ -5,7 +5,7 @@
 <ion-content class="fontePadrao">
 <br>
 <div class="labelTituloTela">
-Veja as Sessões
+<b>Sessões agora!</b>
 </div>
 
 <!--{{filmesSelecionados | json}} -->
@@ -19,15 +19,13 @@ Veja as Sessões
 
 
 <ion-row class="headerSessoes">
-<ion-col width-75>Sessões a partir de <b>agora</b></ion-col>
-<ion-col width-33 style="font-size: 10px"></ion-col>
+    <ion-col width-75 *ngIf="qtSessoes === 1">Foi encontrada apenas <b>uma</b> sessão</ion-col>
+    <ion-col width-75 *ngIf="qtSessoes > 1">Foram encontradas <b>{{qtSessoes}}</b> sessões</ion-col>
+     <ion-col width-33 style="font-size: 10px" (tap)="verSessoesProximas()">sdfsdf</ion-col>
 </ion-row>
-
-<button class="botaoVerSessoes" (click)="verSessoesProximas()">Só próximos (teste)</button>
 
 <!--Scrol somente da tela de resultado -->
 <ion-scroll  scrollY="true" class="scrollVertical" overflow-scroll="true" >
-teste
 <ion-list class="itemListaSessao" no-lines>
 
   <ion-item class="itemItemSessao" #sessaoFilme *ngFor=" let sessao of sessoes">
@@ -35,7 +33,7 @@ teste
   			<ion-row style="height:90%">
   				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
 
-					<span style="font-weight:bold;">{{formataHora(sessao.hora)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 11px;">{{calculaHoraFim(formataHora(sessao.hora), sessao.duracao)}}</span>
+					<span style="font-weight:bold;">{{formataHora(sessao.hora)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 12px;">{{calculaHoraFim(formataHora(sessao.hora), sessao.duracao)}}</span>
 
   				</ion-col>
   				<ion-col width-80>

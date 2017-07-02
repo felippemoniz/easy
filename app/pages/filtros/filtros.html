@@ -11,17 +11,13 @@
               começando agora na sua cidade.<br>
           </div>
 
-          <div class="botaoSuperiorTexto" style=" bottom: 0%; width: 50%; ">Brasília</div>
-          <div class="botaoSuperior" style=" bottom: 0%; width: 49.5%; height: 18% "></div>
+          <div class="botaoSuperior" style=" bottom: 0%; width: 100%; height: 20% ">
 
-
-          <div class="botaoSuperior" style=" bottom: 0%; width: 50%; left:50%; height: 18%">
-          </div>
-          <div class="botaoSuperiorTexto" style=" bottom: 0%; width: 50%;left:50%; height: 18% ">
-            
-              <ion-select submitText="Ok" cancelText="Fechar" [(ngModel)]="dataEscolhida">
-                      <ion-option *ngFor=" let data of datas;let i=index" value="{{data.data}}"><b>{{formataData(data.data)}}</b> ({{data.diasemana}})</ion-option>
-              </ion-select>
+            <ion-scroll  scrollX="true" class="scrollHorizontalDatas" overflow-scroll="true" >
+              <ion-chip  *ngFor=" let data of datas"  [ngClass]="data.selecionado ? 'ativo' : 'inativo'" (tap)="selecionaOpcaoQueroIr(data)">
+                <ion-label  class="tag"><b>{{formataData(data.data)}}</b> ({{data.diasemana}})</ion-label>
+              </ion-chip>
+            </ion-scroll>
 
           </div>
 
@@ -38,7 +34,7 @@
               <ion-grid >
                   <ion-row >
                       <ion-col col-3 class="botaoImagem" style="padding: 0; left: -38%;"><img src="./images/imgCinema.png"/></ion-col>
-                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 37%;">Cinemas&nbsp;&nbsp;<br><span style="font-size: 0.6em;">da sua cidade</span></ion-col>
+                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 37%;">Buscar<br><span style="font-size: 0.6em;">cinemas</span></ion-col>
                   </ion-row>
              </ion-grid>
     <br>
@@ -80,7 +76,7 @@
 
       <div  #filmeCard *ngFor=" let filme of filmes;let i=index"   style="width:100%">
         <div class="overlayFilme">{{filme.title}}<br><span style="font-size:0.6em">Estreia em {{filme.premiereDate.dayAndMonth}} ({{filme.premiereDate.dayOfWeek}})</span></div>
-        <img  src={{filme.images[1].url}}  /> 
+        <img  src={{filme.images[1].url}}  />
       </div>
 
 

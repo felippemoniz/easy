@@ -2,20 +2,23 @@
   <ion-title></ion-title>
 </ion-navbar>
 
-<ion-content class="fontePadrao">
+<ion-content >
 <br>
 <div class="labelTituloTela">
-Veja as Sessões
+<b>Sessões Disponíveis</b>
 </div>
+<div class="labelSubTituloTela">{{filtroData}}</div>
 
  <!-- {{sessoes | json}} -->
-
+<br>
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
-  <ion-chip  *ngFor=" let filme of itensSelecionados" class="breadcrumb">
-    <ion-label *ngIf="tipoPesquisa === 'C'" class="tag"> {{filme.nome | uppercase}}</ion-label>
-    <ion-label *ngIf="tipoPesquisa === 'F'" class="tag"> {{filme.nome | uppercase}}</ion-label>
+  <ion-chip  *ngFor=" let filme of itensSelecionados"  [ngClass]="filme.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(filme)">
+    <ion-label *ngIf="tipoPesquisa === 'C'" class="tag"> {{filme.nome }}</ion-label>
+    <ion-label *ngIf="tipoPesquisa === 'F'" class="tag"> {{filme.nome }}</ion-label>
   </ion-chip>
 </ion-scroll>
+
+
 
 <!--
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
@@ -30,7 +33,8 @@ Veja as Sessões
 
 
 <ion-row class="headerSessoes">
-<ion-col width-75>Sessões</ion-col>
+  <ion-col width-75 *ngIf="qtSessoes === 1">Foi encontrada apenas <b>uma</b> sessão</ion-col>
+<ion-col width-75 *ngIf="qtSessoes > 1">Foram encontradas <b>{{qtSessoes}}</b> sessões</ion-col>
 <ion-col width-33 style="font-size: 10px"></ion-col>
 </ion-row>
 
@@ -40,11 +44,11 @@ Veja as Sessões
 <ion-list class="itemListaSessao" no-lines>
 
   <ion-item class="itemItemSessao" #sessaoFilme *ngFor=" let sessao of sessoes">
-  		<div style="position: absolute;  width: 100% ; top: 10%">
+  		<div style="position: absolute;  width: 100% ; top: 10%" >
   			<ion-row style="height:90%">
   				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
 
-          <span style="font-weight:bold;">{{formataHora(sessao.hora)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 11px;">{{calculaHoraFim(formataHora(sessao.hora), sessao.duracao)}}</span>
+          <span style="font-weight:bold;">{{formataHora(sessao.hora)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 12px;">{{calculaHoraFim(formataHora(sessao.hora), sessao.duracao)}}</span>
 
   				</ion-col>
   				<ion-col width-80>

@@ -25,7 +25,7 @@ export class Filtros {
   testSlides: string[] = [];
   @ViewChild('botaoCinema') botaoCinema: any;
   dataAtual: string ="";
-  dataEscolhida : string = ""
+  dataEscolhida : string = "";
 
 
   constructor(private nav: NavController,
@@ -34,27 +34,29 @@ export class Filtros {
               private sessoesService : sessoesService,
               public http: Http){
 
+
+
      this.dataAtual = this.retornaDataAtual();
 
      this.filmesEmCartazService = filmesEmCartazService;
      this.sessoesService = sessoesService;
-/*
+
      this.filmesEmCartazService.getTop6().subscribe(
                   data => {
                       this.filmes = data
-                      console.log(this.filmes.length)
+                      //console.log(this.filmes.length)
                   },
                   err => {
                       console.log(err);
                   },
                   () => console.log()
       );
-*/
+
 
       this.sessoesService.getDates(this.dataAtual).subscribe(
                   data => {
                       this.datas = data;
-                      console.log(this.datas.length)
+                      this.marcaDataDefault();
                   },
                   err => {
                       console.log(err);
@@ -65,6 +67,20 @@ export class Filtros {
   }
 
 
+
+  marcaDataDefault(){
+    var dataDoScroll;
+
+    if (this.dataEscolhida == ""){
+      for (var i = 0; i < this.datas.length; i++) {
+         var item = this.datas[i];
+         dataDoScroll = this.formataDataServico(item.data)
+           if ( dataDoScroll == this.retornaDataAtual()){
+             item.selecionado = true;
+           }
+      }
+    }
+  }
 
 
 
@@ -110,10 +126,19 @@ export class Filtros {
 
 
   verCinemas(){
-     this.nav.push(ListaCinemas, {
-          param1: this.dataAtual
-      });
+    var data = this.dataEscolhida;
+    if (data=="") {
+      data = this.dataAtual;
+    }
+    else{
+      data=this.formataDataServico(this.dataEscolhida)
+    }
+
+    this.nav.push(ListaCinemas, {
+         param1: data
+     });
   }
+
 
 
   verFilmes(){
@@ -124,7 +149,7 @@ export class Filtros {
      else{
        data=this.formataDataServico(this.dataEscolhida)
      }
-     
+
      this.nav.push(ListaFilmes, {
           param1: data
       });
@@ -137,6 +162,18 @@ export class Filtros {
      });
   }
 
+
+  selecionaOpcaoQueroIr(listaQuero){
+
+   for (var i = 0; i < this.datas.length; i++) {
+      var item = this.datas[i];
+      item.selecionado = false;
+   }
+
+   listaQuero.selecionado = !listaQuero.selecionado;
+   this.dataEscolhida = listaQuero.data
+
+  }
 
 
 

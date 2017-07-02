@@ -2,9 +2,9 @@ import {OnInit} from '@angular/core';
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {sessoesService} from '../../services/sessoes-service';
-import {sessao} from '../../model/sessao'; 
+import {sessao} from '../../model/sessao';
 import {filtro} from '../../model/filtro';
-import {Geolocation} from 'ionic-native'; 
+import {Geolocation} from 'ionic-native';
 import { Loading } from 'ionic-angular';
 
 
@@ -12,7 +12,7 @@ declare var geolib : any;
 
 @Component({
   templateUrl: 'build/pages/sessoesAgora/sessoesAgora.html' ,
-  providers: [sessoesService] 
+  providers: [sessoesService]
 })
 
 
@@ -26,7 +26,7 @@ export class SessoesAgora {
   Longitude : number;
   public loading = Loading.create();
   filtroData: string;
-
+  qtSessoes = 0;
 
 //lições aprendidas: tive que definir o tipo sessoesService pois dava pau no momento da execução, não faço ideia do porquê
  constructor(private nav: NavController, private navParams: NavParams , private sessoesService : sessoesService){
@@ -38,7 +38,8 @@ export class SessoesAgora {
     this.sessoesService.findNow(this.filtroData).subscribe(
                 data => {
                     this.sessoes = data;
-                    this.loading.dismiss(); 
+                    this.qtSessoes = this.sessoes.length;
+                    this.loading.dismiss();
                 },
                 err => {
                     console.log(err);
@@ -60,18 +61,14 @@ export class SessoesAgora {
 
 
   verSessoesProximas(){
-
-     let sessoesOrdenadas = []; 
-
+     let sessoesOrdenadas = [];
      for (var i = 0; i < this.sessoes.length; i++) {
         var item = this.sessoes[i];
         if (item.distancia <= 5){
            sessoesOrdenadas.push(item);
         }
      }
-
      this.sessoes = sessoesOrdenadas;
-
   }
 
 
@@ -95,7 +92,7 @@ export class SessoesAgora {
 
   private getDistance (origin, destination){
     let distance = geolib.getDistance(origin, destination);
-    
+
     return geolib.convertUnit('km',distance,2);
   }
 
@@ -114,7 +111,7 @@ export class SessoesAgora {
            {latitude : sessao.longitude,
            longitude : sessao.latitude}
           )
-        }      
+        }
     });
 
   }
@@ -129,9 +126,9 @@ calculaHoraFim(time, minsToAdd) {
   var bits = time.split(':');
   var mins = bits[0]*60 + (+bits[1]) + (+minsToAdd);
 
-  return z(mins%(24*60)/60 | 0) + ':' + z(mins%60);  
+  return z(mins%(24*60)/60 | 0) + ':' + z(mins%60);
 
-}  
+}
 
 
 

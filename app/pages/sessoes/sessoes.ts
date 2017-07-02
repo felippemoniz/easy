@@ -17,11 +17,15 @@ declare var geolib : any;
 export class Sessoes {
 
   itensSelecionados = [];
+  sessoesFiltradas = [];
+  filtro: filtro;
   sessoes: sessao[];
   filtroData: string;
   tipoPesquisa;
   latitude : number;
   Longitude : number;
+  sessoesOriginais = [];
+  qtSessoes = 0;
 
 
 
@@ -32,9 +36,9 @@ export class Sessoes {
     this.tipoPesquisa = navParams.get('param3');
     this.sessoesService = sessoesService;
 
+
     var filtro = ""
 
-    console.log(this.tipoPesquisa)
 
     //Se a consulta vier da página de cinemas
     if (this.tipoPesquisa === "C"){
@@ -50,6 +54,9 @@ export class Sessoes {
             this.sessoesService.findByTheater(filtro,this.filtroData).subscribe(
                         data => {
                             this.sessoes = data;
+                            this.qtSessoes = this.sessoes.length;
+
+
                         },
                         err => {
                             console.log(err);
@@ -70,6 +77,8 @@ export class Sessoes {
             this.sessoesService.findById(filtro,this.filtroData).subscribe(
                         data => {
                             this.sessoes = data;
+                            this.qtSessoes = this.sessoes.length;
+
                         },
                         err => {
                             console.log(err);
@@ -79,11 +88,10 @@ export class Sessoes {
 
 
     }
-
   this.getAllDistances();
-
-
+  this.sessoesOriginais = this.sessoes;
   }
+
 
 
 
@@ -161,9 +169,67 @@ calculaHoraFim(time, minsToAdd) {
   }
 
 
+
+
+
   selecionaOpcaoPrefs(listaPref){
+
+
+
+
+
+/*    let sessoesOrdenadas = [];
+
+    for (var i = 0; i < this.sessoes.length; i++) {
+        var item = this.sessoes[i];
+        if (item.idfilme != listaPref.idfilme){
+            sessoesOrdenadas.push(item);
+         }
+    }
+    this.sessoes = sessoesOrdenadas;
+*/
     listaPref.selecionado = !listaPref.selecionado;
+
   }
+
+  formataData(data){
+  var dia,mes,ano,dataReduzida;
+    dataReduzida = data.substring(0,10)
+    mes = data.substring(5,7);
+    dia = data.substring(8,10)
+
+    if (dataReduzida == this.retornaDataAtual()){
+      return "Hoje"
+    }
+    else{
+      return dia + "/" + mes ;
+    }
+  }
+
+
+
+  retornaDataAtual(){
+    var dataAtual = new Date();
+    var dia = ("0" + (dataAtual.getDate())).slice(-2)
+    var mes = ("0" + (dataAtual.getMonth() + 1)).slice(-2)
+    var ano = dataAtual.getFullYear();
+
+    return ano + "-" + mes + "-" + dia;
+  }
+
+
+
+  filtrarSessoes(){
+     let sessoesOrdenadas = [];
+     for (var i = 0; i < this.sessoes.length; i++) {
+        var item = this.sessoes[i];
+        if (item.distancia <= 5){
+           sessoesOrdenadas.push(item);
+        }
+     }
+     this.sessoes = sessoesOrdenadas;
+  }
+
 
 
 }

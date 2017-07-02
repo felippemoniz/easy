@@ -29,7 +29,7 @@
     color: #ffffff;
     font-family: "Open Sans", "Helvetica";
     background-color: #ffffff;
-    opacity: 0.4;
+    opacity: 0.9;
     height: 15%;
   }
 
@@ -184,13 +184,14 @@ ion-badge{
 }
 
 
-.scrollHorizontal {
-  top: 0 !important;
+.scrollHorizontalDatas {
+  top: 3px;
   bottom: 0;
   right: 0 !important;
   width: 100%;
   height: 30px;
 }
+
 
 
 .tag{

@@ -5,9 +5,10 @@
 <ion-content class="card-background-page">
 <br>
 <div class="labelTituloTela">
-Escolha os cinemas
+<b>Cinemas na sua cidade</b>
 </div>
-
+<div class="labelSubTituloTela">{{formataData(filtroData)}}</div>
+<br><br>
 <!-- {{cinemas | json}} -->
 
 
@@ -66,12 +67,13 @@ Escolha os cinemas
 <ion-grid >
   <ion-row>
       <ion-col width-50>
-          <button class="botaoVerSessoes" (click)="verSessoes()">VER SESSÕES</button>
+        <b> <span class="fonteLabel" style="font-size: 23px; ">{{ contadorCinemasEscolhidos }}</span> </b><br>
+        <span class="fonteLabel" style="font-size: 13px;">cinemas escolhidos</span>
+
 
       </ion-col>
       <ion-col width-50  style="text-align:center;">
-          <b> <span class="fonteLabel" style="font-size: 23px; ">{{ contadorCinemasEscolhidos }}</span> </b><br>
-          <span class="fonteLabel" style="font-size: 13px;">cinemas escolhidos</span>
+          <button class="botaoVerSessoes" (click)="verSessoes()">VER SESSÕES</button>
       </ion-col>
  </ion-row>
 </ion-grid>

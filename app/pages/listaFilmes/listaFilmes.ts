@@ -40,7 +40,7 @@ export class ListaFilmes {
                 data => {
                     this.filmes = data;
                     this.qtFilme = this.filmes.length;
-                    console.log(this.qtFilme);
+                    //console.log(this.qtFilme);
                 },
                 err => {
                     console.log(err);
@@ -56,8 +56,29 @@ export class ListaFilmes {
       return [[NavController], [NavParams], [filmesEmCartazService]];
   }
 
+  retornaDataAtual(){
+    var dataAtual = new Date();
+    var dia = ("0" + (dataAtual.getDate())).slice(-2)
+    var mes = ("0" + (dataAtual.getMonth() + 1)).slice(-2)
+    var ano = dataAtual.getFullYear();
+
+    return ano + "-" + mes + "-" + dia;
+  }
 
 
+  formataData(data){
+  var dia,mes,ano,dataReduzida;
+    dataReduzida = data.substring(0,10)
+    mes = data.substring(5,7);
+    dia = data.substring(8,10)
+
+    if (dataReduzida == this.retornaDataAtual()){
+      return "Hoje"
+    }
+    else{
+      return dia + "/" + mes ;
+    }
+  }
 
 
 
