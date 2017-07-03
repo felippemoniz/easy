@@ -175,19 +175,13 @@ calculaHoraFim(time, minsToAdd) {
   selecionaOpcaoPrefs(listaPref){
 
 
-
-
-
-/*    let sessoesOrdenadas = [];
-
     for (var i = 0; i < this.sessoes.length; i++) {
         var item = this.sessoes[i];
-        if (item.idfilme != listaPref.idfilme){
-            sessoesOrdenadas.push(item);
+        if (item.idfilme == listaPref.idfilme){
+            item.selecionado = !item.selecionado;
          }
     }
-    this.sessoes = sessoesOrdenadas;
-*/
+
     listaPref.selecionado = !listaPref.selecionado;
 
   }
