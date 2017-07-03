@@ -43,8 +43,10 @@
 <br>
 <ion-list class="itemListaSessao" no-lines>
 
-  <ion-item class="itemItemSessao" #sessaoFilme *ngFor=" let sessao of sessoes" >
-  		<div style="position: absolute;  width: 100% ; top: 10%" *ngIf="sessao.selecionado==0">
+<div *ngFor=" let sessao of sessoes">
+
+  <ion-item class="itemItemSessao" #sessaoFilme  *ngIf="sessao.selecionado==0">
+  		<div style="position: absolute;  width: 100% ; top: 10%" >
   			<ion-row style="height:90%">
   				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
 
@@ -72,7 +74,7 @@
   		<img  src="./images/linhaSessaoAlta.png" style="max-width: 95%;" *ngIf="sessao.selecionado==0"/>
 
   </ion-item>
-
+</div>
 
 
 </ion-list>
