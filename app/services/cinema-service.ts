@@ -31,9 +31,14 @@ export class cinemaService {
         return this.http.get(sessoes + id +"/"+ data )
           .map(res => res.json())
           .catch(this.handleError);
-
   }
 
+  findCinemaPorSessao(id,data) {
+        return this.http.get(SERVER_URL + 'cinemasPorSessao/' + id +"/"+ data )
+          .map(res => res.json())
+          .catch(this.handleError);
+
+  }
 
   handleError(error) {
       console.error(error);

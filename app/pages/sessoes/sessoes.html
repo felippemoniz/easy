@@ -9,12 +9,11 @@
 </div>
 <div class="labelSubTituloTela">{{filtroData}}</div>
 
- <!-- {{sessoes | json}} -->
+<!--  {{sessoes | json}} --> 
 <br>
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
-  <ion-chip  *ngFor=" let filme of itensSelecionados"  [ngClass]="filme.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(filme)">
-    <ion-label *ngIf="tipoPesquisa === 'C'" class="tag"> {{filme.nome }}</ion-label>
-    <ion-label *ngIf="tipoPesquisa === 'F'" class="tag"> {{filme.nome }}</ion-label>
+  <ion-chip  *ngFor=" let cinema of cinemas"  [ngClass]="cinema.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(cinema)">
+    <ion-label class="tag"> {{cinema.nome }}</ion-label>
   </ion-chip>
 </ion-scroll>
 

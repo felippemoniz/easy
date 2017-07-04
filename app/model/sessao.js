@@ -1,7 +1,8 @@
 "use strict";
 var sessao = (function () {
-    function sessao(id, nomeFilme,nomeCinema,horaInicio,horaFim,duracao,rating,imagemAvatar,distancia,selecionado) {
+    function sessao(id, idcinema, nomeFilme,nomeCinema,horaInicio,horaFim,duracao,rating,imagemAvatar,distancia,selecionado) {
         this.id = id;
+        this.idcinema = idcinema;
         this.nomeFilme = nomeFilme;
         this.nomeCinema = nomeCinema;
 		this.horaInicio = horaInicio;
@@ -17,6 +18,3 @@ var sessao = (function () {
     return sessao;
 }());
 exports.sessao = sessao;
-
-
-

@@ -4,13 +4,15 @@ import {NavController, NavParams} from 'ionic-angular';
 import {sessoesService} from '../../services/sessoes-service';
 import {sessao} from '../../model/sessao';
 import {filtro} from '../../model/filtro';
+import {cinema} from '../../model/cinema';
 import {Geolocation} from 'ionic-native';
+import {cinemaService} from '../../services/cinema-service';
 
 declare var geolib : any;
 
 @Component({
   templateUrl: 'build/pages/sessoes/sessoes.html' ,
-  providers: [sessoesService]
+  providers: [sessoesService,cinemaService]
 })
 
 
@@ -18,6 +20,7 @@ export class Sessoes {
 
   itensSelecionados = [];
   sessoesFiltradas = [];
+  cinemas : cinema[];
   filtro: filtro;
   sessoes: sessao[];
   filtroData: string;
@@ -30,11 +33,17 @@ export class Sessoes {
 
 
 //lições aprendidas: tive que definir o tipo sessoesService pois dava pau no momento da execução, não faço ideia do porquê
- constructor(private nav: NavController, private navParams: NavParams , private sessoesService : sessoesService){
+ constructor(private nav: NavController,
+             private navParams: NavParams ,
+             private sessoesService : sessoesService,
+             private cinemaService : cinemaService){
+
     this.itensSelecionados = navParams.get('param1');
     this.filtroData = navParams.get('param2');
     this.tipoPesquisa = navParams.get('param3');
+
     this.sessoesService = sessoesService;
+    this.cinemaService = cinemaService;
 
 
     var filtro = ""
@@ -47,16 +56,11 @@ export class Sessoes {
             for (var i = 0; i < this.itensSelecionados.length; i++) {
                 filtro = filtro + "," + this.itensSelecionados[i].idcinema;
             }
-
             filtro = filtro.substring(1,filtro.length)
-
-
             this.sessoesService.findByTheater(filtro,this.filtroData).subscribe(
                         data => {
                             this.sessoes = data;
                             this.qtSessoes = this.sessoes.length;
-
-
                         },
                         err => {
                             console.log(err);
@@ -70,15 +74,21 @@ export class Sessoes {
             for (var i = 0; i < this.itensSelecionados.length; i++) {
                 filtro = filtro + "," + this.itensSelecionados[i].idfilme;
             }
-
             filtro = filtro.substring(1,filtro.length)
-
-
             this.sessoesService.findById(filtro,this.filtroData).subscribe(
                         data => {
                             this.sessoes = data;
                             this.qtSessoes = this.sessoes.length;
+                        },
+                        err => {
+                            console.log(err);
+                        },
+                        () => console.log("")
+            );
 
+            this.cinemaService.findCinemaPorSessao(filtro,this.filtroData).subscribe(
+                        data => {
+                            this.cinemas = data;
                         },
                         err => {
                             console.log(err);
@@ -160,31 +170,26 @@ calculaHoraFim(time, minsToAdd) {
 
 
   recuperaDistancia(idCinema){
-
-  for (let i = 0; i < this.itensSelecionados.length; i++){
-        let cinema = this.itensSelecionados[i];
-        if (cinema.idcinema == idCinema ){return cinema.distancia}
+    for (let i = 0; i < this.itensSelecionados.length; i++){
+          let cinema = this.itensSelecionados[i];
+          if (cinema.idcinema == idCinema ){return cinema.distancia}
+    }
   }
-
-  }
-
-
 
 
 
   selecionaOpcaoPrefs(listaPref){
 
-
     for (var i = 0; i < this.sessoes.length; i++) {
         var item = this.sessoes[i];
-        if (item.idfilme == listaPref.idfilme){
+        if (item.idcinema == listaPref.idcinema){
             item.selecionado = !item.selecionado;
          }
     }
-
     listaPref.selecionado = !listaPref.selecionado;
-
   }
+
+
 
   formataData(data){
   var dia,mes,ano,dataReduzida;

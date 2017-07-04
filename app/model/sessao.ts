@@ -1,6 +1,7 @@
 export class sessao{
  constructor(
  public idfilme?: number,
+  public idcinema?: number,
  public nomeFilme?: string,
  public nomeCinema?: string,
  public horaInicio?: string,
