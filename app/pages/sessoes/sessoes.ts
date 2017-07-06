@@ -5,14 +5,16 @@ import {sessoesService} from '../../services/sessoes-service';
 import {sessao} from '../../model/sessao';
 import {filtro} from '../../model/filtro';
 import {cinema} from '../../model/cinema';
+import {filme} from '../../model/filme';
 import {Geolocation} from 'ionic-native';
 import {cinemaService} from '../../services/cinema-service';
+import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
 
 declare var geolib : any;
 
 @Component({
   templateUrl: 'build/pages/sessoes/sessoes.html' ,
-  providers: [sessoesService,cinemaService]
+  providers: [sessoesService,cinemaService,filmesEmCartazService]
 })
 
 
@@ -21,6 +23,7 @@ export class Sessoes {
   itensSelecionados = [];
   sessoesFiltradas = [];
   cinemas : cinema[];
+  filmes : filme[];
   filtro: filtro;
   sessoes: sessao[];
   filtroData: string;
@@ -32,11 +35,11 @@ export class Sessoes {
 
 
 
-//lições aprendidas: tive que definir o tipo sessoesService pois dava pau no momento da execução, não faço ideia do porquê
  constructor(private nav: NavController,
              private navParams: NavParams ,
              private sessoesService : sessoesService,
-             private cinemaService : cinemaService){
+             private cinemaService : cinemaService,
+             private filmesEmCartazService : filmesEmCartazService){
 
     this.itensSelecionados = navParams.get('param1');
     this.filtroData = navParams.get('param2');
@@ -44,6 +47,7 @@ export class Sessoes {
 
     this.sessoesService = sessoesService;
     this.cinemaService = cinemaService;
+    this.filmesEmCartazService = filmesEmCartazService;
 
 
     var filtro = ""
@@ -67,6 +71,17 @@ export class Sessoes {
                         },
                         () => console.log("")
             );
+
+            this.filmesEmCartazService.findFilmesPorSessao(filtro,this.filtroData).subscribe(
+                        data => {
+                            this.filmes = data;
+                        },
+                        err => {
+                            console.log(err);
+                        },
+                        () => console.log("")
+            );
+
     //Se a consulta vier da página de filmes em cartaz
     }else{
 
@@ -132,41 +147,41 @@ export class Sessoes {
 
 
 
-formataDistanciaAmigavel(distancia){
+  formataDistanciaAmigavel(distancia){
 
-  if (distancia <= 2) {
-    return "Bem perto";
+    if (distancia <= 2) {
+      return "Bem perto";
+    }
+    else if (distancia > 2 && distancia <= 5){
+      return "Perto";
+    }
+    else if (distancia > 5 && distancia <= 20){
+      return "Um pouco longe";
+    }
+    else {
+      return "Bem longe";
+    }
+
   }
-  else if (distancia > 2 && distancia <= 5){
-    return "Perto";
-  }
-  else if (distancia > 5 && distancia <= 20){
-    return "Um pouco longe";
-  }
-  else {
-    return "Bem longe";
+
+
+
+  formataHora(hora){
+    var horaString = hora.toString();
+    return horaString.substring(0,2) + ":" + horaString.substring(2,4);
   }
 
-}
 
+  calculaHoraFim(time, minsToAdd) {
+    function z(n){
+      return (n<10? '0':'') + n;
+    }
+    var bits = time.split(':');
+    var mins = bits[0]*60 + (+bits[1]) + (+minsToAdd);
 
+    return z(mins%(24*60)/60 | 0) + ':' + z(mins%60);
 
-formataHora(hora){
-  var horaString = hora.toString();
-  return horaString.substring(0,2) + ":" + horaString.substring(2,4);
-}
-
-
-calculaHoraFim(time, minsToAdd) {
-  function z(n){
-    return (n<10? '0':'') + n;
   }
-  var bits = time.split(':');
-  var mins = bits[0]*60 + (+bits[1]) + (+minsToAdd);
-
-  return z(mins%(24*60)/60 | 0) + ':' + z(mins%60);
-
-}
 
 
   recuperaDistancia(idCinema){
@@ -178,7 +193,7 @@ calculaHoraFim(time, minsToAdd) {
 
 
 
-  selecionaOpcaoPrefs(listaPref){
+  selecionaTagCinema(listaPref){
 
     for (var i = 0; i < this.sessoes.length; i++) {
         var item = this.sessoes[i];
@@ -188,6 +203,20 @@ calculaHoraFim(time, minsToAdd) {
     }
     listaPref.selecionado = !listaPref.selecionado;
   }
+
+
+
+  selecionaTagFilme(listaPref){
+
+    for (var i = 0; i < this.sessoes.length; i++) {
+        var item = this.sessoes[i];
+        if (item.idfilme == listaPref.idfilme){
+            item.selecionado = !item.selecionado;
+         }
+    }
+    listaPref.selecionado = !listaPref.selecionado;
+  }
+
 
 
 

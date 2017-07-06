@@ -34,12 +34,13 @@ export class filmesEmCartazService {
 
   }
 
+  findFilmesPorSessao(id,data) {
+        return this.http.get(SERVER_URL + 'filmesPorSessao/' + id +"/"+ data )
+          .map(res => res.json())
+          .catch(this.handleError);
 
-/*        var url = 'https://api-content.ingresso.com/v0/templates/soon/'+cidade;
-        var response = this.http.get(url).map(res => res.json());
-        return response;
-    }
-*/
+  }
+
 
   handleError(error) {
       console.error(error);
