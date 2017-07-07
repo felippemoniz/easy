@@ -8,6 +8,8 @@ import {NavParams} from 'ionic-angular';
 import {filtro} from '../../model/filtro';
 import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
 import {chip} from '../../model/chip';
+import {Toast} from 'ionic-native';
+
 
 
 @Component({
@@ -28,10 +30,16 @@ export class ListaFilmes {
   isClassVisible: boolean = false;
   qtFilme = 0;
   filtroData : string;
+  diaSemanaEscolhido : string = "";
 
 
-  constructor(private nav: NavController, private navParams: NavParams,  private filmesEmCartazService) {
+  constructor(private nav: NavController, 
+              private navParams: NavParams,  
+              private filmesEmCartazService,
+              private toast: Toast) {
+
     this.filtroData = navParams.get('param1');
+    this.diaSemanaEscolhido = navParams.get('param2');
     this.filmesEmCartazService = filmesEmCartazService;
 
 
@@ -48,8 +56,24 @@ export class ListaFilmes {
                 () => console.log(this.qtFilme)
             );
 
+ this.showToast();
 
   }
+
+
+  showToast() {
+    Toast.show("This is my toast", 'short', 'top').subscribe(
+      toast => {
+        console.log('Success', toast);
+      },
+      error => {
+        console.log('Error', error);
+      },
+      () => {
+        console.log('Completed');
+      }
+    );
+}
 
 
   static get parameters() {
@@ -106,7 +130,8 @@ export class ListaFilmes {
      this.nav.push(Sessoes, {
           param1: this.filmesSelecionados,
           param2 : this.filtroData,
-          param3 : "F"
+          param3 : "F",
+          param4 : this.diaSemanaEscolhido
       });
    }
 

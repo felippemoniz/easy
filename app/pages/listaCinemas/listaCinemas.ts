@@ -30,10 +30,13 @@ export class ListaCinemas {
   contadorCinemasEscolhidos : number = 0;
   public loading = Loading.create();
   filtroData : string;
+  diaSemanaEscolhido : string = "";
 
   constructor(private nav: NavController, private navParams: NavParams, private cinemaService:cinemaService) {
 
     this.filtroData = navParams.get('param1');
+    this.diaSemanaEscolhido = navParams.get('param2');
+
     this.cinemaService = cinemaService;
     this.nav.present(this.loading);
 
@@ -173,7 +176,8 @@ verSessoes(){
   this.nav.push(Sessoes, {
        param1: this.cinemasSelecionados,
        param2 : this.filtroData,
-       param3 : "C"
+       param3 : "C",
+       param4 : this.diaSemanaEscolhido
    });
 }
 

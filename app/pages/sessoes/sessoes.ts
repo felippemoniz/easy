@@ -12,6 +12,7 @@ import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
 
 declare var geolib : any;
 
+
 @Component({
   templateUrl: 'build/pages/sessoes/sessoes.html' ,
   providers: [sessoesService,cinemaService,filmesEmCartazService]
@@ -32,6 +33,7 @@ export class Sessoes {
   Longitude : number;
   sessoesOriginais = [];
   qtSessoes = 0;
+  diaSemanaEscolhido : string = "";
 
 
 
@@ -44,6 +46,7 @@ export class Sessoes {
     this.itensSelecionados = navParams.get('param1');
     this.filtroData = navParams.get('param2');
     this.tipoPesquisa = navParams.get('param3');
+    this.diaSemanaEscolhido = navParams.get('param4');
 
     this.sessoesService = sessoesService;
     this.cinemaService = cinemaService;

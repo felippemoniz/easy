@@ -7,7 +7,7 @@
 <div class="labelTituloTela">
 <b>Filmes em Cartaz</b>
 </div>
-<div class="labelSubTituloTela">{{formataData(filtroData)}}</div>
+<div class="labelSubTituloTela">{{formataData(filtroData)}} | {{diaSemanaEscolhido}}</div>
 <br><br>
 <!-- {{filmes | json}}  -->
 
@@ -31,7 +31,7 @@
 
 
       <div  #layerMarcada [ngClass]="filme.selecionado ? 'marcacaoSelecionado' : 'marcacaoNaoSelecionado'" (click)="verDetalhes(filme)" >
-          <!--img style="width: 100px; position: relative; left: 151px; top:20px" src="./images/imgSelecionado.png"/-->
+          <img style="width: 100px; position: relative; left: 151px; top:20px" src="./images/imgSelecionado.png"/>
       </div>
 
 

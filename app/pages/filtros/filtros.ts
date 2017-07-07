@@ -26,6 +26,7 @@ export class Filtros {
   @ViewChild('botaoCinema') botaoCinema: any;
   dataAtual: string ="";
   dataEscolhida : string = "";
+  diaSemanaEscolhido : string = "";
 
 
   constructor(private nav: NavController,
@@ -77,6 +78,9 @@ export class Filtros {
          dataDoScroll = this.formataDataServico(item.data)
            if ( dataDoScroll == this.retornaDataAtual()){
              item.selecionado = true;
+             this.dataEscolhida = dataDoScroll
+             this.diaSemanaEscolhido = item.diasemana;
+
            }
       }
     }
@@ -135,7 +139,8 @@ export class Filtros {
     }
 
     this.nav.push(ListaCinemas, {
-         param1: data
+         param1: data,
+         param2: this.diaSemanaEscolhido
      });
   }
 
@@ -151,7 +156,8 @@ export class Filtros {
      }
 
      this.nav.push(ListaFilmes, {
-          param1: data
+          param1: data,
+          param2: this.diaSemanaEscolhido
       });
   }
 
@@ -171,7 +177,8 @@ export class Filtros {
    }
 
    listaQuero.selecionado = !listaQuero.selecionado;
-   this.dataEscolhida = listaQuero.data
+   this.dataEscolhida = listaQuero.data;
+   this.diaSemanaEscolhido = listaQuero.diasemana;
 
   }
 
