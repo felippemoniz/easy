@@ -98,6 +98,19 @@ export class Filtros {
   }
 
 
+  retornaDataAtualSessoesAgora(){
+    var dataAtual = new Date();
+    var dia = ("0" + (dataAtual.getDate())).slice(-2)
+    var mes = ("0" + (dataAtual.getMonth() + 1)).slice(-2)
+    var ano = dataAtual.getFullYear();
+    var hora = dataAtual.getHours();
+    var minuto = dataAtual.getMinutes();
+
+    return ano + "-" + mes + "-" + dia + "-" + hora + "-" + minuto
+
+  }
+
+
   formataData(data){
     var dia,mes,ano,dataReduzida;
     dataReduzida = data.substring(0,10)
@@ -163,8 +176,10 @@ export class Filtros {
 
 
   verSessoesAgora(){
+    var dataAgora = this.retornaDataAtualSessoesAgora();
+
     this.nav.push(SessoesAgora, {
-        param1: this.dataAtual
+        param1: dataAgora
      });
   }
 

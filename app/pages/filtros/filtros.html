@@ -71,11 +71,11 @@
     <ion-col class="labelMaisProcurados" style="padding: 2%;">O QUE VAI ESTREAR <b>EM BREVE</b></ion-col>
   </ion-row>
     <ion-row>
-    <ion-col class="labelMaisProcurados" style="opacity:0.5">
+    <ion-col class="labelMaisProcurados" style="opacity:0.8">
 
 
       <div  #filmeCard *ngFor=" let filme of filmes;let i=index"   style="width:100%">
-        <div class="overlayFilme">{{filme.title}}<br><span style="font-size:0.6em">Estreia em {{filme.premiereDate.dayAndMonth}} ({{filme.premiereDate.dayOfWeek}})</span></div>
+        <div class="overlayFilme">{{filme.title}}<br><span style="font-size:0.7em">Estréia em <b>{{filme.premiereDate.dayAndMonth}}</b> ({{filme.premiereDate.dayOfWeek}})</span></div>
         <img  src={{filme.images[1].url}}  />
       </div>
 

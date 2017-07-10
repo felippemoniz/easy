@@ -8,7 +8,7 @@ import {NavParams} from 'ionic-angular';
 import {filtro} from '../../model/filtro';
 import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
 import {chip} from '../../model/chip';
-import {Toast} from 'ionic-native';
+//import {Toast} from 'ionic-native';
 
 
 
@@ -33,10 +33,9 @@ export class ListaFilmes {
   diaSemanaEscolhido : string = "";
 
 
-  constructor(private nav: NavController, 
-              private navParams: NavParams,  
-              private filmesEmCartazService,
-              private toast: Toast) {
+  constructor(private nav: NavController,
+              private navParams: NavParams,
+              private filmesEmCartazService) {
 
     this.filtroData = navParams.get('param1');
     this.diaSemanaEscolhido = navParams.get('param2');
@@ -56,12 +55,12 @@ export class ListaFilmes {
                 () => console.log(this.qtFilme)
             );
 
- this.showToast();
+ //this.showToast();
 
   }
 
 
-  showToast() {
+/*  showToast() {
     Toast.show("This is my toast", 'short', 'top').subscribe(
       toast => {
         console.log('Success', toast);
@@ -73,7 +72,7 @@ export class ListaFilmes {
         console.log('Completed');
       }
     );
-}
+}*/
 
 
   static get parameters() {
