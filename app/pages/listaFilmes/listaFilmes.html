@@ -5,7 +5,7 @@
 <ion-content class="card-background-page">
 <br>
 <div class="labelTituloTela">
-<b>Filmes em Cartaz</b>
+<b>Filmes em Cartaz#</b>
 </div>
 <div class="labelSubTituloTela">{{formataData(filtroData)}} | {{diaSemanaEscolhido}}</div>
 <br><br>
@@ -14,7 +14,6 @@
 
 <ion-scroll  scrollY="true" class="scrollVerticalFilmes" overflow-scroll="true" >
 
-oi
 
 <!-- ################################ CARDS #####################################-->
 
@@ -22,16 +21,9 @@ oi
    <ion-card  #filmeCard *ngFor=" let filme of filmes;let i=index">
 
 
-        <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="filme.selecionado === 0" (click)="selecionaFilme(filme);" round small >
-        <ion-icon name="add" ></ion-icon>
-       </button >
-        <button ion-button  #botaoAdiciona class="botaoCardSelecionado" *ngIf="filme.selecionado === 1" (click)="selecionaFilme(filme);" round small >
-        <ion-icon name="checkmark" ></ion-icon>
-       </button >
 
-
-      <div  #layerMarcada [ngClass]="filme.selecionado ? 'marcacaoSelecionado' : 'marcacaoNaoSelecionado'" (click)="verDetalhes(filme)" >
-          <img style="width: 100px; position: relative; left: 151px; top:20px" src="./images/imgSelecionado.png"/>
+      <div  #layerMarcada [ngClass]="filme.selecionado ? 'marcacaoSelecionado' : 'marcacaoNaoSelecionado'" (tap)="selecionaFilme(filme);" >
+          <img style="width: 100px; position: relative; left: 38%; top:20px" src="./images/imgSelecionado.png"/>
       </div>
 
 
@@ -44,7 +36,7 @@ oi
 
       <div class="tagRanking" *ngIf="i<3 && filme.qtacesso > 0"><b>{{i + 1}}º</b> MAIS PROCURADO</div>
 
-      <img  src={{filme.imagem}} (click)="verDetalhes(filme)"  />
+      <img  src={{filme.imagem}} (tap)="selecionaFilme(filme);"  />
 
       <div class="card-subtitle">
           <ion-row>

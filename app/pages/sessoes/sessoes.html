@@ -14,13 +14,13 @@
 <br>
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" *ngIf="tipoPesquisa === 'F'">
-  <ion-chip  *ngFor=" let cinema of cinemas"  [ngClass]="cinema.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaTagCinema(cinema)">
+  <ion-chip  *ngFor=" let cinema of cinemas"  [ngClass]="cinema.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaTagCinema(cinema)">
     <ion-label class="tag"> {{cinema.nome }}</ion-label>
   </ion-chip>
 </ion-scroll>
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" *ngIf="tipoPesquisa === 'C'">
-  <ion-chip  *ngFor=" let filme of filmes"  [ngClass]="filme.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaTagFilme(filme)">
+  <ion-chip  *ngFor=" let filme of filmes"  [ngClass]="filme.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaTagFilme(filme)">
     <ion-label class="tag"> {{filme.nomeFilme }}</ion-label>
   </ion-chip>
 </ion-scroll>
