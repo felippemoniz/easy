@@ -12,6 +12,7 @@ import {sessoesService} from '../../services/sessoes-service';
 import {filmeEmCartaz} from '../../model/filmeEmCartaz';
 import {Http} from '@angular/http';
 
+
 @Component({
   templateUrl: 'build/pages/filtros/filtros.html',
   providers: [filmesEmCartazService, sessoesService]
@@ -36,7 +37,7 @@ export class Filtros {
               public http: Http){
 
 
-
+     this.nav.present(this.loading);
      this.dataAtual = this.retornaDataAtual();
 
      this.filmesEmCartazService = filmesEmCartazService;
@@ -58,6 +59,7 @@ export class Filtros {
                   data => {
                       this.datas = data;
                       this.marcaDataDefault();
+                      this.loading.dismiss();
                   },
                   err => {
                       console.log(err);

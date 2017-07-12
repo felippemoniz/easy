@@ -1,6 +1,16 @@
-<ion-navbar >
-  <ion-title></ion-title>
-</ion-navbar>
+<ion-toolbar > 
+  <ion-buttons start>
+    <button ion-button icon-only color="white" (tap)="voltar()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+    </button>
+  </ion-buttons>
+  <ion-title color="primary">EasyMovie</ion-title>
+ <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>  
+</ion-toolbar>
 
 <ion-content >
 <br>
@@ -13,6 +23,15 @@
 
 <br>
 
+
+<ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" *ngIf="tipoPesquisa === 'F'">
+  <ion-chip  *ngFor=" let tag of tags"  [ngClass]="tag.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaTag(tag)">
+    <ion-label class="tag"> {{tag.nome }}</ion-label>
+  </ion-chip>
+</ion-scroll>
+
+
+<!--
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" *ngIf="tipoPesquisa === 'F'">
   <ion-chip  *ngFor=" let cinema of cinemas"  [ngClass]="cinema.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaTagCinema(cinema)">
     <ion-label class="tag"> {{cinema.nome }}</ion-label>
@@ -24,7 +43,7 @@
     <ion-label class="tag"> {{filme.nomeFilme }}</ion-label>
   </ion-chip>
 </ion-scroll>
-
+-->
 
 
 <br><br>

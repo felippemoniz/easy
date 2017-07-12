@@ -6,9 +6,11 @@ import {sessao} from '../../model/sessao';
 import {filtro} from '../../model/filtro';
 import {cinema} from '../../model/cinema';
 import {filme} from '../../model/filme';
+import {chip} from '../../model/chip';
 import {Geolocation} from 'ionic-native';
 import {cinemaService} from '../../services/cinema-service';
 import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
+import { Loading } from 'ionic-angular';
 
 declare var geolib : any;
 
@@ -25,6 +27,7 @@ export class Sessoes {
   sessoesFiltradas = [];
   cinemas : cinema[];
   filmes : filme[];
+  tags = [];
   filtro: filtro;
   sessoes: sessao[];
   filtroData: string;
@@ -34,6 +37,7 @@ export class Sessoes {
   sessoesOriginais = [];
   qtSessoes = 0;
   diaSemanaEscolhido : string = "";
+  public loading = Loading.create();
 
 
 
@@ -42,6 +46,8 @@ export class Sessoes {
              private sessoesService : sessoesService,
              private cinemaService : cinemaService,
              private filmesEmCartazService : filmesEmCartazService){
+
+    
 
     this.itensSelecionados = navParams.get('param1');
     this.filtroData = navParams.get('param2');
@@ -55,6 +61,11 @@ export class Sessoes {
 
     var filtro = ""
 
+    this.carregaTags();
+
+    this.nav.present(this.loading);
+
+ 
 
     //Se a consulta vier da página de cinemas
     if (this.tipoPesquisa === "C"){
@@ -78,6 +89,7 @@ export class Sessoes {
             this.filmesEmCartazService.findFilmesPorSessao(filtro,this.filtroData).subscribe(
                         data => {
                             this.filmes = data;
+                            this.loading.dismiss(); 
                         },
                         err => {
                             console.log(err);
@@ -107,6 +119,7 @@ export class Sessoes {
             this.cinemaService.findCinemaPorSessao(filtro,this.filtroData).subscribe(
                         data => {
                             this.cinemas = data;
+                            this.loading.dismiss(); 
                         },
                         err => {
                             console.log(err);
@@ -116,11 +129,42 @@ export class Sessoes {
 
 
     }
+
+
   this.getAllDistances();
+
   this.sessoesOriginais = this.sessoes;
   }
 
 
+
+  private carregaTags(){
+
+     let item = new chip();
+     item.nome = 'LEG';
+     item.nomeDetalhado = 'Legendado'; 
+     item.selecionado = true;
+     this.tags.push (item);
+
+     let item2 = new chip();
+     item2.nome = 'DUB';
+     item2.nomeDetalhado = 'Dublado';
+     item2.selecionado = true;
+     this.tags.push (item2);
+
+     let item3 = new chip();
+     item3.nome = '3D';
+     item3.nomeDetalhado = 'Dublado';     
+     item3.selecionado = true;
+     this.tags.push (item3);
+
+     let item4 = new chip();
+     item4.nome = '2D';
+     item4.nomeDetalhado = 'Normal';     
+     item4.selecionado = true;
+     this.tags.push (item4);
+
+  }
 
 
   private getDistance (origin, destination){
@@ -222,6 +266,21 @@ export class Sessoes {
 
 
 
+  selecionaTag(tag){
+
+  var item, tipo
+      for (var i = 0; i < this.sessoes.length; i++) {
+          item = this.sessoes[i];
+          tipo = item.tipo;
+          if (tipo.indexOf(tag.nomeDetalhado)>0){
+              item.selecionado = !item.selecionado;
+           }
+      } 
+      tag.selecionado = !tag.selecionado;
+  }
+
+
+
 
   formataData(data){
   var dia,mes,ano,dataReduzida;
@@ -261,6 +320,11 @@ export class Sessoes {
      this.sessoes = sessoesOrdenadas;
   }
 
+
+voltar()
+{
+    this.nav.pop();  
+}
 
 
 }

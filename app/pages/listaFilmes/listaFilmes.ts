@@ -9,7 +9,7 @@ import {filtro} from '../../model/filtro';
 import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
 import {chip} from '../../model/chip';
 //import {Toast} from 'ionic-native';
-
+import { Loading } from 'ionic-angular';
 
 
 @Component({
@@ -31,6 +31,7 @@ export class ListaFilmes {
   qtFilme = 0;
   filtroData : string;
   diaSemanaEscolhido : string = "";
+    public loading = Loading.create();
 
 
   constructor(private nav: NavController,
@@ -41,12 +42,14 @@ export class ListaFilmes {
     this.diaSemanaEscolhido = navParams.get('param2');
     this.filmesEmCartazService = filmesEmCartazService;
 
+    this.nav.present(this.loading);
 
     //futuramente passar a data como parametro findAll(data.data)
     this.filmesEmCartazService.findAll(this.filtroData).subscribe(
                 data => {
                     this.filmes = data;
                     this.qtFilme = this.filmes.length;
+                    this.loading.dismiss();
                     //console.log(this.qtFilme);
                 },
                 err => {
@@ -187,7 +190,10 @@ export class ListaFilmes {
 }
 
 
-
+voltar()
+{
+    this.nav.pop();  
+}
 
 
 
