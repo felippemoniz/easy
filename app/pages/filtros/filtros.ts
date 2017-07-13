@@ -11,6 +11,7 @@ import {filmesEmCartazService} from '../../services/filmesEmCartaz-service';
 import {sessoesService} from '../../services/sessoes-service';
 import {filmeEmCartaz} from '../../model/filmeEmCartaz';
 import {Http} from '@angular/http';
+;
 
 
 @Component({
@@ -35,6 +36,7 @@ export class Filtros {
               private filmesEmCartazService: filmesEmCartazService,
               private sessoesService : sessoesService,
               public http: Http){
+
 
 
      this.nav.present(this.loading);

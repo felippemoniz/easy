@@ -53,9 +53,13 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreenDelay" value="2000"/>
   <preference name="FadeSplashScreenDuration" value="2000"/>
-  <feature name="StatusBar">
+    <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
+    <preference name="StatusBarOverlaysWebView" value="false" />
+<preference name="StatusBarBackgroundColor" value="#51596d"/>
+<preference name="StatusBarStyle" value="lightcontent" />
+<preference name="DisallowOverscroll" value="true" />
   <plugin name="cordova-plugin-device" spec="~1.1.2"/>
   <plugin name="cordova-plugin-console" spec="~1.0.3"/>
   <plugin name="cordova-plugin-whitelist" spec="~1.2.2"/>

@@ -143,25 +143,25 @@ export class Sessoes {
      let item = new chip();
      item.nome = 'LEG';
      item.nomeDetalhado = 'Legendado'; 
-     item.selecionado = true;
+     item.selecionado = false;
      this.tags.push (item);
 
      let item2 = new chip();
      item2.nome = 'DUB';
      item2.nomeDetalhado = 'Dublado';
-     item2.selecionado = true;
+     item2.selecionado = false;
      this.tags.push (item2);
 
      let item3 = new chip();
      item3.nome = '3D';
-     item3.nomeDetalhado = 'Dublado';     
-     item3.selecionado = true;
+     item3.nomeDetalhado = '3D';     
+     item3.selecionado = false;
      this.tags.push (item3);
 
      let item4 = new chip();
      item4.nome = '2D';
      item4.nomeDetalhado = 'Normal';     
-     item4.selecionado = true;
+     item4.selecionado = false;
      this.tags.push (item4);
 
   }
@@ -272,14 +272,31 @@ export class Sessoes {
       for (var i = 0; i < this.sessoes.length; i++) {
           item = this.sessoes[i];
           tipo = item.tipo;
-          if (tipo.indexOf(tag.nomeDetalhado)>0){
-              item.selecionado = !item.selecionado;
+          //console.log(tag.nomeDetalhado + " está dentro de => " + tipo + "=" + tipo.indexOf(tag.nomeDetalhado))
+          if (tipo.indexOf(tag.nomeDetalhado)<0){
+                item.selecionado = !tag.selecionado;
+              }else{
+                item.selecionado = tag.selecionado;
+              }
            }
-      } 
+
+
+      //this.contaSessoes()
       tag.selecionado = !tag.selecionado;
   }
 
 
+  contaSessoes(){
+    var item, count=0
+     for (var i = 0; i < this.sessoes.length; i++) {
+       item = this.sessoes[i];
+       if (item.selecionado){
+         count++
+       }
+     }
+     console.log(count)
+     this.qtSessoes = count;
+  }
 
 
   formataData(data){

@@ -137,4 +137,10 @@ calculaHoraFim(time, minsToAdd) {
   }
 
 
+voltar()
+{
+    this.nav.pop();  
+}
+
+
 }
