@@ -24,6 +24,7 @@ declare var geolib : any;
 export class Sessoes {
 
   itensSelecionados = [];
+  tagsSelecionadas = [];
   sessoesFiltradas = [];
   cinemas : cinema[];
   filmes : filme[];
@@ -265,22 +266,32 @@ export class Sessoes {
   }
 
 
-
   selecionaTag(tag){
+    this.tagsSelecionadas.push(tag)
+    //TODO criar um array com as tags marcadas, usar este array para mostrar apenas as sessões que estão no array
+  }
 
+
+
+
+  selecionaTag_temp(tag){
   var item, tipo
       for (var i = 0; i < this.sessoes.length; i++) {
           item = this.sessoes[i];
           tipo = item.tipo;
           //console.log(tag.nomeDetalhado + " está dentro de => " + tipo + "=" + tipo.indexOf(tag.nomeDetalhado))
-          if (tipo.indexOf(tag.nomeDetalhado)<0){
-                item.selecionado = !tag.selecionado;
-              }else{
-                item.selecionado = tag.selecionado;
-              }
-           }
 
-
+          if (tag.selecionado == false) { //marcando, ou seja, quero excluir
+                if (tipo.indexOf(tag.nomeDetalhado)<0){
+                      item.selecionado = 1;
+                 }
+          }else{ //desmarcando, ou seja, quero exibir
+                if (tipo.indexOf(tag.nomeDetalhado)>=0){
+                      alert("Entrei")
+                      item.selecionado = 0;
+                 }
+          }
+      }
       //this.contaSessoes()
       tag.selecionado = !tag.selecionado;
   }
