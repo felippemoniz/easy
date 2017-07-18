@@ -1,4 +1,4 @@
-<ion-toolbar > 
+<ion-toolbar >
   <ion-buttons start>
     <button ion-button icon-only color="white" (tap)="voltar()">
         <ion-icon name="md-arrow-back"></ion-icon>
@@ -46,10 +46,12 @@
       <div class="card-subtitle">
           <ion-row>
               <ion-col>
-                  <ion-row>
-                      <ion-col class="fonteTituloFilme">
+                  <ion-row (tap)="verDetalhes(filme)">
+                      <ion-col class="fonteTituloFilme" >
                       {{filme.nome}}
+                      <div class="botaoDetalhes" ><ion-icon name="md-more"></ion-icon></div>
                       </ion-col>
+
                   </ion-row>
                   <ion-row>
                       <ion-col  class="labelGeneroFilme">
@@ -68,7 +70,7 @@
 <ion-grid >
   <ion-row>
       <ion-col width-50  style="text-align:center; margin-top: 5%;">
-           <span class="fonteLabel" style="font-size: 85%; color: white"><b>{{ contadorFilmesEscolhidos }} FILMES ESCOLHIDOS</b></span>
+           <span class="fonteLabel" style="font-size: 80%; color: white"><b>{{ contadorFilmesEscolhidos }} FILMES ESCOLHIDOS</b></span>
       </ion-col>
         <ion-col width-50>
           <button class="botaoVerSessoes" (click)="verSessoes()">VER SESSÕES</button>

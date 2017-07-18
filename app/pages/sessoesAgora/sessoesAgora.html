@@ -1,4 +1,4 @@
-<ion-toolbar > 
+<ion-toolbar >
   <ion-buttons start>
     <button ion-button icon-only color="white" (tap)="voltar()">
         <ion-icon name="md-arrow-back"></ion-icon>
@@ -9,7 +9,7 @@
       <button ion-button icon-only color="royal">
         <ion-icon name="options"></ion-icon>
       </button>
-    </ion-buttons>  
+    </ion-buttons>
 </ion-toolbar>
 
 <ion-content >
@@ -30,6 +30,7 @@
 
 
 <ion-row class="headerSessoes">
+  <ion-col  *ngIf="qtSessoes === 0">Nenhuma sessão encontrada :-(</ion-col>
     <ion-col  *ngIf="qtSessoes === 1">Foi encontrada apenas <b>uma</b> sessão</ion-col>
     <ion-col  *ngIf="qtSessoes > 1">Foram encontradas <b>{{qtSessoes}}</b> sessões</ion-col>
 </ion-row>
@@ -52,7 +53,7 @@
                       <div style="padding-left: 40px">
                           <span class="fonteLabelTituloFilme">{{sessao.nomeFilme}}</span><br>
                           <span class="fonteLabelTituloCinema" ><b>{{sessao.nomeCinema}}</b></span><br>
-                          <span class="fonteLabelTituloDistancia"><b>{{ formataDistanciaAmigavel(sessao.distancia) }}</b> de você  ({{sessao.distancia}} km)</span><br>
+                        <span class="fonteLabelTituloDistancia" *ngIf="formataData(filtroData)=='Hoje' ">Começa em <b>{{formataTempoAteSessao(sessao.hora)}}</b></span><br>
                           <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} - {{sessao.tipo3d}}</span><br>
                           <ion-chip class="ratingIMDBSessao">
                             <div class="estrelaRatingSessao"><img src="./images/starRating.png" class="estrelaRatingTamanhoSessao"></div>

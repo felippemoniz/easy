@@ -18,7 +18,7 @@ export class Detalhes {
 
 
   	constructor(private nav: NavController, private navParams: NavParams){
-    	
+
     	this.filmeSelecionado = navParams.get('param1');
   }
 
@@ -36,8 +36,11 @@ export class Detalhes {
         return detalhe + " anos"
       }
     }
-
   }
 
+  voltar()
+  {
+      this.nav.pop();
+  }
 
 }

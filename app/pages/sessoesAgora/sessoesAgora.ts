@@ -72,6 +72,62 @@ export class SessoesAgora {
   }
 
 
+  formataTempoAteSessao(horaSessao){
+    var horaSessaoAtual = this.formataHora(horaSessao);
+    var d = new Date();
+    var horaAtual  = d.getHours() + ":" + d.getMinutes();
+    var texto = this.diferencaHoras(horaSessaoAtual, horaAtual)
+    return texto;
+  }
+
+
+
+  diferencaHoras(t1, t2)
+  {
+    var t1parts = t1.split(':');
+    var t1cm=Number(t1parts[0])*60+Number(t1parts[1]);
+
+    var t2parts = t2.split(':');
+    var t2cm=Number(t2parts[0])*60+Number(t2parts[1]);
+
+    var hour =Math.floor((t1cm-t2cm)/60);
+    var min=Math.floor((t1cm-t2cm)%60);
+
+
+    if (hour == 0){
+      return min + " minutos"
+    }else{
+      return (hour+' horas e '+min+' minutos');
+    }
+
+  }
+
+  formataData(data){
+  var dia,mes,ano,dataReduzida;
+    dataReduzida = data.substring(0,10)
+    mes = data.substring(5,7);
+    dia = data.substring(8,10)
+
+    if (dataReduzida == this.retornaDataAtual()){
+      return "Hoje"
+    }
+    else{
+      return dia + "/" + mes ;
+    }
+  }
+
+
+  retornaDataAtual(){
+    var dataAtual = new Date();
+    var dia = ("0" + (dataAtual.getDate())).slice(-2)
+    var mes = ("0" + (dataAtual.getMonth() + 1)).slice(-2)
+    var ano = dataAtual.getFullYear();
+
+    return ano + "-" + mes + "-" + dia;
+  }
+
+
+
   formataDistanciaAmigavel(distancia){
 
     if (distancia <= 2) {
@@ -139,7 +195,7 @@ calculaHoraFim(time, minsToAdd) {
 
 voltar()
 {
-    this.nav.pop();  
+    this.nav.pop();
 }
 
 

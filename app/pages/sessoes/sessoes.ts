@@ -48,17 +48,20 @@ export class Sessoes {
              private cinemaService : cinemaService,
              private filmesEmCartazService : filmesEmCartazService){
 
-    
+
 
     this.itensSelecionados = navParams.get('param1');
     this.filtroData = navParams.get('param2');
     this.tipoPesquisa = navParams.get('param3');
     this.diaSemanaEscolhido = navParams.get('param4');
 
+    console.log(this.filtroData)
+
     this.sessoesService = sessoesService;
     this.cinemaService = cinemaService;
     this.filmesEmCartazService = filmesEmCartazService;
 
+    //console.log(this.time_diff("23:00:00","12:00:00"))
 
     var filtro = ""
 
@@ -66,7 +69,7 @@ export class Sessoes {
 
     this.nav.present(this.loading);
 
- 
+
 
     //Se a consulta vier da página de cinemas
     if (this.tipoPesquisa === "C"){
@@ -90,7 +93,7 @@ export class Sessoes {
             this.filmesEmCartazService.findFilmesPorSessao(filtro,this.filtroData).subscribe(
                         data => {
                             this.filmes = data;
-                            this.loading.dismiss(); 
+                            this.loading.dismiss();
                         },
                         err => {
                             console.log(err);
@@ -106,6 +109,7 @@ export class Sessoes {
                 filtro = filtro + "," + this.itensSelecionados[i].idfilme;
             }
             filtro = filtro.substring(1,filtro.length)
+
             this.sessoesService.findById(filtro,this.filtroData).subscribe(
                         data => {
                             this.sessoes = data;
@@ -120,7 +124,7 @@ export class Sessoes {
             this.cinemaService.findCinemaPorSessao(filtro,this.filtroData).subscribe(
                         data => {
                             this.cinemas = data;
-                            this.loading.dismiss(); 
+                            this.loading.dismiss();
                         },
                         err => {
                             console.log(err);
@@ -131,10 +135,6 @@ export class Sessoes {
 
     }
 
-
-  this.getAllDistances();
-
-  this.sessoesOriginais = this.sessoes;
   }
 
 
@@ -143,7 +143,7 @@ export class Sessoes {
 
      let item = new chip();
      item.nome = 'LEG';
-     item.nomeDetalhado = 'Legendado'; 
+     item.nomeDetalhado = 'Legendado';
      item.selecionado = false;
      this.tags.push (item);
 
@@ -155,63 +155,26 @@ export class Sessoes {
 
      let item3 = new chip();
      item3.nome = '3D';
-     item3.nomeDetalhado = '3D';     
+     item3.nomeDetalhado = '3D';
      item3.selecionado = false;
      this.tags.push (item3);
 
      let item4 = new chip();
      item4.nome = '2D';
-     item4.nomeDetalhado = 'Normal';     
+     item4.nomeDetalhado = 'Normal';
      item4.selecionado = false;
      this.tags.push (item4);
 
   }
 
 
-  private getDistance (origin, destination){
-    let distance = geolib.getDistance(origin, destination);
-    return geolib.convertUnit('km',distance,2);
+  formataTempoAteSessao(horaSessao){
+    var horaSessaoAtual = this.formataHora(horaSessao);
+    var d = new Date();
+    var horaAtual  = d.getHours() + ":" + d.getMinutes();
+    var texto = this.diferencaHoras(horaSessaoAtual, horaAtual)
+    return texto;
   }
-
-
-
-
-  private getAllDistances(){
-
-    Geolocation.getCurrentPosition().then(result=>{
-      for (let i = 0; i < this.sessoes.length; i++){
-        let sessao = this.sessoes[i];
-
-        sessao.distancia = this.getDistance(
-           {latitude: result.coords.longitude,
-           longitude: result.coords.latitude},
-           {latitude : sessao.latitude,
-           longitude : sessao.longitude}
-          )
-        }
-    });
-
-  }
-
-
-
-  formataDistanciaAmigavel(distancia){
-
-    if (distancia <= 2) {
-      return "Bem perto";
-    }
-    else if (distancia > 2 && distancia <= 5){
-      return "Perto";
-    }
-    else if (distancia > 5 && distancia <= 20){
-      return "Um pouco longe";
-    }
-    else {
-      return "Bem longe";
-    }
-
-  }
-
 
 
   formataHora(hora){
@@ -232,12 +195,27 @@ export class Sessoes {
   }
 
 
-  recuperaDistancia(idCinema){
-    for (let i = 0; i < this.itensSelecionados.length; i++){
-          let cinema = this.itensSelecionados[i];
-          if (cinema.idcinema == idCinema ){return cinema.distancia}
+  diferencaHoras(t1, t2)
+  {
+    var t1parts = t1.split(':');
+    var t1cm=Number(t1parts[0])*60+Number(t1parts[1]);
+
+    var t2parts = t2.split(':');
+    var t2cm=Number(t2parts[0])*60+Number(t2parts[1]);
+
+    var hour =Math.floor((t1cm-t2cm)/60);
+    var min=Math.floor((t1cm-t2cm)%60);
+
+
+    if (hour == 0){
+      return min + " minutos"
+    }else{
+      return (hour+' horas e '+min+' minutos');
     }
+
   }
+
+
 
 
 
@@ -267,11 +245,34 @@ export class Sessoes {
 
 
   selecionaTag(tag){
-    this.tagsSelecionadas.push(tag)
-    //TODO criar um array com as tags marcadas, usar este array para mostrar apenas as sessões que estão no array
+    tag.selecionado = !tag.selecionado;
+    var tipo = tag.nomeDetalhado
+
+    if (this.tagsSelecionadas.indexOf(tipo) == -1){
+       this.tagsSelecionadas.push(tipo)
+    }else{
+       this.tagsSelecionadas.splice(this.tagsSelecionadas.indexOf(tipo), 1);
+    }
+
+    this.filtraSessoes(tag)
   }
 
 
+  filtraSessoes(tag){
+
+    var item, tipoSessao, valorTag
+    for (var i = 0; i < this.sessoes.length; i++) {
+        item = this.sessoes[i];
+        tipoSessao = item.tipo;
+        for (var y = 0; y < this.tagsSelecionadas.length; y++) {
+            if (tipoSessao.indexOf(this.tagsSelecionadas[y])>=0){
+                item.selecionado = 0;
+            }
+        }
+    }
+
+
+  }
 
 
   selecionaTag_temp(tag){
@@ -305,7 +306,6 @@ export class Sessoes {
          count++
        }
      }
-     console.log(count)
      this.qtSessoes = count;
   }
 
@@ -351,7 +351,7 @@ export class Sessoes {
 
 voltar()
 {
-    this.nav.pop();  
+    this.nav.pop();
 }
 
 

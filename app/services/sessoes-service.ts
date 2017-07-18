@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 let sessoesURL = SERVER_URL + 'sessoes/';
 let sessoesAgoraURL = SERVER_URL + 'sessoesAgora/';
+let sessoesHojeURL = SERVER_URL + 'sessoesHoje/';
 let sessoesPorCinemaURL = SERVER_URL + 'sessoesPorCinema/';
 
 
@@ -23,10 +24,35 @@ export class sessoesService {
   }
 
   findById(id,data) {
-        return this.http.get(sessoesURL + id +"/"+ data )
-          .map(res => res.json())
-          .catch(this.handleError);
-   
+    if (data==this.retornaDataAtual()){
+      return this.http.get(sessoesHojeURL + id +"/"+ data + "/"+ this.retornaHoraAtualSessoesAgora()  )
+        .map(res => res.json())
+        .catch(this.handleError);
+    }else{
+      return this.http.get(sessoesURL + id +"/"+ data )
+        .map(res => res.json())
+        .catch(this.handleError);
+    }
+
+
+  }
+
+  retornaHoraAtualSessoesAgora(){
+    var dataAtual = new Date();
+    var hora = ("0" + (dataAtual.getHours())).slice(-2)
+    var minuto = ("0" + (dataAtual.getMinutes())).slice(-2)
+    return hora + minuto;
+
+  }
+
+
+  retornaDataAtual(){
+    var dataAtual = new Date();
+    var dia = ("0" + (dataAtual.getDate())).slice(-2)
+    var mes = ("0" + (dataAtual.getMonth() + 1)).slice(-2)
+    var ano = dataAtual.getFullYear();
+
+    return ano + "-" + mes + "-" + dia;
   }
 
 
@@ -34,7 +60,7 @@ export class sessoesService {
         return this.http.get(SERVER_URL + 'getDates/' + data )
           .map(res => res.json())
           .catch(this.handleError);
-   
+
   }
 
 
@@ -42,14 +68,14 @@ export class sessoesService {
         return this.http.get(sessoesPorCinemaURL + id +"/"+ data  )
           .map(res => res.json())
           .catch(this.handleError);
-   
+
   }
 
   findNow(data) {
         return this.http.get(sessoesAgoraURL + data )
           .map(res => res.json())
           .catch(this.handleError);
-   
+
   }
 
 
