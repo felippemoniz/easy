@@ -34,36 +34,33 @@
 
 <ion-grid style="padding: 0;">
   <ion-row>
-    <ion-col col-50 class="botaoMenu" style="border-right:  1px solid #ccc8c5;" (tap)="verCinemas()">
+    <ion-col col-50 class="botaoMenu" style="border-right:  1px solid #ccc8c5;" (tap)="verFilmes()" >
     <br>
               <ion-grid >
                   <ion-row >
-                      <ion-col col-3 class="botaoImagem" style="padding: 0; left: -38%;"><img src="./images/imgCinema.png"/></ion-col>
-                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 37%;">Buscar<br><span style="font-size: 0.6em;">cinemas</span></ion-col>
+                      <ion-col class="botaoTexto">Buscar por<br><span class="botaoTexto2">Filmes</span></ion-col>
                   </ion-row>
              </ion-grid>
     <br>
     </ion-col>
-    <ion-col col-50 class="botaoMenu" (tap)="verFilmes()">
+    <ion-col col-50 class="botaoMenu" (tap)="verCinemas()">
     <br>
-            <ion-grid >
+              <ion-grid >
                   <ion-row >
-                      <ion-col col-3 class="botaoImagem" style="padding: 0; left: 12%;"><img src="./images/imgFilme.png"/></ion-col>
-                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 35%;">Filmes&nbsp;&nbsp;&nbsp;&nbsp;<br><span style="font-size: 0.6em;">da sua cidade</span></ion-col>
+                      <ion-col class="botaoTexto">Buscar por<br><span class="botaoTexto2">Cinemas</span></ion-col>
                   </ion-row>
-            </ion-grid>
+             </ion-grid>
     <br>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col class="botaoMenu" (tap)="verSessoesAgora()" style="border-bottom:  1px solid #ccc8c5;">
     <br>
-             <ion-grid>
-                  <ion-row>
-                      <ion-col col-3 class="botaoImagem" style="padding: 0; left: -38%; "><img src="./images/imgAgora.png"/></ion-col>
-                      <ion-col col-9 class="botaoTexto" style="text-align: left; left: 16%;">O que tem agora?<br><span style="font-size: 0.6em;">Veja as sessões que estão <b>começando agora</b></span></ion-col>
-                  </ion-row>
-            </ion-grid>
+            <ion-grid >
+                <ion-row >
+                    <ion-col class="botaoTexto">Buscar por<br><span class="botaoTexto2">Sessões agora!</span></ion-col>
+                </ion-row>
+           </ion-grid>
     <br>
     </ion-col>
   </ion-row>

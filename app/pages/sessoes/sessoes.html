@@ -65,9 +65,9 @@
   <ion-item class="itemItemSessao" #sessaoFilme  *ngIf="sessao.selecionado==0">
   		<div style="position: absolute;  width: 100% ; top: 10%" >
   			<ion-row style="height:90%">
-  				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
+  				<ion-col width-20 style="text-align: center">
 
-          <span style="font-weight:bold;">{{formataHora(sessao.hora)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 12px;">{{calculaHoraFim(formataHora(sessao.hora), sessao.duracao)}}</span>
+          <span class="fonteLabelTituloHorario" style="font-weight:bold;">{{formataHora(sessao.hora)}}</span>
 
   				</ion-col>
   				<ion-col width-80>
@@ -77,11 +77,8 @@
                           <span class="fonteLabelTituloCinema" >{{sessao.nomeCinema}}</span><br>
                           <span class="fonteLabelTituloDistancia" *ngIf="formataData(filtroData)=='Hoje' ">Começa em <b>{{formataTempoAteSessao(sessao.hora)}}</b></span><br>
                           <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} - {{sessao.tipo3d}}</span><br>
+                          <div class="estrelaRatingSessao"><img src="./images/starRatingSessao.png" class="estrelaRatingTamanhoSessao"></div><div class="estrelaRatingTamanhoSessaoTexto"><b>6.9</b></div>
 
-                          <ion-chip class="ratingIMDBSessao">
-                            <div class="estrelaRatingSessao"><img src="./images/starRating.png" class="estrelaRatingTamanhoSessao"></div>
-                            <span style="color:white; position:absolute;left:30px"><b>{{sessao.notaimdb}}</b>/<span style="font-size: 10px;">10</span></span>
-                          </ion-chip>
 
                       </div>
   				</ion-col>
