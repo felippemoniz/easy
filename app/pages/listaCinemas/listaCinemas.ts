@@ -134,9 +134,12 @@ export class ListaCinemas {
 
   selecionaCinema(cinema) {
 
+
     var p = [];
     var flagEncontrado= false;
     var index;
+
+
 
     var indexSelecionado = this.cinemas.indexOf(cinema);
 

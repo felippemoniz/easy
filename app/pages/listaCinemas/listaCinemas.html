@@ -9,7 +9,7 @@
 </div>
 <div class="labelSubTituloTela">{{formataData(filtroData)}} | {{diaSemanaEscolhido}}</div>
 <br><br>
-<!-- {{cinemas | json}} -->
+
 
 
 
@@ -24,21 +24,13 @@
    <ion-card  #cinemaCard *ngFor=" let cinema of cinemas ">
 
 
-        <button ion-button  #botaoAdiciona class="botaoCard" *ngIf="cinema.selecionado === 0" (click)="selecionaCinema(cinema);" round small >
-        <ion-icon name="add" ></ion-icon>
-       </button >
-        <button ion-button  #botaoAdiciona class="botaoCardSelecionado" *ngIf="cinema.selecionado === 1" (click)="selecionaCinema(cinema);" round small >
-        <ion-icon name="checkmark" ></ion-icon>
-       </button >
+
+     <div  #layerMarcada [ngClass]="cinema.selecionado ? 'marcacaoSelecionado' : 'marcacaoNaoSelecionado'" (tap)="selecionaCinema(cinema);" >
+         <img style="width: 100px; position: relative; left: 38%; top:20px" src="./images/imgSelecionado.png"/>
+     </div>
 
 
-      <div  #layerMarcada [ngClass]="cinema.selecionado ? 'marcacaoSelecionado' : 'marcacaoNaoSelecionado'" >
-      </div>
-
-
-      <!--div class="tagRanking" *ngIf="i<3 && filme.qtacessos > 0"><b>{{i + 1}}º</b> MAIS PROCURADO</div-->
-
-      <img  src={{cinema.imagem}} (click)="verDetalhes(filme)" >
+      <img  src={{cinema.imagem}}  (tap)="selecionaCinema(cinema);" >
 
       <div class="card-subtitle">
           <ion-row>
@@ -66,13 +58,10 @@
 <ion-toolbar position="bottom" class="toolbarVerSessoes" >
 <ion-grid >
   <ion-row>
-      <ion-col width-50>
-        <b> <span class="fonteLabel" style="font-size: 23px; ">{{ contadorCinemasEscolhidos }}</span> </b><br>
-        <span class="fonteLabel" style="font-size: 13px;">cinemas escolhidos</span>
-
-
+      <ion-col width-50  style="text-align:center; margin-top: 5%;">
+           <span class="fonteLabel" style="font-size: 80%; color: white"><b>{{ contadorCinemasEscolhidos }} FILMES ESCOLHIDOS</b></span>
       </ion-col>
-      <ion-col width-50  style="text-align:center;">
+        <ion-col width-50>
           <button class="botaoVerSessoes" (click)="verSessoes()">VER SESSÕES</button>
       </ion-col>
  </ion-row>

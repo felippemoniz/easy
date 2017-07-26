@@ -9,7 +9,7 @@
   background-color: #5e6a7c;
   margin: 0px;
   color: #ffffff;
-  font-family: "Myriad Pro";
+  font-family: "Open Sans", "Helvetica";
   text-align:left;
   font-size: large;
   padding: 0px;
@@ -18,28 +18,45 @@
   margin-top: -3px;
 }
 
+.headerSubDetalhesFilme {
+  font-size: 1.0em;
+  color: white;
+  background-color: #c8ccd2;
+  margin: 0px;
+  color: #ffffff;
+  font-family: "Open Sans", "Helvetica";
+  text-align: left;
+  font-size: large;
+  padding: 0px;
+  text-align: left;
+  height: 6%;
+  margin-top: -3px;
+}
+
+
 .posCabecalhoFilme{
-  top: 6px;
-  left: 120px;
-  position: relative;
+  top: 22%;
+  left: 32%;
+  position: absolute;
 }
 
 .posCartazFilme{
-  top: -111px;
+top: 11.1%;
   left: 7px;
-  position: relative;
+  position: absolute;
 }
 
 .posRatingIMDB{
-  top: -149px;
-  left: -166px;
-  position: relative;
+  top: 36%;
+      left: 30.5%;
+      position: absolute;
 }
 
 .posBotaoTrailer{
-    top: -153px;
-    left: 261px;
-    position: relative;
+  top: 35.1%;
+  left: 31%;
+  width: 257%;
+  position: absolute;
 }
 
 .conteudo{
@@ -49,16 +66,17 @@
   p{
     color: #686c74;
   }
-  
+
 }
 
 .botaoTrailer{
   height: 23px;
-  width: 26%;
-  font-family: "Open Sans", "Helvetica";
-  font-size: 12px;
-  color: white;
-  border-color: white;
+      width: 26%;
+      font-family: "Open Sans", "Helvetica";
+      font-size: 12px;
+      color: #5e6a7c;
+      border-color: #5e6a7c;
+      background-color: #dde3ea;
 }
 
 .imagemTamanhoFixo {
@@ -72,19 +90,20 @@
 
 ion-chip.ratingIMDBDetalhe {
   margin: 3px 3px;
-  padding: 0 11px;
-  height: 22px;
-  border-radius: 11px;
-  font-size: 12px;
-  color: white;
-  font-weight: normal;
-  line-height: 24px;
-  background: #435166;
-  vertical-align: middle;
-  box-sizing: border-box;
-  position: absolute;
-  right: 0px;
-  width: 23vw;
+      padding: 0 11px;
+      height: 22px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: white;
+      font-weight: normal;
+      line-height: 24px;
+      background: #435166;
+      vertical-align: middle;
+      box-sizing: border-box;
+      position: absolute;
+      right: 0px;
+      width: 27.5vw;
+      font-family: "Futura";
 
 }
 

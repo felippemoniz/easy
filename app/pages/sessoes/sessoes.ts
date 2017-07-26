@@ -55,13 +55,11 @@ export class Sessoes {
     this.tipoPesquisa = navParams.get('param3');
     this.diaSemanaEscolhido = navParams.get('param4');
 
-    console.log(this.filtroData)
 
     this.sessoesService = sessoesService;
     this.cinemaService = cinemaService;
     this.filmesEmCartazService = filmesEmCartazService;
 
-    //console.log(this.time_diff("23:00:00","12:00:00"))
 
     var filtro = ""
 
@@ -83,16 +81,6 @@ export class Sessoes {
                         data => {
                             this.sessoes = data;
                             this.qtSessoes = this.sessoes.length;
-                        },
-                        err => {
-                            console.log(err);
-                        },
-                        () => console.log("")
-            );
-
-            this.filmesEmCartazService.findFilmesPorSessao(filtro,this.filtroData).subscribe(
-                        data => {
-                            this.filmes = data;
                             this.loading.dismiss();
                         },
                         err => {
@@ -100,6 +88,17 @@ export class Sessoes {
                         },
                         () => console.log("")
             );
+
+          /*  this.filmesEmCartazService.findFilmesPorSessao(filtro,this.filtroData).subscribe(
+                        data => {
+                            this.filmes = data;
+
+                        },
+                        err => {
+                            console.log(err);
+                        },
+                        () => console.log("")
+            ); */
 
     //Se a consulta vier da página de filmes em cartaz
     }else{
@@ -114,16 +113,6 @@ export class Sessoes {
                         data => {
                             this.sessoes = data;
                             this.qtSessoes = this.sessoes.length;
-                        },
-                        err => {
-                            console.log(err);
-                        },
-                        () => console.log("")
-            );
-
-            this.cinemaService.findCinemaPorSessao(filtro,this.filtroData).subscribe(
-                        data => {
-                            this.cinemas = data;
                             this.loading.dismiss();
                         },
                         err => {
@@ -131,6 +120,17 @@ export class Sessoes {
                         },
                         () => console.log("")
             );
+
+           /*  this.cinemaService.findCinemaPorSessao(filtro,this.filtroData).subscribe(
+                        data => {
+                            this.cinemas = data;
+
+                        },
+                        err => {
+                            console.log(err);
+                        },
+                        () => console.log("")
+            ); */
 
 
     }

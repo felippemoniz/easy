@@ -9,6 +9,7 @@ let sessoesURL = SERVER_URL + 'sessoes/';
 let sessoesAgoraURL = SERVER_URL + 'sessoesAgora/';
 let sessoesHojeURL = SERVER_URL + 'sessoesHoje/';
 let sessoesPorCinemaURL = SERVER_URL + 'sessoesPorCinema/';
+let sessoesHojePorCinemaURL = SERVER_URL + 'sessoesHojePorCinema/';
 
 
 @Injectable()
@@ -65,9 +66,18 @@ export class sessoesService {
 
 
   findByTheater(id,data) {
-        return this.http.get(sessoesPorCinemaURL + id +"/"+ data  )
-          .map(res => res.json())
-          .catch(this.handleError);
+
+    if (data==this.retornaDataAtual()){
+      console.log("Hoje")
+      return this.http.get(sessoesHojePorCinemaURL + id +"/"+ data + "/"+ this.retornaHoraAtualSessoesAgora()  )
+        .map(res => res.json())
+        .catch(this.handleError);
+    }else{
+      console.log("utro dia")
+      return this.http.get(sessoesPorCinemaURL + id +"/"+ data  )
+        .map(res => res.json())
+        .catch(this.handleError);
+    }
 
   }
 

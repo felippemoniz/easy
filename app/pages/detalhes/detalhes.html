@@ -19,25 +19,34 @@
 
     <div class="posCabecalhoFilme">
         <span class="fonteTituloFilme">{{filmeSelecionado.nome}}</span> <br>
-        <span class="labelGeneroFilme"> {{filmeSelecionado.genero}} | {{filmeSelecionado.duracao}} minutos |  {{trataDetalhes("C", filmeSelecionado.classificacao)}}</span>
+        <span class="labelGeneroFilme"> {{filmeSelecionado.genero}} | {{filmeSelecionado.duracao}} min |  {{filmeSelecionado.classificacao}}</span>
     </div>
 
     <div class="posCartazFilme">
       <img class="imagemTamanhoCartaz" src={{filmeSelecionado.poster}}>
     </div>
 
-    <div class="posRatingIMDB">
-      <ion-chip class="ratingIMDBDetalhe">
-        <div class="estrelaRatingDetalhe"><img src="./images/starRating.png" class="estrelaRatingTamanhoDetalhe"></div>
-        <ion-label style="color:white; position:absolute;left:30px"><b>{{filmeSelecionado.notaimdb}}</b>/<span style="font-size: 10px;">10</span></ion-label>
-      </ion-chip>
-    </div>
 
-    <div class="posBotaoTrailer">
-    <button ion-button outline class="botaoTrailer">TRAILER</button>
-    </div>
 
 </div>
+
+
+<div class="headerSubDetalhesFilme">
+
+  <div class="posRatingIMDB">
+    <ion-chip class="ratingIMDBDetalhe">
+      <div class="estrelaRatingDetalhe"><img src="./images/starRating.png" class="estrelaRatingTamanhoDetalhe"></div>
+      <ion-label style="color:white; position:absolute;left:38%"><b>6.7</b>/<span style="font-size: 10px;">10</span></ion-label>
+    </ion-chip>
+  </div>
+
+  <div class="posBotaoTrailer">
+  <button ion-button outline class="botaoTrailer">ASSISTA AO TRAILER</button>
+  </div>
+
+</div>
+
+
 
 <div class="conteudo">
 <p><b>SINOPSE</b><br><br>

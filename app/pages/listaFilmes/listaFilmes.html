@@ -10,7 +10,7 @@
 <ion-content class="card-background-page">
 <br>
 <div class="labelTituloTela">
-<b>Filmes em Cartaz</b>
+<b>Filmes em Cartaz</b> ({{qtFilme}})
 </div>
 <div class="labelSubTituloTela">{{formataData(filtroData)}} | {{diaSemanaEscolhido}}</div>
 <br><br>
@@ -45,7 +45,7 @@
 
       <div class="card-subtitle">
           <ion-row>
-              <ion-col>
+              <ion-col >
                   <ion-row (tap)="verDetalhes(filme)">
                       <ion-col class="fonteTituloFilme" >
                       {{filme.nome}}
@@ -66,6 +66,11 @@
 
 </ion-scroll>
 
+</ion-content>
+
+
+
+<!-- ##########################################################################-->
 <ion-toolbar position="bottom" class="toolbarVerSessoes" >
 <ion-grid >
   <ion-row>
@@ -78,9 +83,3 @@
  </ion-row>
 </ion-grid>
 </ion-toolbar>
-
-</ion-content>
-
-
-
-<!-- ##########################################################################-->

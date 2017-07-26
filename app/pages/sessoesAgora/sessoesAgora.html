@@ -19,15 +19,17 @@
 </div>
 <div class="labelSubTituloTela">Filmes que estão para começar</div>
 
-<!--{{filmesSelecionados | json}} -->
+
+<br>
+
 
 <ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
-  <ion-chip  *ngFor=" let filme of filmesSelecionados" [ngClass]="filme.selecionado ? 'ativo' : 'inativo'"  (click)="selecionaOpcaoPrefs(filme)">
-    <ion-label class="tag"> {{filme.nome | uppercase}}</ion-label>
+  <ion-chip  *ngFor=" let tag of tags"  [ngClass]="tag.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaTag(tag)">
+    <ion-label class="tag"> {{tag.nome }}</ion-label>
   </ion-chip>
 </ion-scroll>
 
-
+<br><br>
 
 <ion-row class="headerSessoes">
   <ion-col  *ngIf="qtSessoes === 0">Nenhuma sessão encontrada :-(</ion-col>
@@ -37,37 +39,38 @@
 
 <!--Scrol somente da tela de resultado -->
 <ion-scroll  scrollY="true" class="scrollVertical" overflow-scroll="true" >
-  <br>
+<br>
 <ion-list class="itemListaSessao" no-lines>
 
-  <ion-item class="itemItemSessao" #sessaoFilme *ngFor=" let sessao of sessoes">
-  		<div style="position: absolute;  width: 100% ; top: 10%">
-  			<ion-row style="height:90%">
-  				<ion-col width-20 style="text-align: center" class="fonteLabelTituloHorario">
+<div *ngFor=" let sessao of sessoes">
 
-					<span style="font-weight:bold;">{{formataHora(sessao.hora)}}</span><br><ion-icon name="arrow-round-down"></ion-icon><br><span style="font-weight:lighter;font-size: 12px;">{{calculaHoraFim(formataHora(sessao.hora), sessao.duracao)}}</span>
+  <ion-item class="itemItemSessao" #sessaoFilme  *ngIf="sessao.selecionado==0">
+  		<div style="position: absolute;  width: 100% ; top: 10%" >
+  			<ion-row style="height:90%">
+  				<ion-col width-20 style="text-align: center">
+
+          <span class="fonteLabelTituloHorario" style="font-weight:bold;">{{formataHora(sessao.hora)}}</span>
 
   				</ion-col>
   				<ion-col width-80>
                       <img src={{sessao.poster}}  class="posterPequeno">
                       <div style="padding-left: 40px">
                           <span class="fonteLabelTituloFilme">{{sessao.nomeFilme}}</span><br>
-                          <span class="fonteLabelTituloCinema" ><b>{{sessao.nomeCinema}}</b></span><br>
-                        <span class="fonteLabelTituloDistancia" *ngIf="formataData(filtroData)=='Hoje' ">Começa em <b>{{formataTempoAteSessao(sessao.hora)}}</b></span><br>
-                          <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} - {{sessao.tipo3d}}</span><br>
-                          <ion-chip class="ratingIMDBSessao">
-                            <div class="estrelaRatingSessao"><img src="./images/starRating.png" class="estrelaRatingTamanhoSessao"></div>
-                            <span style="color:white; position:absolute;left:30px"><b>{{sessao.notaimdb}}</b>/<span style="font-size: 10px;">10</span></span>
-                          </ion-chip>
+                          <span class="fonteLabelTituloCinema" >{{sessao.nomeCinema}}</span><br>
+                          <span class="fonteLabelTituloDistancia" *ngIf="formataData(filtroData)=='Hoje' "><ion-icon ios="md-time" ></ion-icon>&nbsp;Começa em <b>{{formataTempoAteSessao(sessao.hora)}}</b></span><br>
+                          <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} {{sessao.tipo3d}}</span><br>
+                          <div class="estrelaRatingSessao"><img src="./images/starRatingSessao.png" class="estrelaRatingTamanhoSessao"></div><div class="estrelaRatingTamanhoSessaoTexto"><b>6.9</b></div>
+
 
                       </div>
   				</ion-col>
   			</ion-row>
 
   		</div>
-  		<img  src="./images/linhaSessaoAlta.png" style="max-width: 95%;" />
-  </ion-item>
+  		<img  src="./images/linhaSessaoAlta.png" style="max-width: 95%;" *ngIf="sessao.selecionado==0"/>
 
+  </ion-item>
+</div>
 
 
 </ion-list>

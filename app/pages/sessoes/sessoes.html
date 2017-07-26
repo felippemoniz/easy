@@ -75,8 +75,8 @@
                       <div style="padding-left: 40px">
                           <span class="fonteLabelTituloFilme">{{sessao.nomeFilme}}</span><br>
                           <span class="fonteLabelTituloCinema" >{{sessao.nomeCinema}}</span><br>
-                          <span class="fonteLabelTituloDistancia" *ngIf="formataData(filtroData)=='Hoje' ">Começa em <b>{{formataTempoAteSessao(sessao.hora)}}</b></span><br>
-                          <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} - {{sessao.tipo3d}}</span><br>
+                          <span class="fonteLabelTituloDistancia" *ngIf="formataData(filtroData)=='Hoje' "><ion-icon ios="md-time" ></ion-icon>&nbsp;Começa em <b>{{formataTempoAteSessao(sessao.hora)}}</b></span><br>
+                          <span class="fonteLabelTituloDistancia"> {{sessao.tipo}} {{sessao.tipo3d}}</span><br>
                           <div class="estrelaRatingSessao"><img src="./images/starRatingSessao.png" class="estrelaRatingTamanhoSessao"></div><div class="estrelaRatingTamanhoSessaoTexto"><b>6.9</b></div>
 
 

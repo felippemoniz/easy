@@ -6,6 +6,7 @@ import {sessao} from '../../model/sessao';
 import {filtro} from '../../model/filtro';
 import {Geolocation} from 'ionic-native';
 import { Loading } from 'ionic-angular';
+import {chip} from '../../model/chip';
 
 
 declare var geolib : any;
@@ -27,6 +28,7 @@ export class SessoesAgora {
   public loading = Loading.create();
   filtroData: string;
   qtSessoes = 0;
+  tags = [];
 
 //lições aprendidas: tive que definir o tipo sessoesService pois dava pau no momento da execução, não faço ideia do porquê
  constructor(private nav: NavController, private navParams: NavParams , private sessoesService : sessoesService){
@@ -34,6 +36,8 @@ export class SessoesAgora {
     this.filtroData = navParams.get('param1');
     this.sessoesService = sessoesService;
     this.nav.present(this.loading);
+
+    this.carregaTags();
 
     this.sessoesService.findNow(this.filtroData).subscribe(
                 data => {
@@ -53,6 +57,33 @@ export class SessoesAgora {
   }
 
 
+  private carregaTags(){
+
+     let item = new chip();
+     item.nome = 'LEG';
+     item.nomeDetalhado = 'Legendado';
+     item.selecionado = false;
+     this.tags.push (item);
+
+     let item2 = new chip();
+     item2.nome = 'DUB';
+     item2.nomeDetalhado = 'Dublado';
+     item2.selecionado = false;
+     this.tags.push (item2);
+
+     let item3 = new chip();
+     item3.nome = '3D';
+     item3.nomeDetalhado = '3D';
+     item3.selecionado = false;
+     this.tags.push (item3);
+
+     let item4 = new chip();
+     item4.nome = '2D';
+     item4.nomeDetalhado = 'Normal';
+     item4.selecionado = false;
+     this.tags.push (item4);
+
+  }
 
   formataHora(hora){
     var horaString = hora.toString();
