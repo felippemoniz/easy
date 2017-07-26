@@ -184,5 +184,9 @@ verSessoes(){
    });
 }
 
+voltar()
+{
+    this.nav.pop();
+}
 
 }

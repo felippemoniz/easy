@@ -24,7 +24,7 @@
 <br>
 
 
-<ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" *ngIf="tipoPesquisa === 'F'">
+<ion-scroll  scrollX="true" class="scrollHorizontal" overflow-scroll="true" >
   <ion-chip  *ngFor=" let tag of tags"  [ngClass]="tag.selecionado ? 'ativo' : 'inativo'"  (tap)="selecionaTag(tag)">
     <ion-label class="tag"> {{tag.nome }}</ion-label>
   </ion-chip>
