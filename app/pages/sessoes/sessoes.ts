@@ -84,6 +84,7 @@ export class Sessoes {
                         data => {
                             this.sessoes = data;
                             this.qtSessoes = this.sessoes.length;
+                            this.sessoesOriginais = this.sessoes;
                             this.loading.dismiss();
                         },
                         err => {
@@ -251,6 +252,8 @@ export class Sessoes {
     tag.selecionado = !tag.selecionado;
     var tipo = tag.nomeDetalhado
 
+    console.log(tag)
+
     if (this.tagsSelecionadas.indexOf(tipo) == -1){
        this.tagsSelecionadas.push(tipo)
     }else{
@@ -258,29 +261,49 @@ export class Sessoes {
     }
 
     this.filtraSessoes(tag)
-    console.log(this.tagsSelecionadas)
+    //console.log(this.tagsSelecionadas)
   }
 
 
 
-  filtraSessoes(tag){
+
+
+  filtraSessoes_(tag){
+
+
+    var uniqueArray = this.sessoes.filter( function( elem, index, array ) {
+        return array.indexOf( elem ) === index;
+    } );
+
+
+  }
+
+
+filtraSessoes(tag){
 
     var item, tipoSessao, valorTag
+
     for (var i = 0; i < this.sessoes.length; i++) {
         item = this.sessoes[i];
         tipoSessao = item.tipo;
 
-        for (var y = 0; y < this.tagsSelecionadas.length; y++) {
-          if (item.selecionado==0){ //Só itera nas sessões que estão visiveis
-                if (tipoSessao.indexOf(this.tagsSelecionadas[y])==-1){
-                    item.selecionado = 1;
-                }
-          }else{
-                if (tipoSessao.indexOf(this.tagsSelecionadas[y])>=0){
-                    item.selecionado = 0;
-                }
-          }
-        }
+            if(this.tagsSelecionadas.length>0){
+                  for (var y = 0; y < this.tagsSelecionadas.length; y++) {
+                        if (item.selecionado==0){ //Só itera nas sessões que estão visiveis
+                              if (tipoSessao.indexOf(this.tagsSelecionadas[y])==-1){
+                                  item.selecionado = 1;
+                              }
+                        }/*else{
+                              if (tipoSessao.indexOf(this.tagsSelecionadas[y])>=0){
+                                  item.selecionado = 0;
+                              }
+                        }*/
+                  }
+            }
+            else{
+              item.selecionado = 0;
+              console.log("mostra")
+            }
     }
 
 
